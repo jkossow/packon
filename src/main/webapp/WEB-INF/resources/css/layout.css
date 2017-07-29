@@ -1,0 +1,100 @@
+
+#top {
+    position: relative;
+    background-color: #036fab; 
+    /*background-color: white; */
+    color: black;
+    padding: 5px;
+    /*margin: 0px 0px 10px 0px;*/
+    margin: 0px auto;
+    height: 70px;
+    width: 99%;
+    
+}
+
+#topContent {
+    
+    
+    float:right;
+    position: relative;
+    padding: 5px;
+    height: auto;
+    margin: 5px;
+   
+}
+
+#topContentLeft {
+    
+   
+    float:left;
+    position: relative;
+    padding: 0px;
+    height: 30px;
+    margin: 0px;
+    
+}
+
+
+#bottom {
+    position: relative;
+    background-color: #c2dfef;
+    padding: 5px;
+    margin: 10px 0px 0px 0px;
+}
+
+#left {
+    float: left;
+    background-color: #73ec0d; 
+    /*background-color: white;*/
+    padding: 5px;
+    width: 180px;
+    height: 20000px;
+    /*margin: 10px;*/ /*tylko aby zmiana była */
+}
+
+#right {
+    float: right;
+    background-color: #ece3a5; 
+    padding: 5px;
+    width: 150px;
+    
+}
+
+.center_content {
+    position: relative;
+    background-color: #dddddd;  
+    padding: 5px;
+    
+}
+
+.left_content {
+    background-color: #f9ff20;  /* to jest styl głównej częsci */
+    padding: 1px;
+    /*margin-left: 210px;*/
+    border: dashed;
+    
+    
+    
+    
+}
+
+.right_content {
+    background-color: #dddddd;  
+    padding: 5px;
+    margin: 0px 170px 0px 170px;
+    
+}
+
+#top a:link, #top a:visited {
+  color: black;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+#top a:link:hover, #top a:visited:hover  {
+  color: black;
+  font-weight : bold;
+  text-decoration : underline;
+}
+
+

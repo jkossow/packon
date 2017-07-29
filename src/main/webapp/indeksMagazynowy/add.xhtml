@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<body>
+
+	<ui:composition template="/templates/mainTemplate.xhtml">
+
+		<ui:define name="left">
+			<ui:include src="/menu.xhtml" />
+		</ui:define>
+
+		<ui:define name="content">
+		 <h:form>
+			<p:panelGrid columns="2">
+				<f:facet name="header">Nowy indeks magazynowy</f:facet>
+			
+				<h:outputText value="Indeks:" />
+				<p:inputText value="#{indeksMagazynowyAddController.indeksMag.indeks}"/>
+				
+				<h:outputText value="Nazwa:" />
+				<p:inputText value="#{indeksMagazynowyAddController.indeksMag.nazwa}"/>
+				
+				<h:outputText value="Materiał?:" />
+				<p:selectBooleanCheckbox value="#{indeksMagazynowyAddController.indeksMag.material}"/>
+				
+				<h:outputText value="Wyrób?:" />
+				<p:selectBooleanCheckbox value="#{indeksMagazynowyAddController.indeksMag.wyrobGotowy}"/>
+				
+				<h:outputText value="Wymiar palety:" />
+				<p:inputText/>
+				
+				<h:outputText value="Ilość sztuk na palecie:" />
+				<p:inputText/>
+				
+				<h:outputText value="Nr kliszy:" />
+				<p:inputText/>
+				
+				<h:outputText value="Nr wykrojnika:" />
+				<p:inputText/>
+			
+				<p:commandButton value="Zapisz" ajax="false" action="#{indeksMagazynowyAddController.save()}"/>
+			</p:panelGrid>
+		  </h:form>	
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

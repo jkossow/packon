@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<body>
+
+	<ui:composition template="/templates/mainTemplate.xhtml">
+
+		<ui:define name="left">
+			<ui:include src="/menu.xhtml" />
+		</ui:define>
+
+		<ui:define name="content">
+		<h:form>
+			<p:panelGrid columns="2">
+				<h:outputText value="Login:" />
+				<p:inputText value="#{userAddController.user.login}" />
+				<h:outputText value="Imię:" />
+				<p:inputText value="#{userAddController.user.imie}" />
+				<h:outputText value="Nazwisko:" />
+				<p:inputText value="#{userAddController.user.nazwisko}" />
+				<h:outputText value="Uprawnienia" />
+				<p:pickList value="#{userAddController.rolesPickList}"
+					var="r" itemLabel="#{r.role}" itemValue="#{r}"
+					converter="#{roleConverter}"
+				>
+					<f:facet name="sourceCaption">Dostępne</f:facet>
+					<f:facet name="targetCaption">Udzielone</f:facet>
+				</p:pickList>
+			</p:panelGrid>
+			<p:commandButton value="Zapisz" ajax="false" action="#{userAddController.save()}"></p:commandButton>
+		</h:form>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

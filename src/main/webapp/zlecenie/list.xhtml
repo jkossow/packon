@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<body>
+
+	<ui:composition template="/templates/mainTemplate.xhtml">
+
+		<ui:define name="left">
+			<ui:include src="/menu.xhtml" />
+		</ui:define>
+
+		<ui:define name="content">
+			<h:form>
+			
+			<p:dataTable value="#{zlecenieListController.findAll}"  var="z" 
+				
+				paginator="true" rows="10">
+				<p:column headerText="Id" sortBy="#{z.opis}" 
+					 >
+					<h:outputText value="#{z.id}" />
+				</p:column>
+				<p:column headerText="Data" sortBy="#{z.data}">
+					<h:outputText value="#{z.data}" />
+				</p:column>
+				<p:column headerText="Opis" sortBy="#{z.opis}" filterBy="#{z.opis}" >
+					<h:outputText value="#{z.opis}" />
+				</p:column>
+				<p:column headerText="Maszyna">
+					<h:outputText value="#{z.maszyna}" />
+				</p:column>
+				<p:column headerText="Zmiana" sortBy="#{z.zmiana}">
+					<h:outputText value="#{z.zmiana}" />
+				</p:column>
+				<p:column headerText="Prioryted">
+					<h:outputText value="#{z.prioryted}" />
+				</p:column>
+				<p:column headerText="Status">
+					<h:outputText value="#{z.status}" />
+				</p:column>
+				<p:column headerText="Oper">
+					<p:commandLink value="Popraw" action="#{zlecenieEditController.prepEdit()}" ajax="false">
+						<f:param name="id" value="#{z.id}" />
+					</p:commandLink>
+				</p:column>
+				
+			</p:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>
