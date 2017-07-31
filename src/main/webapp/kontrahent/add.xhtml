@@ -1,119 +1,144 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <body>
 
-	<ui:composition template="/templates/mainTemplate.xhtml">
+<ui:composition template="/templates/mainTemplate.xhtml">
 
-		<ui:define name="left">
-			<ui:include src="/menu.xhtml" />
-		</ui:define>
+    <ui:define name="left">
+        <ui:include src="/menu.xhtml"/>
+    </ui:define>
 
-		<ui:define name="content">
-		
-			<p:ajaxStatus>
-<f:facet name="start">
-<p:graphicImage value="ajaxloading.gif" />
-</f:facet>
-<f:facet name="complete">
-<h:outputText value="Done!" />
-</f:facet>
-</p:ajaxStatus>
-		
-			<h:form>
-				<p:tabView>
-					<p:tab title="Dane ogólne">
-						<p:panelGrid columns="2">
-							<h:outputText value="Symbol:" />
-							<p:inputText />
-							<h:outputText value="Nazwa:" />
-							<p:inputText />
-						</p:panelGrid>
-					</p:tab>
-					<p:tab title="Adres">
-						<p:panelGrid columns="2">
-							<h:outputText value="Ulica:" />
-							<p:inputText />
-							<h:outputText value="Nr domu:" />
-							<p:inputText />
-							<h:outputText value="Nr Lokalu:" />
-							<p:inputText />
-							<h:outputText value="Miejscowosc:" />
-							<p:inputText />
-							<h:outputText value="Kod poctowy:" />
-							<p:inputText />
-							<h:outputText value="Poczta:" />
-							<p:inputText />
-							
-							<h:outputText value="NIP:" />
-							<p:inputText />
-						</p:panelGrid>
+    <ui:define name="content">
 
-					</p:tab>
-					<p:tab title="Adresy wysyłkowe">
-						<p:dataTable id="adresyWysylkoweDataTable" value="#{kontrahentAddController.kontrahent.adresyWysylkowe}" var="a">
-							<p:column headerText="Symbol">
-								<h:outputText value="#{a.symbol}"/>
-							</p:column>
-							<p:column>
-								<h:outputText value="#{a.adresWysylkowy.ulica}"/>
-							</p:column>
-						</p:dataTable>
-						<p:inputText id="ulicaInputText" value="#{kontrahentAddController.ulica}"/>
-						<p:commandButton value="Dodaj"  id="addAdresButton"  update="adresyWysylkoweDataTable,ulicaInputText" actionListener="#{kontrahentAddController.addAdres}">
-							
-						</p:commandButton>
-						<p:commandButton value="Show" type="button" onclick="PF('dlg').show()" actionListener="#{kontrahentAddController.prepAddAdres()}"/>
-						<p:commandButton value="Edit" type="button" onclick="PF('dlg').show()" actionListener="#{kontrahentAddController.prepEditAdres()}"/>
-					</p:tab>
-					<p:tab title="Wyroby">
-					 
-						<p:pickList orientation="horizontal" value="#{kontrahentAddController.wyrobyPickList}"
-							var="index" itemValue="#{index}" itemLabel="#{index.indeks} #{index.nazwa}" 
-						 
-						 	showSourceFilter="true"
-						>
-							<f:facet name="sourceCaption">Wszytkie wyroby</f:facet>
-							<f:facet name="targetCaption">Wyroby kontrahenta</f:facet>
-						</p:pickList>
-						
-						
-						
-						
-					</p:tab>
-				</p:tabView>
-				
-				<p:dialog widgetVar="newAdresWysylkowyDlg" modal="true" dynamic="true">
-				
-				<p:panelGrid columns="2">
-							<h:outputText value="Ulica:" />
-							<p:inputText value="#{kontrahentAddController.aw.adresWysylkowy.ulica}"/>
-							<h:outputText value="Nr domu:" />
-							<p:inputText />
-							<h:outputText value="Nr Lokalu:" />
-							<p:inputText />
-							<h:outputText value="Miejscowosc:" />
-							<p:inputText />
-							<h:outputText value="Kod poctowy:" />
-							<p:inputText value="#{kontrahentAddController.aw.adresWysylkowy.kodPocztowy}" />
-							<h:outputText value="Poczta:" />
-							<p:inputText />
-							
-							<h:outputText value="NIP:" />
-							<p:inputText />
-						</p:panelGrid>
-					
-					
-				</p:dialog>
-				
-			</h:form>
-		</ui:define>
-	</ui:composition>
+        <p:ajaxStatus>
+            <f:facet name="start">
+                <p:graphicImage value="/images/ajax-loader.gif"/>
+            </f:facet>
+           <!---
+            <f:facet name="complete">
+                <h:outputText value="Done!"/>
+            </f:facet>
+           -->
+        </p:ajaxStatus>
+
+        <h:form id="form">
+            <p:tabView id="tabview" >
+                <p:tab title="Dane ogólne">
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Symbol:"/>
+                        <p:inputText/>
+                        <h:outputText value="Nazwa:"/>
+                        <p:inputText/>
+                    </p:panelGrid>
+                </p:tab>
+                <p:tab title="Adres">
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Ulica:"/>
+                        <p:inputText/>
+                        <h:outputText value="Nr domu:"/>
+                        <p:inputText/>
+                        <h:outputText value="Nr Lokalu:"/>
+                        <p:inputText/>
+                        <h:outputText value="Miejscowosc:"/>
+                        <p:inputText/>
+                        <h:outputText value="Kod poctowy:"/>
+                        <p:inputText/>
+                        <h:outputText value="Poczta:"/>
+                        <p:inputText/>
+
+                        <h:outputText value="NIP:"/>
+                        <p:inputText/>
+                    </p:panelGrid>
+
+                </p:tab>
+                <p:tab title="Adresy wysyłkowe"  id="adresyWysylkoweTab" >
+                    <p:dataTable id="adresyWysylkoweDataTable"
+                                 value="#{kontrahentAddController.kontrahent.adresyWysylkowe}" var="a">
+                        <p:column headerText="Symbol">
+                            <h:outputText value="#{a.symbol}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{a.adresWysylkowy.ulica}"/>
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:commandButton value="New"  type="button" onclick="PF('newAdresWysylkowyDlg').show()" />
+                    <p:commandButton value="Edit" type="button" onclick="PF('editAdresWysylkowyDlg').show()" />
+                </p:tab>
+                <p:tab title="Wyroby">
+
+                    <p:pickList orientation="horizontal" value="#{kontrahentAddController.wyrobyPickList}"
+                                var="index" itemValue="#{index}" itemLabel="#{index.indeks} #{index.nazwa}"
+
+                                showSourceFilter="true"
+                    >
+                        <f:facet name="sourceCaption">Wszytkie wyroby</f:facet>
+                        <f:facet name="targetCaption">Wyroby kontrahenta</f:facet>
+                    </p:pickList>
+
+
+                </p:tab>
+            </p:tabView>
+
+            <p:dialog id="newAdresWysylkowyDlg" widgetVar="newAdresWysylkowyDlg" header="New" modal="true" dynamic="true" closeOnEscape="true" resizable="false">
+
+                <p:ajax event="open" listener="#{kontrahentAddController.prepAddAdres}" update="pg" partialSubmit="true"/>
+
+                <p:panelGrid id="pg" columns="2">
+                    <h:outputText value="Symbol:"/>
+                    <p:inputText value="#{kontrahentAddController.aw.symbol}"/>
+                    <h:outputText value="Ulica:"/>
+                    <p:inputText value="#{kontrahentAddController.aw.adresWysylkowy.ulica}"/>
+                    <h:outputText value="Nr domu:"/>
+                    <p:inputText value="#{kontrahentAddController.aw.adresWysylkowy.nrDomu}"  />
+                    <h:outputText value="Nr Lokalu:"/>
+                    <p:inputText  value="#{kontrahentAddController.aw.adresWysylkowy.nrLokalu}" />
+                    <h:outputText value="Miejscowosc:"/>
+                    <p:inputText  value="#{kontrahentAddController.aw.adresWysylkowy.miejscowosc}" />
+                    <h:outputText value="Kod poctowy:"/>
+                    <p:inputText value="#{kontrahentAddController.aw.adresWysylkowy.kodPocztowy}"/>
+                    <h:outputText value="Poczta:"/>
+                    <p:inputText value="#{kontrahentAddController.aw.adresWysylkowy.poczta}"/>
+                    <p:commandButton value="Zapisz" >
+                        <p:ajax event="click"  listener="#{kontrahentAddController.saveNewAdresWysylkowy}" update="form:tabview:adresyWysylkoweDataTable" />
+                    </p:commandButton>
+                </p:panelGrid>
+
+
+            </p:dialog>
+
+            <p:dialog widgetVar="editAdresWysylkowyDlg" header="Edit" modal="true" dynamic="true" closeOnEscape="true">
+
+                <p:panelGrid columns="2">
+                    <h:outputText value="Symbol:"/>
+                    <p:inputText value="#{kontrahentAddController.aw.symbol}"/>
+                    <h:outputText value="Ulica:"/>
+                    <p:inputText value="#{kontrahentAddController.aw.adresWysylkowy.ulica}"/>
+                    <h:outputText value="Nr domu:"/>
+                    <p:inputText value="#{kontrahentAddController.aw.adresWysylkowy.nrDomu}"  />
+                    <h:outputText value="Nr Lokalu:"/>
+                    <p:inputText  value="#{kontrahentAddController.aw.adresWysylkowy.nrLokalu}" />
+                    <h:outputText value="Miejscowosc:"/>
+                    <p:inputText  value="#{kontrahentAddController.aw.adresWysylkowy.miejscowosc}" />
+                    <h:outputText value="Kod poctowy:"/>
+                    <p:inputText value="#{kontrahentAddController.aw.adresWysylkowy.kodPocztowy}"/>
+                    <h:outputText value="Poczta:"/>
+                    <p:inputText value="#{kontrahentAddController.aw.adresWysylkowy.poczta}"/>
+                </p:panelGrid>
+
+
+            </p:dialog>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
 
 </body>
 </html>

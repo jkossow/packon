@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Set;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
@@ -17,6 +18,7 @@ import org.kossowski.packon.domain.Kontrahent;
 import org.kossowski.packon.domain.Role;
 import org.kossowski.packon.repositories.IndeksMagazynowyRepository;
 import org.kossowski.packon.repositories.KontrahentRepostory;
+import org.kossowski.packon.utils.AdresWysylkowyUtils;
 import org.primefaces.model.DualListModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,10 +55,15 @@ public class KontrahentAddController implements Serializable {
 	
 	protected DualListModel<IndeksMagazynowy> wyrobyPickList = new DualListModel<>();
 
+
+	@PostConstruct
+	public void postConstruct() {
+		logger.info("postConstruct() => ustawienie adresWysylkowy");
+		aw = AdresWysylkowyUtils.AdresWyslkowySadowa();
+	}
 	
-	
-	public void addAdres( ActionEvent event) {
-		System.out.println("hello kontr=" + kontrahent + "  ul:" + ulica);
+	public void addAdres() {
+		logger.info("addAdres() wejście");
 		
 		AdresWysylkowy aw = new AdresWysylkowy();
 		aw.setSymbol( ulica );
@@ -64,20 +71,27 @@ public class KontrahentAddController implements Serializable {
 		kontrahent.getAdresyWysylkowe().add( aw );
 	}
 	
-	public void prepAddAdres( ActionEvent event) {
-		System.out.println("prepAddAdres");
+	public void prepAddAdres() {
+		logger.info("prepAddAdres() wejście");
 		aw = new AdresWysylkowy();
+
 		
 	}
 	
-	public void prepEditAdres( ActionEvent event) {
-		System.out.println("prepEditAdres");
+	public void prepEditAdres() {
+		logger.info("prepEditAdres() wejście");
 		aw = new AdresWysylkowy();
 		aw.setSymbol("edit");
 		aw.getAdresWysylkowy().setKodPocztowy("ee-500");
 		
 	}
-	
+
+
+	public void saveNewAdresWysylkowy() {
+		logger.info( "saveNewAdresWysylkowy() aw->" + aw.toString() );
+		kontrahent.getAdresyWysylkowe().add( new AdresWysylkowy( aw ) );
+
+	}
 	
 	/**
 	 * @return the kontrahent
@@ -97,8 +111,9 @@ public class KontrahentAddController implements Serializable {
 	 * @return the wyrobyPickList
 	 */
 	public DualListModel<IndeksMagazynowy> getWyrobyPickList() {
-		
-		System.out.println("Kontroller getWyrobyPickList() - wejście");
+
+
+		logger.info( "getWyrobyPickList(): Wejscie");
 		wyrobyPickList.setSource( indeksRepo.findAll() );
 		
 		ArrayList<IndeksMagazynowy> target = new ArrayList<>();

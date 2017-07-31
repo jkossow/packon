@@ -7,6 +7,13 @@ public class AdresWysylkowy {
 
 	private String symbol;
 	private Adres adresWysylkowy = new Adres();
+
+	public AdresWysylkowy() {};
+
+	public AdresWysylkowy( AdresWysylkowy aw ) {
+		this.symbol = aw.getSymbol();
+		this.adresWysylkowy = new Adres( aw.getAdresWysylkowy() );
+	}
 	
 	/**
 	 * @return the symbol

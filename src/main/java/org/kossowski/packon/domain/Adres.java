@@ -12,7 +12,19 @@ public class Adres {
 	private String poczta;
 	private String kodPocztowy;
 	
-	
+
+	public Adres() {};
+
+	public Adres( Adres a ) {
+		setUlica( a.getUlica() );
+		setNrDomu( a.getNrDomu() );
+		setNrLokalu( a.getNrLokalu() );
+		setMiejscowosc( a.getMiejscowosc() );
+		setPoczta( a.getPoczta() );
+		setKodPocztowy( a.getKodPocztowy() );
+	}
+
+
 	public String getUlica() {
 		return ulica;
 	}

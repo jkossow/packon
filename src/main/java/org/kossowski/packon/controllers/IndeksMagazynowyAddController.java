@@ -6,6 +6,8 @@ import javax.faces.bean.RequestScoped;
 import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 import org.kossowski.packon.domain.IndeksMagazynowy;
 import org.kossowski.packon.repositories.IndeksMagazynowyRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,8 @@ import org.springframework.stereotype.Controller;
 @RequestScoped
 @ManagedBean
 public class IndeksMagazynowyAddController {
+
+	Logger log = LoggerFactory.getLogger( this.getClass() );
 
 	@Autowired
 	protected IndeksMagazynowyRepository indeksRepo;

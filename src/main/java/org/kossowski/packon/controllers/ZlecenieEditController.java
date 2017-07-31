@@ -10,6 +10,8 @@ import org.kossowski.packon.domain.Zlecenie;
 import org.kossowski.packon.domain.Zmiana;
 import org.kossowski.packon.repositories.ZlecenieRepository;
 import org.kossowski.packon.utils.JSFUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -17,6 +19,8 @@ import org.springframework.stereotype.Controller;
 @ManagedBean
 @RequestScoped
 public class ZlecenieEditController {
+
+	Logger log = LoggerFactory.getLogger( this.getClass() );
 	
 	@Autowired
 	protected ZlecenieRepository zRepo = null;
