@@ -93,6 +93,16 @@ public class KontrahentAddController implements Serializable {
 
 	}
 	
+	public void addAdresWysylkowySadowa() {
+		logger.info( "Dodaję Sadowa");
+		kontrahent.getAdresyWysylkowe().add( new AdresWysylkowyUtils().AdresWyslkowySadowa() );
+	}
+	
+	public void addAdresWysylkowy11Listopada() {
+		logger.info( "Dodaję Sadowa");
+		kontrahent.getAdresyWysylkowe().add( new AdresWysylkowyUtils().AdresWyslkowy11Listopada() );
+	}
+	
 	/**
 	 * @return the kontrahent
 	 */
