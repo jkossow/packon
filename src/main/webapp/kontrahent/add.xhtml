@@ -71,6 +71,12 @@
 
                     <p:commandButton value="New"  type="button" onclick="PF('newAdresWysylkowyDlg').show()" />
                     <p:commandButton value="Edit" type="button" onclick="PF('editAdresWysylkowyDlg').show()" />
+
+                    <p:commandButton value="New Sadowa"  actionListener="#{kontrahentAddController.addAdresWysylkowySadowa}" update="adresyWysylkoweDataTable">
+
+                    </p:commandButton>
+                    <p:commandButton value="New 11-gp  "  actionListener="#{kontrahentAddController.addAdresWysylkowy11Listopada}" update="adresyWysylkoweDataTable"/>
+
                 </p:tab>
                 <p:tab title="Wyroby">
 
