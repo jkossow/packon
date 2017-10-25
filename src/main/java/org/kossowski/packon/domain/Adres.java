@@ -25,6 +25,7 @@ public class Adres {
 	}
 
 
+	
 	public String getUlica() {
 		return ulica;
 	}
@@ -148,7 +149,15 @@ public class Adres {
 	}
 	
 	
-	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Adres [ulica=" + ulica + ", nrDomu=" + nrDomu + ", nrLokalu=" + nrLokalu + ", miejscowosc="
+				+ miejscowosc + ", poczta=" + poczta + ", kodPocztowy=" + kodPocztowy + "]";
+	}
+
 	
 	
 }

@@ -60,6 +60,7 @@ public class KontrahentAddController implements Serializable {
 	public void postConstruct() {
 		logger.info("postConstruct() => ustawienie adresWysylkowy");
 		aw = AdresWysylkowyUtils.AdresWyslkowySadowa();
+		aw.getAdresWysylkowy().setUlica("Sierakowskiego");
 	}
 	
 	public void addAdres() {
@@ -72,24 +73,29 @@ public class KontrahentAddController implements Serializable {
 	}
 	
 	public void prepAddAdres() {
-		logger.info("prepAddAdres() wejście");
-		aw = new AdresWysylkowy();
+		logger.info( "prepAddAdres() begin");
+		//aw = new AdresWysylkowy();
+		logger.info("setAw");
+		setAw( new AdresWysylkowy() );
+		logger.info( "prepAddAdres(): " + aw );
+		logger.info( "prepAddAdres() end");
 
 		
 	}
 	
 	public void prepEditAdres() {
-		logger.info("prepEditAdres() wejście");
-		aw = new AdresWysylkowy();
-		aw.setSymbol("edit");
-		aw.getAdresWysylkowy().setKodPocztowy("ee-500");
+		logger.info( "prepEditAdres() begin" );
+		logger.info( "pepAddAdres(): " + aw );
+		logger.info( "prepAddAdres() end" );
 		
 	}
 
 
 	public void saveNewAdresWysylkowy() {
-		logger.info( "saveNewAdresWysylkowy() aw->" + aw.toString() );
-		kontrahent.getAdresyWysylkowe().add( new AdresWysylkowy( aw ) );
+		logger.info( "saveNewAdresWysylkowy() begin" );
+		//kontrahent.getAdresyWysylkowe().add( new AdresWysylkowy( aw ) );
+		logger.info( "aw -> " + aw );
+		logger.info( "saveNewAdresWysulkowy() end ");
 
 	}
 	

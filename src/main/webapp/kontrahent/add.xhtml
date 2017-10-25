@@ -27,6 +27,7 @@
             </f:facet>
            -->
         </p:ajaxStatus>
+                  
 
         <h:form id="form">
             <p:tabView id="tabview" >
@@ -69,7 +70,9 @@
                         </p:column>
                     </p:dataTable>
 
-                    <p:commandButton value="New"  type="button" onclick="PF('newAdresWysylkowyDlg').show()" />
+                    <p:commandButton value="New"  type="button" onclick="PF('newAdresWysylkowyDlg').show()">
+                        <p:ajax event="click" listener="#{kontrahentAddController.prepAddAdres()}" update="@(:input)" />
+                    </p:commandButton>
                     <p:commandButton value="Edit" type="button" onclick="PF('editAdresWysylkowyDlg').show()" />
 
                     <p:commandButton value="New Sadowa"  actionListener="#{kontrahentAddController.addAdresWysylkowySadowa}" update="adresyWysylkoweDataTable">
@@ -93,15 +96,15 @@
                 </p:tab>
             </p:tabView>
 
-            <p:dialog id="newAdresWysylkowyDlg" widgetVar="newAdresWysylkowyDlg" header="New" modal="true" dynamic="true" closeOnEscape="true" resizable="false">
+            <p:dialog id="newAdresWysylkowyDlg" widgetVar="newAdresWysylkowyDlg" dynamic="true" header="New" modal="true"  closeOnEscape="true" resizable="false">
 
-                <p:ajax event="open" listener="#{kontrahentAddController.prepAddAdres}" update="pg" partialSubmit="true"/>
-
+                
+				<h:form id="panelGridForm"> 
                 <p:panelGrid id="pg" columns="2">
                     <h:outputText value="Symbol:"/>
                     <p:inputText value="#{kontrahentAddController.aw.symbol}"/>
                     <h:outputText value="Ulica:"/>
-                    <p:inputText value="#{kontrahentAddController.aw.adresWysylkowy.ulica}"/>
+                    <p:inputText value="#{kontrahentAddController.aw.adresWysylkowy.ulica}" immediate="true"/>
                     <h:outputText value="Nr domu:"/>
                     <p:inputText value="#{kontrahentAddController.aw.adresWysylkowy.nrDomu}"  />
                     <h:outputText value="Nr Lokalu:"/>
@@ -112,10 +115,11 @@
                     <p:inputText value="#{kontrahentAddController.aw.adresWysylkowy.kodPocztowy}"/>
                     <h:outputText value="Poczta:"/>
                     <p:inputText value="#{kontrahentAddController.aw.adresWysylkowy.poczta}"/>
-                    <p:commandButton value="Zapisz" >
-                        <p:ajax event="click"  listener="#{kontrahentAddController.saveNewAdresWysylkowy}" update="form:tabview:adresyWysylkoweDataTable" />
+                    <p:commandButton value="Zapisz"   onclick="PF('addAdresWysylkowyDlg').hide()" >
+                        <p:ajax event="click"  update="@id(adresyWysylkoweDataTable___)" listener="#{kontrahentAddController.saveNewAdresWysylkowy()}"  />
                     </p:commandButton>
                 </p:panelGrid>
+                </h:form>
 
 
             </p:dialog>
