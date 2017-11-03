@@ -1,7 +1,10 @@
 package org.kossowski.packon.domain;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.UUID;
 
 import javax.persistence.CollectionTable;
@@ -12,7 +15,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.MapKeyColumn;
+import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.OneToMany;
 
 
@@ -40,6 +46,14 @@ public class Kontrahent {
 			joinColumns = @JoinColumn( name="kontrahent_id" )
 	)
 	private Set<AdresWysylkowy> adresyWysylkowe = new HashSet<>();
+	
+	@ElementCollection
+	@CollectionTable(
+	        name = "kontrahent_adresy_wysykowe_new",
+	        joinColumns = @JoinColumn( name = "kontrahent_id")
+	)
+	@MapKeyJoinColumn( name = "kontrahent_id", referencedColumnName = "id" )
+	private Map<String , Adres> adresyWysylkoweNew = new HashMap<>();
 
 	public Long getId() {
 		return id;
@@ -84,8 +98,26 @@ public class Kontrahent {
 	public void setAdresyWysylkowe(Set<AdresWysylkowy> adresyWysylkowe) {
 		this.adresyWysylkowe = adresyWysylkowe;
 	}
+	
+	
+	
+	
 
-	/* (non-Javadoc)
+	/**
+    * @return the adresyWysylkoweNew
+    */
+   public Map<String, Adres> getAdresyWysylkoweNew() {
+      return adresyWysylkoweNew;
+   }
+
+   /**
+    * @param adresyWysylkoweNew the adresyWysylkoweNew to set
+    */
+   public void setAdresyWysylkoweNew( Map<String, Adres> adresyWysylkoweNew) {
+      this.adresyWysylkoweNew = adresyWysylkoweNew;
+   }
+
+   /* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override

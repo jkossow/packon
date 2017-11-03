@@ -2,20 +2,14 @@ package org.kossowski.packon.controllers;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
-import javax.faces.event.ActionEvent;
 
-import org.kossowski.packon.domain.Adres;
 import org.kossowski.packon.domain.AdresWysylkowy;
 import org.kossowski.packon.domain.IndeksMagazynowy;
 import org.kossowski.packon.domain.Kontrahent;
-import org.kossowski.packon.domain.Role;
 import org.kossowski.packon.repositories.IndeksMagazynowyRepository;
 import org.kossowski.packon.repositories.KontrahentRepostory;
 import org.kossowski.packon.utils.AdresWysylkowyUtils;
@@ -64,11 +58,8 @@ public class KontrahentAddController implements Serializable {
 	}
 	
 	public void addAdres() {
+	   
 		logger.info("addAdres() wejście");
-		
-		AdresWysylkowy aw = new AdresWysylkowy();
-		aw.setSymbol( ulica );
-		ulica = "";
 		kontrahent.getAdresyWysylkowe().add( aw );
 	}
 	
@@ -101,12 +92,12 @@ public class KontrahentAddController implements Serializable {
 	
 	public void addAdresWysylkowySadowa() {
 		logger.info( "Dodaję Sadowa");
-		kontrahent.getAdresyWysylkowe().add( new AdresWysylkowyUtils().AdresWyslkowySadowa() );
+		kontrahent.getAdresyWysylkowe().add( AdresWysylkowyUtils.AdresWyslkowySadowa() );
 	}
 	
 	public void addAdresWysylkowy11Listopada() {
 		logger.info( "Dodaję Sadowa");
-		kontrahent.getAdresyWysylkowe().add( new AdresWysylkowyUtils().AdresWyslkowy11Listopada() );
+		kontrahent.getAdresyWysylkowe().add( AdresWysylkowyUtils.AdresWyslkowy11Listopada() );
 	}
 	
 	/**
