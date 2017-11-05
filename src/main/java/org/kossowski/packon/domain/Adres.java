@@ -16,12 +16,12 @@ public class Adres {
 	public Adres() {};
 
 	public Adres( Adres a ) {
-		setUlica( a.getUlica() );
-		setNrDomu( a.getNrDomu() );
-		setNrLokalu( a.getNrLokalu() );
-		setMiejscowosc( a.getMiejscowosc() );
-		setPoczta( a.getPoczta() );
-		setKodPocztowy( a.getKodPocztowy() );
+		setUlica( new String( a.getUlica() ) );
+		setNrDomu(new String( a.getNrDomu() ) );
+		setNrLokalu( new String( a.getNrLokalu() ) );
+		setMiejscowosc( new String( a.getMiejscowosc() ) );
+		setPoczta( new String( a.getPoczta() ) );
+		setKodPocztowy( new String( a.getKodPocztowy() ) );
 	}
 
 

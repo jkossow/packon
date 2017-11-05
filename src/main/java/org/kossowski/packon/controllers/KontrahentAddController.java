@@ -2,17 +2,20 @@ package org.kossowski.packon.controllers;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import org.kossowski.packon.domain.AdresWysylkowy;
+import org.kossowski.packon.domain.Adres;
 import org.kossowski.packon.domain.IndeksMagazynowy;
 import org.kossowski.packon.domain.Kontrahent;
 import org.kossowski.packon.repositories.IndeksMagazynowyRepository;
 import org.kossowski.packon.repositories.KontrahentRepostory;
-import org.kossowski.packon.utils.AdresWysylkowyUtils;
+import org.kossowski.packon.utils.AdresUtils;
 import org.primefaces.model.DualListModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,35 +43,45 @@ public class KontrahentAddController implements Serializable {
 	private IndeksMagazynowyRepository indeksRepo;
 
 	
-	protected Kontrahent kontrahent = new Kontrahent();
+	protected Kontrahent kontrahent = null;
 	
-	protected AdresWysylkowy aw = null;
+	protected Adres adresWysylkowy;
+	protected String adresWysylkowySymbol; 
 	
-	protected String ulica;
 	
 	
-	protected DualListModel<IndeksMagazynowy> wyrobyPickList = new DualListModel<>();
+	
+	protected DualListModel<IndeksMagazynowy> wyrobyPickList;
 
 
 	@PostConstruct
 	public void postConstruct() {
-		logger.info("postConstruct() => ustawienie adresWysylkowy");
-		aw = AdresWysylkowyUtils.AdresWyslkowySadowa();
-		aw.getAdresWysylkowy().setUlica("Sierakowskiego");
+	   
+	   logger.info("postConstruct() => wejscie");
+	   
+	   kontrahent = new Kontrahent();
+	   adresWysylkowy = new Adres();
+	   adresWysylkowySymbol = "";
+	   
+	   wyrobyPickList = new DualListModel<>( indeksRepo.findAll(), new ArrayList<IndeksMagazynowy>() );
+	   
+		logger.info("postConstruct() => wyjscie");
 	}
 	
-	public void addAdres() {
+	public void addAdresWysylkowy() {
 	   
 		logger.info("addAdres() wejście");
-		kontrahent.getAdresyWysylkowe().add( aw );
+		kontrahent.getAdresyWysylkowe().put( adresWysylkowySymbol, new Adres( adresWysylkowy ));
 	}
 	
 	public void prepAddAdres() {
 		logger.info( "prepAddAdres() begin");
 		//aw = new AdresWysylkowy();
 		logger.info("setAw");
-		setAw( new AdresWysylkowy() );
-		logger.info( "prepAddAdres(): " + aw );
+		setAdresWysylkowy( new Adres() );
+		setAdresWysylkowySymbol("");
+		logger.info( "prepAddAdres(): " + adresWysylkowySymbol );
+		logger.info( "prepAddAdres(): " + adresWysylkowy );
 		logger.info( "prepAddAdres() end");
 
 		
@@ -76,28 +89,46 @@ public class KontrahentAddController implements Serializable {
 	
 	public void prepEditAdres() {
 		logger.info( "prepEditAdres() begin" );
-		logger.info( "pepAddAdres(): " + aw );
+		logger.info( "pepAddAdres(): " + adresWysylkowySymbol );
+		logger.info( "prepEditAdres(): " + adresWysylkowy );
 		logger.info( "prepAddAdres() end" );
 		
 	}
 
 
-	public void saveNewAdresWysylkowy() {
-		logger.info( "saveNewAdresWysylkowy() begin" );
-		//kontrahent.getAdresyWysylkowe().add( new AdresWysylkowy( aw ) );
-		logger.info( "aw -> " + aw );
-		logger.info( "saveNewAdresWysulkowy() end ");
-
-	}
+	
 	
 	public void addAdresWysylkowySadowa() {
 		logger.info( "Dodaję Sadowa");
-		kontrahent.getAdresyWysylkowe().add( AdresWysylkowyUtils.AdresWyslkowySadowa() );
+		kontrahent.getAdresyWysylkowe().put( "Sadowa", AdresUtils.AdresWyslkowySadowa() );
 	}
 	
 	public void addAdresWysylkowy11Listopada() {
-		logger.info( "Dodaję Sadowa");
-		kontrahent.getAdresyWysylkowe().add( AdresWysylkowyUtils.AdresWyslkowy11Listopada() );
+		logger.info( "Dodaję 11 Listopada");
+		kontrahent.getAdresyWysylkowe().put( "11-go Listopada", AdresUtils.AdresWyslkowy11Listopada() );
+	}
+	
+	
+	
+	
+	public List<Entry<String,Adres>> getEntrySet() {
+	   Set<Entry<String,Adres>> entrySet = kontrahent.getAdresyWysylkowe().entrySet();
+	   return new ArrayList<Entry<String,Adres>>( entrySet );
+	}
+	
+	public void save() {
+	   logger.info( "save ->" + kontrahent.toString() );
+	   logger.info( "Source size " +  wyrobyPickList.getSource().size() );
+      logger.info( "Target size " +  wyrobyPickList.getTarget().size() );
+      
+      kontrahent.getWyrobyGotowe().addAll( wyrobyPickList.getTarget() );
+      
+      logger.info( "Wyroby gotowe (pickList target: ");
+      for( IndeksMagazynowy im: wyrobyPickList.getTarget() ) {
+         logger.info( "index -> " + im );
+         kontrahent.getWyrobyGotowe().add( im );
+      }
+      kontrahentRepo.save( kontrahent );
 	}
 	
 	/**
@@ -121,11 +152,11 @@ public class KontrahentAddController implements Serializable {
 
 
 		logger.info( "getWyrobyPickList(): Wejscie");
-		wyrobyPickList.setSource( indeksRepo.findAll() );
+		//wyrobyPickList.setSource( indeksRepo.findAll() );
 		
-		ArrayList<IndeksMagazynowy> target = new ArrayList<>();
-		target.addAll( kontrahent.getWyrobyGotowe() );
-		wyrobyPickList.setTarget(  target );
+		//List<IndeksMagazynowy> target = new ArrayList<>();
+		//target.addAll( kontrahent.getWyrobyGotowe() );
+		//wyrobyPickList.setTarget(  target );
 		
 		return wyrobyPickList;
 	}
@@ -137,36 +168,36 @@ public class KontrahentAddController implements Serializable {
 		this.wyrobyPickList = wyrobyPickList;
 	}
 
+   /**
+    * @return the adresWysylkowy
+    */
+   public Adres getAdresWysylkowy() {
+      return adresWysylkowy;
+   }
 
-	/**
-	 * @return the ulica
-	 */
-	public String getUlica() {
-		return ulica;
-	}
+   /**
+    * @param adresWysylkowy the adresWysylkowy to set
+    */
+   public void setAdresWysylkowy(Adres adresWysylkowy) {
+      this.adresWysylkowy = adresWysylkowy;
+   }
 
+   /**
+    * @return the adresWysylkowySymbol
+    */
+   public String getAdresWysylkowySymbol() {
+      return adresWysylkowySymbol;
+   }
 
-	/**
-	 * @param ulica the ulica to set
-	 */
-	public void setUlica(String ulica) {
-		this.ulica = ulica;
-	}
+   /**
+    * @param adresWysylkowySymbol the adresWysylkowySymbol to set
+    */
+   public void setAdresWysylkowySymbol(String adresWysylkowySymbol) {
+      this.adresWysylkowySymbol = adresWysylkowySymbol;
+   }
 
-	/**
-	 * @return the aw
-	 */
-	public AdresWysylkowy getAw() {
-		return aw;
-	}
-
-	/**
-	 * @param aw the aw to set
-	 */
-	public void setAw(AdresWysylkowy aw) {
-		this.aw = aw;
-	}
-
+	
+	
 
 	
 		

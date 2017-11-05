@@ -6,10 +6,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
 import org.kossowski.packon.domain.Role;
+import org.springframework.stereotype.Service;
 
 
 
 @ManagedBean
+@Service
 public class RoleConverter implements Converter {
 
 	@Override

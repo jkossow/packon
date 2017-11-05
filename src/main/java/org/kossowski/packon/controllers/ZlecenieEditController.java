@@ -3,7 +3,7 @@ package org.kossowski.packon.controllers;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import org.kossowski.packon.domain.Maszyna;
+import org.kossowski.packon.domain.MaszynaEnum;
 import org.kossowski.packon.domain.Prioryted;
 import org.kossowski.packon.domain.Status;
 import org.kossowski.packon.domain.Zlecenie;
@@ -42,8 +42,8 @@ public class ZlecenieEditController {
 		return "/zlecenie/list.xhtml";
 	}
 
-	public Maszyna[] getMaszyny() {
-		return Maszyna.values();
+	public MaszynaEnum[] getMaszyny() {
+		return MaszynaEnum.values();
 	}
 	
 	public Zmiana[] getZmiany() {

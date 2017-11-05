@@ -35,8 +35,16 @@ public class Zlecenie {
 	
 	private String opis;
 	
+	@ManyToOne
+	private Kontrahent kontrahent;
+	
+	@ManyToOne
+	private IndeksMagazynowy produkt;
+	
+	
+	
 	@Enumerated( EnumType.STRING )
-	private Maszyna maszyna;
+	private MaszynaEnum maszyna;
 	
 	@Enumerated( EnumType.STRING )
 	private Zmiana zmiana;
@@ -71,11 +79,11 @@ public class Zlecenie {
 		this.opis = opis;
 	}
 
-	public Maszyna getMaszyna() {
+	public MaszynaEnum getMaszyna() {
 		return maszyna;
 	}
 
-	public void setMaszyna(Maszyna maszyna) {
+	public void setMaszyna(MaszynaEnum maszyna) {
 		this.maszyna = maszyna;
 	}
 
@@ -103,7 +111,66 @@ public class Zlecenie {
 		this.status = status;
 	}
 
-	@Override
+	
+	
+	
+	/**
+    * @return the uuid
+    */
+   public UUID getUuid() {
+      return uuid;
+   }
+
+   /**
+    * @param uuid the uuid to set
+    */
+   public void setUuid(UUID uuid) {
+      this.uuid = uuid;
+   }
+
+   /**
+    * @return the user
+    */
+   public User getUser() {
+      return user;
+   }
+
+   /**
+    * @param user the user to set
+    */
+   public void setUser(User user) {
+      this.user = user;
+   }
+
+   /**
+    * @return the kontrahent
+    */
+   public Kontrahent getKontrahent() {
+      return kontrahent;
+   }
+
+   /**
+    * @param kontrahent the kontrahent to set
+    */
+   public void setKontrahent(Kontrahent kontrahent) {
+      this.kontrahent = kontrahent;
+   }
+
+   /**
+    * @return the produkt
+    */
+   public IndeksMagazynowy getProdukt() {
+      return produkt;
+   }
+
+   /**
+    * @param produkt the produkt to set
+    */
+   public void setProdukt(IndeksMagazynowy produkt) {
+      this.produkt = produkt;
+   }
+
+   @Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;

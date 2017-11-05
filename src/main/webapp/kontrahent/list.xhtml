@@ -17,24 +17,14 @@
 		<ui:define name="content">
 			list indeks
 			
-			<p:dataTable value="#{indeksMagazynowyListController.findAll}" var="i">
+			<p:dataTable value="#{kontrahentListController.findAll}" var="k">
 				<p:column headerText="Id"  toggleable="true">
-					<h:outputText value="#{i.indeks}" />
+					<h:outputText value="#{k.symbol}" />
 				</p:column>
 				<p:column headerText="Indeks"  toggleable="true">
-					<h:outputText value="#{i.indeks}" />
+					<h:outputText value="#{k.nazwa}" />
 				</p:column>
-				<p:column headerText="Nazwa"  toggleable="true">
-					<h:outputText value="#{i.nazwa}" />
-				</p:column>
-				<p:column headerText="Materiał"  toggleable="true">
-					<p:selectBooleanCheckbox  value="#{i.material}" disabled="true"/>
-				</p:column>
-				<p:column headerText="Wyrób gotowy"  toggleable="true" >
-					<p:selectBooleanCheckbox value="#{i.wyrobGotowy}" disabled="true"/>
-				</p:column>
-			
-			
+				
 			</p:dataTable>
 			
 		</ui:define>
