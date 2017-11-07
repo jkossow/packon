@@ -35,20 +35,20 @@
                 <p:tab title="Dane ogólne">
                     <p:panelGrid columns="2">
                         <h:outputText value="Symbol:"/>
-                        <p:inputText value="#{kontrahentAddController.kontrahent.symbol}"/>
+                        <p:inputText value="#{kontrahentEditController.kontrahent.symbol}"/>
                         <h:outputText value="Nazwa:"/>
-                        <p:inputText value="#{kontrahentAddController.kontrahent.nazwa}"/>
+                        <p:inputText value="#{kontrahentEditController.kontrahent.nazwa}"/>
                         
                         <h:outputText value="NIP:"/>
-                        <p:inputText value="#{kontrahentAddController.kontrahent.nip}"/>
+                        <p:inputText value="#{kontrahentEditController.kontrahent.nip}"/>
                         <h:outputText value="Regon:"/>
-                        <p:inputText value="#{kontrahentAddController.kontrahent.regon}"/>
+                        <p:inputText value="#{kontrahentEditController.kontrahent.regon}"/>
                         <h:outputText value="e-mail:"/>
-                        <p:inputText value="#{kontrahentAddController.kontrahent.email}"/>
+                        <p:inputText value="#{kontrahentEditController.kontrahent.email}"/>
                         <h:outputText value="Odbiorca:" />
-                        <p:selectBooleanCheckbox value="#{kontrahentAddController.kontrahent.odbiorca}"/>
+                        <p:selectBooleanCheckbox value="#{kontrahentEditController.kontrahent.odbiorca}"/>
                         <h:outputText value="Dostawca:" />
-                        <p:selectBooleanCheckbox value="#{kontrahentAddController.kontrahent.dostawca}"/>
+                        <p:selectBooleanCheckbox value="#{kontrahentEditController.kontrahent.dostawca}"/>
                         
                     </p:panelGrid>
                     
@@ -56,22 +56,22 @@
                 <p:tab title="Adres">
                     <p:panelGrid columns="2">
                         <h:outputText value="Ulica:"/>
-                        <p:inputText value="#{kontrahentAddController.kontrahent.adres.ulica}"/>
+                        <p:inputText value="#{kontrahentEditController.kontrahent.adres.ulica}"/>
                         <h:outputText value="Nr domu:"/>
-                        <p:inputText value="#{kontrahentAddController.kontrahent.adres.nrDomu}"/>
+                        <p:inputText value="#{kontrahentEditController.kontrahent.adres.nrDomu}"/>
                         <h:outputText value="Nr Lokalu:"/>
-                        <p:inputText value="#{kontrahentAddController.kontrahent.adres.nrLokalu}"/>
+                        <p:inputText value="#{kontrahentEditController.kontrahent.adres.nrLokalu}"/>
                         <h:outputText value="Miejscowosc:"/>
-                        <p:inputText value="#{kontrahentAddController.kontrahent.adres.miejscowosc}"/>
+                        <p:inputText value="#{kontrahentEditController.kontrahent.adres.miejscowosc}"/>
                         <h:outputText value="Kod poctowy:"/>
-                        <p:inputText  value="#{kontrahentAddController.kontrahent.adres.kodPocztowy}"/>
+                        <p:inputText  value="#{kontrahentEditController.kontrahent.adres.kodPocztowy}"/>
                         <h:outputText value="Poczta:"/>
-                        <p:inputText value="#{kontrahentAddController.kontrahent.adres.poczta}"/>
+                        <p:inputText value="#{kontrahentEditController.kontrahent.adres.poczta}"/>
                     </p:panelGrid>
                 </p:tab>
                 <p:tab title="Adresy wysyłkowe"  id="adresyWysylkoweTab"  >
                     <p:dataTable id="adresyWysylkoweDataTable" 
-                                 value="#{kontrahentAddController.entrySet}" var="a"
+                                 value="#{kontrahentEditController.entrySet}" var="a"
                         >
                         <p:column headerText="Symbol">
                             <h:outputText value="#{a.key}"/>
@@ -86,7 +86,7 @@
                     </p:dataTable>
 
                     <p:commandButton value="New"    oncomplete="PF('addAdresWysylkowyDlgJS').show()"  
-                        actionListener="#{kontrahentAddController.prepAddAdres}" 
+                        actionListener="#{kontrahentEditController.prepAddAdres}" 
                         update="@([id$=inputText1],[id$=inputText2],[id$=inputText3],[id$=inputText4],[id$=inputText5],[id$=inputText6],[id$=inputText7])">
                        
                     </p:commandButton>
@@ -94,18 +94,18 @@
                     <p:commandButton value="Edit" type="button" onclick="PF('editAdresWysylkowyDlg').show()" >
                     </p:commandButton>
 
-                    <p:commandButton value="New Sadowa" actionListener="#{kontrahentAddController.addAdresWysylkowySadowa()}"  
+                    <p:commandButton value="New Sadowa" actionListener="#{kontrahentEditController.addAdresWysylkowySadowa()}"  
                         update="adresyWysylkoweDataTable" ajax="true" >
                     </p:commandButton>
                     
-                    <p:commandButton value="New 11-go" actionListener="#{kontrahentAddController.addAdresWysylkowy11Listopada}"  
+                    <p:commandButton value="New 11-go" actionListener="#{kontrahentEditController.addAdresWysylkowy11Listopada}"  
                         update="adresyWysylkoweDataTable" ajax="true">
                     </p:commandButton>
 
                 </p:tab>
                 <p:tab title="Wyroby">
 
-                    <p:pickList orientation="horizontal" value="#{kontrahentAddController.wyrobyPickList}"
+                    <p:pickList orientation="horizontal" value="#{kontrahentEditController.wyrobyPickList}"
                                 var="index" itemValue="#{index}" itemLabel="#{index.indeks}"
 
                                 showSourceFilter="true" showTargetFilter="true"
@@ -121,30 +121,30 @@
                 </p:tab>
             </p:tabView>
 
-            <p:commandButton value="Zapisz" action="#{kontrahentAddController.save()}"></p:commandButton>
+            <p:commandButton value="Zapisz" action="#{kontrahentEditController.save()}"></p:commandButton>
 
             <p:dialog id="addAdresWysylkowyDlg" widgetVar="addAdresWysylkowyDlgJS"  header="New" modal="true"  closeOnEscape="true" resizable="false">
 
                 
-				<h:form id="panelGridForm"> 
+            <h:form id="panelGridForm"> 
                 <p:panelGrid id="pg" columns="2" >
                     <h:outputText value="Symbol:"/>
-                    <p:inputText id="inputText1" value="#{kontrahentAddController.adresWysylkowySymbol}"/>
+                    <p:inputText id="inputText1" value="#{kontrahentEditController.adresWysylkowySymbol}"/>
                     <h:outputText value="Ulica:"/>
-                    <p:inputText id="inputText2" value="#{kontrahentAddController.adresWysylkowy.ulica}" immediate="true"/>
+                    <p:inputText id="inputText2" value="#{kontrahentEditController.adresWysylkowy.ulica}" immediate="true"/>
                     <h:outputText value="Nr domu:"/>
-                    <p:inputText id="inputText3" value="#{kontrahentAddController.adresWysylkowy.nrDomu}"  />
+                    <p:inputText id="inputText3" value="#{kontrahentEditController.adresWysylkowy.nrDomu}"  />
                     <h:outputText value="Nr Lokalu:"/>
-                    <p:inputText id="inputText4" value="#{kontrahentAddController.adresWysylkowy.nrLokalu}" />
+                    <p:inputText id="inputText4" value="#{kontrahentEditController.adresWysylkowy.nrLokalu}" />
                     <h:outputText value="Miejscowosc:"/>
-                    <p:inputText id="inputText5" value="#{kontrahentAddController.adresWysylkowy.miejscowosc}" />
+                    <p:inputText id="inputText5" value="#{kontrahentEditController.adresWysylkowy.miejscowosc}" />
                     <h:outputText value="Kod poctowy:"/>
-                    <p:inputText id="inputText6" value="#{kontrahentAddController.adresWysylkowy.kodPocztowy}"/>
+                    <p:inputText id="inputText6" value="#{kontrahentEditController.adresWysylkowy.kodPocztowy}"/>
                     <h:outputText value="Poczta:"/>
-                    <p:inputText id="inputText7" value="#{kontrahentAddController.adresWysylkowy.poczta}"/>
+                    <p:inputText id="inputText7" value="#{kontrahentEditController.adresWysylkowy.poczta}"/>
                     
                     <p:commandButton value="Zapisz" oncomplete="PF('addAdresWysylkowyDlgJS').hide()" 
-                        actionListener="#{kontrahentAddController.addAdresWysylkowy()}"
+                        actionListener="#{kontrahentEditController.addAdresWysylkowy()}"
                         update="@([id$=adresyWysylkoweDataTable])" 
                          
                     />
@@ -159,19 +159,19 @@
 
                 <p:panelGrid columns="2">
                     <h:outputText value="Symbol:"/>
-                    <p:inputText value="#{kontrahentAddController.adresWysylkowySymbol}"/>
+                    <p:inputText value="#{kontrahentEditController.adresWysylkowySymbol}"/>
                     <h:outputText value="Ulica:"/>
-                    <p:inputText value="#{kontrahentAddController.adresWysylkowy.ulica}"/>
+                    <p:inputText value="#{kontrahentEditController.adresWysylkowy.ulica}"/>
                     <h:outputText value="Nr domu:"/>
-                    <p:inputText value="#{kontrahentAddController.adresWysylkowy.nrDomu}"  />
+                    <p:inputText value="#{kontrahentEditController.adresWysylkowy.nrDomu}"  />
                     <h:outputText value="Nr Lokalu:"/>
-                    <p:inputText  value="#{kontrahentAddController.adresWysylkowy.nrLokalu}" />
+                    <p:inputText  value="#{kontrahentEditController.adresWysylkowy.nrLokalu}" />
                     <h:outputText value="Miejscowosc:"/>
-                    <p:inputText  value="#{kontrahentAddController.adresWysylkowy.miejscowosc}" />
+                    <p:inputText  value="#{kontrahentEditController.adresWysylkowy.miejscowosc}" />
                     <h:outputText value="Kod poctowy:"/>
-                    <p:inputText value="#{kontrahentAddController.adresWysylkowy.kodPocztowy}"/>
+                    <p:inputText value="#{kontrahentEditController.adresWysylkowy.kodPocztowy}"/>
                     <h:outputText value="Poczta:"/>
-                    <p:inputText value="#{kontrahentAddController.adresWysylkowy.poczta}"/>
+                    <p:inputText value="#{kontrahentEditController.adresWysylkowy.poczta}"/>
                 </p:panelGrid>
 
 

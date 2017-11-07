@@ -15,7 +15,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 @ManagedBean
 @RequestScoped
-public class UserListCotroller {
+public class UserListController {
 
 	Logger log = LoggerFactory.getLogger( this.getClass() );
 	

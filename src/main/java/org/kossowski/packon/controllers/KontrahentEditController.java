@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 
@@ -27,7 +28,7 @@ import org.springframework.stereotype.Controller;
 @ManagedBean
 //@RequestScoped
 @ViewScoped
-public class KontrahentAddController implements Serializable {
+public class KontrahentEditController implements Serializable {
 	
 	
 	
@@ -36,6 +37,8 @@ public class KontrahentAddController implements Serializable {
 
 	protected Logger logger = LoggerFactory.getLogger( this.getClass() );
 	
+	@Autowired
+	private SessionValues sv;
 	
 	@Autowired
 	private KontrahentRepostory kontrahentRepo;
@@ -43,7 +46,6 @@ public class KontrahentAddController implements Serializable {
 	@Autowired
 	private IndeksMagazynowyRepository indeksRepo;
 
-	
 	protected Kontrahent kontrahent = null;
 	
 	protected Adres adresWysylkowy;
@@ -60,19 +62,28 @@ public class KontrahentAddController implements Serializable {
 	   
 	   logger.info("postConstruct() => wejscie");
 	   
-	   kontrahent = new Kontrahent();
+	   Long id = sv.getKontrahIdToEdit();
+	   logger.info( logger.getName() + " id= " + id);
+	   
+	   kontrahent = kontrahentRepo.findOne( id );
+	   
+	   logger.info( "Kontrahent -> " + kontrahent);
+	   
 	   adresWysylkowy = new Adres();
 	   adresWysylkowySymbol = "";
 	   
-	   wyrobyPickList = new DualListModel<>( indeksRepo.findAll(), new ArrayList<IndeksMagazynowy>() );
+	   wyrobyPickList = new DualListModel<>( indeksRepo.findAll(), new ArrayList<IndeksMagazynowy>( kontrahent.getWyrobyGotowe()) );
 	   
 		logger.info("postConstruct() => wyjscie");
 	}
 	
+	
+	
 	public void addAdresWysylkowy() {
 	   
-		logger.info("addAdres() wejście");
+		logger.info("addAdresWysylkowy() wejście");
 		kontrahent.getAdresyWysylkowe().put( adresWysylkowySymbol, new Adres( adresWysylkowy ));
+		logger.info("addAdresWysylkowy() wyjście");
 	}
 	
 	public void prepAddAdres() {
@@ -113,8 +124,17 @@ public class KontrahentAddController implements Serializable {
 	
 	
 	public List<Entry<String,Adres>> getEntrySet() {
+	   logger.info("kontrahentEditController.getEntrySet() -> wejscie" );
+	   
 	   Set<Entry<String,Adres>> entrySet = kontrahent.getAdresyWysylkowe().entrySet();
-	   return new ArrayList<Entry<String,Adres>>( entrySet );
+	   logger.info( "entrySet -> " + entrySet);
+	 
+	   List<Entry<String,Adres>> list = new ArrayList<>( entrySet );
+	   logger.info("list -> " + list );
+	   
+	   logger.info("kontrahentEditController.getEntrySet() -> wyjscie" );
+	   
+	   return list;
 	}
 	
 	public void save() {

@@ -15,26 +15,18 @@
 		</ui:define>
 
 		<ui:define name="content">
-			list indeks
-			
-			<p:dataTable value="#{kontrahentListController.findAll}" var="k">
-         <p:column headerText="Id"  toggleable="true">
-               <h:outputText value="#{k.id}" />
-            </p:column>
-				<p:column headerText="Symbol"  toggleable="true">
-					<h:outputText value="#{k.symbol}" />
+			<h:form>
+			<h:commandLink action="#{jmAddController.prepAdd()}" value="Nowa jednostka miary" />
+			<p:separator></p:separator>
+			<p:dataTable value="#{jmListController.findAll}" var="jm">
+				<p:column headerText="Symbol">
+					<h:outputText value="#{jm.symbol}"/>
 				</p:column>
 				<p:column headerText="Nazwa">
-					<h:outputText value="#{k.nazwa}" />
+					<h:outputText value="#{jm.nazwa}"/>
 				</p:column>
-				<p:column>
-               <p:commandLink action="#{kontrahentListController.prepEdit()}" value="Popraw">
-                  <f:param name="id" value="#{k.id}" />
-                  <f:viewParam name="id" value="#{k.id}"></f:viewParam>
-               </p:commandLink>
-            </p:column>
 			</p:dataTable>
-			
+			</h:form>
 		</ui:define>
 	</ui:composition>
 

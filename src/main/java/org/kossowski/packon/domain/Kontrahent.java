@@ -225,6 +225,18 @@ public class Kontrahent {
 		return true;
 	}
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+   @Override
+   public String toString() {
+      return "Kontrahent [id=" + id + ", uuid=" + uuid + ", symbol=" + symbol + ", nazwa=" + nazwa + ", nip=" + nip
+            + ", regon=" + regon + ", email=" + email + ", dostawca=" + dostawca + ", odbiorca=" + odbiorca + ", adres="
+            + adres + ", wyrobyGotowe=" + wyrobyGotowe + ", adresyWysylkowe=" + adresyWysylkowe + "]";
+   }
+
+   
+
 	
 
 	

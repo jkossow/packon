@@ -27,12 +27,16 @@ public class ZlecenieAddController {
 	@Autowired
 	protected ZlecenieRepository zRepo;
 	
-	protected Zlecenie zlecenie = new Zlecenie();
+	protected Zlecenie zlecenie = null;
 	
 	public ZlecenieAddController() {
 		
 		logger.info("ZlecenieAddController created");
 		
+	}
+	
+	public void init() {
+	   zlecenie = new Zlecenie();
 	}
 	
 	public String save() {
