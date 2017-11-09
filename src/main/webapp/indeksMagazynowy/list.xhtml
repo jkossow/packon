@@ -33,6 +33,13 @@
 				<p:column headerText="Wyrób gotowy"  toggleable="true" >
 					<p:selectBooleanCheckbox value="#{i.wyrobGotowy}" disabled="true"/>
 				</p:column>
+            <p:column>
+               <h:form>
+               <h:commandLink action="#{indeksMagazynowyEditController.prepEdit()}" value="Popraw">
+                  <f:param name="id" value="#{i.id}" />
+               </h:commandLink>
+               </h:form>
+            </p:column>
 			
 			
 			</p:dataTable>

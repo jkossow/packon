@@ -2,14 +2,13 @@ package org.kossowski.packon.controllers;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 
 import org.kossowski.packon.domain.Adres;
@@ -35,7 +34,7 @@ public class KontrahentEditController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 
-	protected Logger logger = LoggerFactory.getLogger( this.getClass() );
+	protected Logger log = LoggerFactory.getLogger( this.getClass() );
 	
 	@Autowired
 	private SessionValues sv;
@@ -60,50 +59,55 @@ public class KontrahentEditController implements Serializable {
 	@PostConstruct
 	public void postConstruct() {
 	   
-	   logger.info("postConstruct() => wejscie");
+	   log.info("postConstruct() => wejscie");
 	   
 	   Long id = sv.getKontrahIdToEdit();
-	   logger.info( logger.getName() + " id= " + id);
+	   log.info( log.getName() + " id= " + id);
 	   
 	   kontrahent = kontrahentRepo.findOne( id );
 	   
-	   logger.info( "Kontrahent -> " + kontrahent);
+	   log.info( "Kontrahent -> " + kontrahent);
 	   
 	   adresWysylkowy = new Adres();
 	   adresWysylkowySymbol = "";
 	   
-	   wyrobyPickList = new DualListModel<>( indeksRepo.findAll(), new ArrayList<IndeksMagazynowy>( kontrahent.getWyrobyGotowe()) );
+	   List<IndeksMagazynowy> source = indeksRepo.findByWyrobGotowyTrue();
+	   List<IndeksMagazynowy> target = new ArrayList<>( kontrahent.getWyrobyGotowe() );
+	   //usuniecie wyrobow juz przpisanych do kontrahenta
+	   source.removeAll( target );
 	   
-		logger.info("postConstruct() => wyjscie");
+	   wyrobyPickList = new DualListModel<>( source, target ); 
+	   
+		log.info("postConstruct() => wyjscie");
 	}
 	
 	
 	
 	public void addAdresWysylkowy() {
 	   
-		logger.info("addAdresWysylkowy() wejście");
+		log.info("addAdresWysylkowy() wejście");
 		kontrahent.getAdresyWysylkowe().put( adresWysylkowySymbol, new Adres( adresWysylkowy ));
-		logger.info("addAdresWysylkowy() wyjście");
+		log.info("addAdresWysylkowy() wyjście");
 	}
 	
 	public void prepAddAdres() {
-		logger.info( "prepAddAdres() begin");
+		log.info( "prepAddAdres() begin");
 		//aw = new AdresWysylkowy();
-		logger.info("setAw");
+		log.info("setAw");
 		setAdresWysylkowy( new Adres() );
 		setAdresWysylkowySymbol("");
-		logger.info( "prepAddAdres(): " + adresWysylkowySymbol );
-		logger.info( "prepAddAdres(): " + adresWysylkowy );
-		logger.info( "prepAddAdres() end");
+		log.info( "prepAddAdres(): " + adresWysylkowySymbol );
+		log.info( "prepAddAdres(): " + adresWysylkowy );
+		log.info( "prepAddAdres() end");
 
 		
 	}
 	
 	public void prepEditAdres() {
-		logger.info( "prepEditAdres() begin" );
-		logger.info( "pepAddAdres(): " + adresWysylkowySymbol );
-		logger.info( "prepEditAdres(): " + adresWysylkowy );
-		logger.info( "prepAddAdres() end" );
+		log.info( "prepEditAdres() begin" );
+		log.info( "pepAddAdres(): " + adresWysylkowySymbol );
+		log.info( "prepEditAdres(): " + adresWysylkowy );
+		log.info( "prepAddAdres() end" );
 		
 	}
 
@@ -111,12 +115,12 @@ public class KontrahentEditController implements Serializable {
 	
 	
 	public void addAdresWysylkowySadowa() {
-		logger.info( "Dodaję Sadowa");
+		log.info( "Dodaję Sadowa");
 		kontrahent.getAdresyWysylkowe().put( "Sadowa", AdresUtils.AdresWyslkowySadowa() );
 	}
 	
 	public void addAdresWysylkowy11Listopada() {
-		logger.info( "Dodaję 11 Listopada");
+		log.info( "Dodaję 11 Listopada");
 		kontrahent.getAdresyWysylkowe().put( "11-go Listopada", AdresUtils.AdresWyslkowy11Listopada() );
 	}
 	
@@ -124,31 +128,32 @@ public class KontrahentEditController implements Serializable {
 	
 	
 	public List<Entry<String,Adres>> getEntrySet() {
-	   logger.info("kontrahentEditController.getEntrySet() -> wejscie" );
+	   log.info("kontrahentEditController.getEntrySet() -> wejscie" );
 	   
 	   Set<Entry<String,Adres>> entrySet = kontrahent.getAdresyWysylkowe().entrySet();
-	   logger.info( "entrySet -> " + entrySet);
+	   log.info( "entrySet -> " + entrySet);
 	 
 	   List<Entry<String,Adres>> list = new ArrayList<>( entrySet );
-	   logger.info("list -> " + list );
+	   log.info("list -> " + list );
 	   
-	   logger.info("kontrahentEditController.getEntrySet() -> wyjscie" );
+	   log.info("kontrahentEditController.getEntrySet() -> wyjscie" );
 	   
 	   return list;
 	}
 	
 	public void save() {
-	   logger.info( "save ->" + kontrahent.toString() );
-	   logger.info( "Source size " +  wyrobyPickList.getSource().size() );
-      logger.info( "Target size " +  wyrobyPickList.getTarget().size() );
+	   log.info( "save ->" + kontrahent.toString() );
+	   log.info( "Source size " +  wyrobyPickList.getSource().size() );
+      log.info( "Target size " +  wyrobyPickList.getTarget().size() );
       
       kontrahent.getWyrobyGotowe().addAll( wyrobyPickList.getTarget() );
       
-      logger.info( "Wyroby gotowe (pickList target: ");
-      for( IndeksMagazynowy im: wyrobyPickList.getTarget() ) {
-         logger.info( "index -> " + im );
-         kontrahent.getWyrobyGotowe().add( im );
-      }
+      log.info( "Wyroby gotowe (pickList target: ");
+      //for( IndeksMagazynowy im: wyrobyPickList.getTarget() ) {
+      //   log.info( "index -> " + im );
+      //   kontrahent.getWyrobyGotowe().add( im );
+      //}
+      kontrahent.setWyrobyGotowe( new HashSet<>( wyrobyPickList.getTarget() )  );
       kontrahentRepo.save( kontrahent );
 	}
 	
@@ -172,7 +177,7 @@ public class KontrahentEditController implements Serializable {
 	public DualListModel<IndeksMagazynowy> getWyrobyPickList() {
 
 
-		logger.info( "getWyrobyPickList(): Wejscie");
+		log.info( "getWyrobyPickList(): Wejscie");
 		//wyrobyPickList.setSource( indeksRepo.findAll() );
 		
 		//List<IndeksMagazynowy> target = new ArrayList<>();

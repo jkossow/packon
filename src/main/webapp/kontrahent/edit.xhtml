@@ -106,15 +106,23 @@
                 <p:tab title="Wyroby">
 
                     <p:pickList orientation="horizontal" value="#{kontrahentEditController.wyrobyPickList}"
-                                var="index" itemValue="#{index}" itemLabel="#{index.indeks}"
-
+                                var="index" itemValue="#{index}" itemLabel="#{index.id} #{index.indeks} #{index.nazwa}"
+                                 
+                                filterMatchMode="contains" 
                                 showSourceFilter="true" showTargetFilter="true"
                         
                                 converter="#{indeksMagazynowyConverter}"        
                     >
                         
-                        <f:facet name="sourceCaption">Wszytkie wyroby</f:facet>
+                        <f:facet name="sourceCaption">Wszystkie wyroby</f:facet>
                         <f:facet name="targetCaption">Wyroby kontrahenta</f:facet>
+                        
+                        <p:column>
+                           <h:outputText value="#{index.indeks}" />
+                        </p:column>
+                        <p:column>
+                           <h:outputText value="#{index.nazwa}" />
+                        </p:column>
                     </p:pickList>
 
 

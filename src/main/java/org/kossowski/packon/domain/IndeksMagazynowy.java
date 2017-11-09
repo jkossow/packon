@@ -1,21 +1,29 @@
 package org.kossowski.packon.domain;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+
 
 @Entity
 @Table( name = "indeksy_magazynowe")
 public class IndeksMagazynowy {
 
 		@Id @GeneratedValue
+		@Column( name = "id", nullable = true)
 		private Long id;
 
 		@Column( name = "uuid")
@@ -31,6 +39,13 @@ public class IndeksMagazynowy {
 		
 		@ManyToOne
 		private Jm jednMiary;
+		
+		@ManyToMany
+		private Set<IndeksMagazynowy> materials = new HashSet<>();
+		
+		@ManyToMany
+		private List<Operacja> technologia = new ArrayList<>();  
+		
 		
 		private Boolean wyrobGotowy;
 		private Boolean material;
@@ -188,8 +203,26 @@ public class IndeksMagazynowy {
 			this.jednMiary = jednMiary;
 		}
 
+		
+		
 
-		/* (non-Javadoc)
+		/**
+       * @return the materials
+       */
+      public Set<IndeksMagazynowy> getMaterials() {
+         return materials;
+      }
+
+
+      /**
+       * @param materials the materials to set
+       */
+      public void setMaterials(Set<IndeksMagazynowy> materials) {
+         this.materials = materials;
+      }
+
+
+      /* (non-Javadoc)
 		 * @see java.lang.Object#hashCode()
 		 */
 		@Override

@@ -64,7 +64,7 @@ public class KontrahentAddController implements Serializable {
 	   adresWysylkowy = new Adres();
 	   adresWysylkowySymbol = "";
 	   
-	   wyrobyPickList = new DualListModel<>( indeksRepo.findAll(), new ArrayList<IndeksMagazynowy>() );
+	   wyrobyPickList = new DualListModel<>( indeksRepo.findByWyrobGotowyTrue(), new ArrayList<IndeksMagazynowy>() );
 	   
 		logger.info("postConstruct() => wyjscie");
 	}

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<body>
+
+	<ui:composition template="/templates/mainTemplate.xhtml">
+
+		<ui:define name="left">
+			<ui:include src="/menu.xhtml" />
+		</ui:define>
+
+		<ui:define name="content">
+         <p:growl>
+         </p:growl> 
+		 <h:form>
+         <h:inputHidden value="#{indeksMagazynowyEditController.indeksMag.id}" />
+			<p:panelGrid columns="2">
+				<f:facet name="header">Nowy indeks magazynowy</f:facet>
+			
+				<h:outputText value="Indeks:" />
+				<p:inputText value="#{indeksMagazynowyEditController.indeksMag.indeks}"/>
+				
+				<h:outputText value="Nazwa:" />
+				<p:inputText value="#{indeksMagazynowyEditController.indeksMag.nazwa}"/>
+				
+				<h:outputText value="Materiał?:" />
+				<p:selectBooleanCheckbox value="#{indeksMagazynowyEditController.indeksMag.material}"/>
+				
+				<h:outputText value="Wyrób?:" />
+				<p:selectBooleanCheckbox value="#{indeksMagazynowyEditController.indeksMag.wyrobGotowy}"/>
+				
+				<h:outputText value="Wymiar palety:" />
+				<p:inputText value="#{indeksMagazynowyEditController.indeksMag.wymiarPalety}"/>
+				
+				<h:outputText value="Ilość sztuk na palecie:" />
+				<p:inputText value="#{indeksMagazynowyEditController.indeksMag.iloscStukNaPalecie}" validatorMessage="ssss"/>
+				
+				<h:outputText value="Nr kliszy:" />
+				<p:inputText value="#{indeksMagazynowyEditController.indeksMag.klisza}"/>
+				
+				<h:outputText value="Nr wykrojnika:" />
+				<p:inputText value="#{indeksMagazynowyEditController.indeksMag.wykrojnik}" />
+			
+				<p:commandButton value="Zapisz" ajax="false" action="#{indeksMagazynowyEditController.save()}"/>
+			</p:panelGrid>
+         <p:messages/>
+		  </h:form>	
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

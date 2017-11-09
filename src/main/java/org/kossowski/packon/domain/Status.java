@@ -18,7 +18,7 @@ public enum Status {
 		this.id = id;
 	}
 
-	
+	@SuppressWarnings("unused")
 	private int getId() {
 		return id;
 	}

@@ -7,6 +7,8 @@ import javax.faces.convert.Converter;
 
 import org.kossowski.packon.domain.IndeksMagazynowy;
 import org.kossowski.packon.repositories.IndeksMagazynowyRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ import org.springframework.stereotype.Service;
 @ManagedBean
 public class IndeksMagazynowyConverter implements Converter {
 
+   Logger log = LoggerFactory.getLogger( this.getClass() );
+   
    @Autowired
    protected IndeksMagazynowyRepository indeksRepo;
    
@@ -35,14 +39,17 @@ public class IndeksMagazynowyConverter implements Converter {
    @Override
    public String getAsString(FacesContext arg0, UIComponent arg1, Object value) {
       
-      IndeksMagazynowy im;
+      log.info( log.getName() + " getAsString value.getClass =" + value.getClass().getSimpleName() );
+      
+      IndeksMagazynowy im = null;
       try {
          im = (IndeksMagazynowy)value;
       } catch ( ClassCastException e ) {
-         im = new IndeksMagazynowy();
+         //im = new IndeksMagazynowy();
+         //im = null;
       }
       
-      return im != null ? im.getId().toString() : "0";
+      return im != null ? im.getId().toString() : "";
    }
 
 }

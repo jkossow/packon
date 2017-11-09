@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.OneToMany;
 
@@ -40,7 +41,7 @@ public class Kontrahent {
 	@Embedded
 	private Adres adres = new Adres();
 	
-	@OneToMany
+	@ManyToMany
 	private Set<IndeksMagazynowy> wyrobyGotowe = new HashSet<>();
 	
 	

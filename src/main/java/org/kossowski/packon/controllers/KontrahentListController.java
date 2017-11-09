@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
 
 import org.kossowski.packon.domain.Kontrahent;
 import org.kossowski.packon.repositories.KontrahentRepostory;
