@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<body>
+
+	<ui:composition template="/templates/mainTemplate.xhtml">
+
+		<ui:define name="left">
+			<ui:include src="/menu.xhtml" />
+		</ui:define>
+
+		<ui:define name="content">
+			<h:form>
+			<p:commandLink action="/dokis/add.xhtml?faces-redirect=true">Nowe zlecenie</p:commandLink>
+			<p:dataTable value="#{zlecenieListController.findAll}"  var="z" 
+				
+				paginator="true" rows="10">
+				
+            <p:column headerText="Id" >
+					<h:outputText value="#{z.id}" />
+            </p:column>
+				
+            <p:column headerText="Data wprow." sortBy="#{z.data}">
+					<h:outputText value="#{z.data}" />
+				</p:column>
+				
+            <p:column headerText="Termin real." sortBy="#{z.terminDostawy}">
+               <h:outputText value="#{z.terminDostawy}" />
+            </p:column>
+            
+				<p:column headerText="Klient" sortBy="#{z.kontrahent.symbol}">
+               <h:outputText value="#{z.kontrahent.symbol}" />
+            </p:column>
+            
+            <p:column headerText="Ilość" sortBy="#{z.ilosc}">
+               <h:outputText value="#{z.ilosc}" />
+            </p:column>
+            
+            <p:column headerText="Adres dostawy" sortBy="#{z.adresWysylkowy}">
+               <h:outputText value="#{z.adresWysylkowy}" />
+            </p:column>
+				<p:column headerText="Status">
+					<h:outputText value="#{z.status}" />
+				</p:column>
+				<p:column headerText="Oper">
+					<p:commandLink value="Popraw" action="" ajax="false">
+						<f:param name="id" value="#{z.id}" />
+					</p:commandLink>
+				</p:column>
+				
+			</p:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

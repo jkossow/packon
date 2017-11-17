@@ -25,6 +25,15 @@
 				<p:column headerText="Nazwa">
 					<h:outputText value="#{jm.nazwa}"/>
 				</p:column>
+            <p:column>
+               <h:commandLink action="#{jmEditController.prepEdit()}" value="Popraw">
+                  <f:param name="id" value="#{jm.id}" />
+               </h:commandLink>
+               &nbsp;
+               <h:commandLink action="#{jmEditController.prepEdit()}" value="Usuń">
+                  <f:param name="id" value="#{jm.id}" />
+               </h:commandLink>
+            </p:column>
 			</p:dataTable>
 			</h:form>
 		</ui:define>

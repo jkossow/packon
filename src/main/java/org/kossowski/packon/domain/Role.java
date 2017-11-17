@@ -8,6 +8,8 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Role {
 	
+   // Role
+   
    @SuppressWarnings("unused")
 	private static Set<Role> allRoles = initRoles();
 	

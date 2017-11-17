@@ -24,7 +24,7 @@ public class ZlecenieScheduleObject  implements ScheduleEvent {
 	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
-		return zlecenie.getOpis();
+		return zlecenie.getUwagi();
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class ZlecenieScheduleObject  implements ScheduleEvent {
 	public String getTitle() {
 		// TODO Auto-generated method stub
 		//return zlecenie.getOpis();
-		return zlecenie.getOpis();
+		return zlecenie.getUwagi();
 	}
 
 	@Override

@@ -2,6 +2,8 @@ package org.kossowski.packon.domain;
 
 public enum Status {
 	
+   // Status
+   
 	WPROWADZONE(1),
 	PRZYGOTOWANIE_DO_PRODUKCJI(2),
 	GOTOWE_DO_PRODUKCJI(3),

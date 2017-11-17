@@ -10,6 +10,8 @@ import javax.persistence.Id;
 @Entity
 public class Maszyna {
    
+   // Machine
+   
    @Id @GeneratedValue
    private Long id;
    

@@ -111,7 +111,11 @@ public class KontrahentEditController implements Serializable {
 		
 	}
 
-
+	
+	public void addAdresWysylkowySiedziba() {
+      log.info( "Dodaję siedziba");
+      kontrahent.getAdresyWysylkowe().put( "SIEDZIBA", kontrahent.getAdres() );
+   }
 	
 	
 	public void addAdresWysylkowySadowa() {

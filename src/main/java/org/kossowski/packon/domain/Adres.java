@@ -4,6 +4,8 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Adres {
+   
+   // Address
 
 	private String ulica;
 	private String nrDomu;

@@ -1,5 +1,6 @@
 package org.kossowski.packon.domain;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 
@@ -19,6 +20,8 @@ import javax.persistence.Table;
 @Entity
 @Table( name = "zlecenia" )
 public class Zlecenie {
+   
+   // ProductionOrder
 	
 	@Id @GeneratedValue
 	private Long id = 0L;
@@ -31,9 +34,15 @@ public class Zlecenie {
 	@JoinColumn(foreignKey = @ForeignKey(name = "FK_USER"))
 	private User user;
 	
-	private Date data;
+	private Date data; // data wprowadzenia
 	
-	private String opis;
+	private Date terminDostawy;
+	
+	private String uwagi;
+	
+	private String numerZamowieniaKienta;
+	
+	private String adresWysylkowy;
 	
 	@ManyToOne
 	private Kontrahent kontrahent;
@@ -41,13 +50,8 @@ public class Zlecenie {
 	@ManyToOne
 	private IndeksMagazynowy produkt;
 	
+	private BigDecimal ilosc; 
 	
-	
-	@Enumerated( EnumType.STRING )
-	private MaszynaEnum maszyna;
-	
-	@Enumerated( EnumType.STRING )
-	private Zmiana zmiana;
 	
 	@Enumerated( EnumType.STRING )
 	private Prioryted prioryted = Prioryted.NORMALNY;
@@ -71,31 +75,82 @@ public class Zlecenie {
 		this.data = data;
 	}
 
-	public String getOpis() {
-		return opis;
-	}
+	
 
-	public void setOpis(String opis) {
-		this.opis = opis;
-	}
 
-	public MaszynaEnum getMaszyna() {
-		return maszyna;
-	}
+	/**
+    * @return the terminDostawy
+    */
+   public Date getTerminDostawy() {
+      return terminDostawy;
+   }
 
-	public void setMaszyna(MaszynaEnum maszyna) {
-		this.maszyna = maszyna;
-	}
+   /**
+    * @param terminDostawy the terminDostawy to set
+    */
+   public void setTerminDostawy(Date terminDostawy) {
+      this.terminDostawy = terminDostawy;
+   }
 
-	public Zmiana getZmiana() {
-		return zmiana;
-	}
+   /**
+    * @return the uwagi
+    */
+   public String getUwagi() {
+      return uwagi;
+   }
 
-	public void setZmiana(Zmiana zmiana) {
-		this.zmiana = zmiana;
-	}
+   /**
+    * @param uwagi the uwagi to set
+    */
+   public void setUwagi(String uwagi) {
+      this.uwagi = uwagi;
+   }
 
-	public Prioryted getPrioryted() {
+   /**
+    * @return the numerZamowieniaKienta
+    */
+   public String getNumerZamowieniaKienta() {
+      return numerZamowieniaKienta;
+   }
+
+   /**
+    * @param numerZamowieniaKienta the numerZamowieniaKienta to set
+    */
+   public void setNumerZamowieniaKienta(String numerZamowieniaKienta) {
+      this.numerZamowieniaKienta = numerZamowieniaKienta;
+   }
+
+   /**
+    * @return the adresWysylkowy
+    */
+   public String getAdresWysylkowy() {
+      return adresWysylkowy;
+   }
+
+   /**
+    * @param adresWysylkowy the adresWysylkowy to set
+    */
+   public void setAdresWysylkowy(String adresWysylkowy) {
+      this.adresWysylkowy = adresWysylkowy;
+   }
+
+   
+   
+   /**
+    * @return the ilosc
+    */
+   public BigDecimal getIlosc() {
+      return ilosc;
+   }
+
+   /**
+    * @param ilosc the ilosc to set
+    */
+   public void setIlosc(BigDecimal ilosc) {
+      this.ilosc = ilosc;
+   }
+
+   public Prioryted getPrioryted() {
 		return prioryted;
 	}
 
@@ -195,13 +250,17 @@ public class Zlecenie {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Zlecenie [id=" + id + ", data=" + data + ", opis=" + opis + "]";
-	}
-	
-	
-	
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+   @Override
+   public String toString() {
+      return "Zlecenie [id=" + id + ", uuid=" + uuid + ", user=" + user + ", data=" + data + ", terminDostawy="
+            + terminDostawy + ", uwagi=" + uwagi + ", numerZamowieniaKienta=" + numerZamowieniaKienta
+            + ", adresWysylkowy=" + adresWysylkowy + ", kontrahent=" + kontrahent + ", produkt=" + produkt
+            + ", prioryted=" + prioryted + ", status=" + status + "]";
+   }
+
 	
 	
 

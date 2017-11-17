@@ -2,6 +2,9 @@ package org.kossowski.packon.domain;
 
 public enum Prioryted {
 
+   // Priority
+   
+   
 	NORMALNY(1,"Zwykły"),
 	PILNE(2,"Pilny");
 	

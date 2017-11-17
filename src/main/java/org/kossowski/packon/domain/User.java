@@ -63,6 +63,48 @@ public class User {
 		this.roles = roles;
 	}
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#hashCode()
+    */
+   @Override
+   public int hashCode() {
+      final int prime = 31;
+      int result = 1;
+      result = prime * result + ((uuid == null) ? 0 : uuid.hashCode());
+      return result;
+   }
+
+   /* (non-Javadoc)
+    * @see java.lang.Object#equals(java.lang.Object)
+    */
+   @Override
+   public boolean equals(Object obj) {
+      if (this == obj)
+         return true;
+      if (obj == null)
+         return false;
+      if (!(obj instanceof User))
+         return false;
+      User other = (User) obj;
+      if (uuid == null) {
+         if (other.uuid != null)
+            return false;
+      } else if (!uuid.equals(other.uuid))
+         return false;
+      return true;
+   }
+
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+   @Override
+   public String toString() {
+      return "User [login=" + login + ", uuid=" + uuid + ", nazwisko=" + nazwisko + ", imie=" + imie + ", roles="
+            + roles + "]";
+   }
+
+	
+	
 	
 	
 }

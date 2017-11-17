@@ -1,10 +1,14 @@
 package org.kossowski.packon.controllers;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import org.kossowski.packon.domain.IndeksMagazynowy;
+import org.kossowski.packon.domain.Jm;
 import org.kossowski.packon.repositories.IndeksMagazynowyRepository;
+import org.kossowski.packon.repositories.JmRepository;
 import org.kossowski.packon.utils.JSFUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +25,9 @@ public class IndeksMagazynowyEditController {
    @Autowired
    protected IndeksMagazynowyRepository indeksMagRepo;
    
+   @Autowired 
+   protected JmRepository jmRepo;
+   
    protected IndeksMagazynowy indeksMag = new IndeksMagazynowy();
    
    
@@ -33,6 +40,10 @@ public class IndeksMagazynowyEditController {
       log.info( log.getName() + " indeksMagazynowy = " + indeksMag );
       
       return "/indeksMagazynowy/edit.xhtml";
+   }
+   
+   public List<Jm> getJednMiary() {
+      return jmRepo.findAll();
    }
    
    public String save() {

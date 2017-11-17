@@ -27,6 +27,9 @@
 				<p:column headerText="Nazwa"  toggleable="true">
 					<h:outputText value="#{i.nazwa}" />
 				</p:column>
+            <p:column headerText="Jedn. miary"  toggleable="true">
+               <h:outputText value="#{i.jednMiary.symbol}" />
+            </p:column>
 				<p:column headerText="Materiał"  toggleable="true">
 					<p:selectBooleanCheckbox  value="#{i.material}" disabled="true"/>
 				</p:column>

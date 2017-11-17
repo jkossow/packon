@@ -9,6 +9,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Operacja {
+   
+   //Operation
 
    @Id @GeneratedValue
    private Long id;

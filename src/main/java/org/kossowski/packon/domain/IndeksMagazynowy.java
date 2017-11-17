@@ -22,6 +22,10 @@ import javax.validation.constraints.NotNull;
 @Table( name = "indeksy_magazynowe")
 public class IndeksMagazynowy {
 
+      //stockIndex
+      //warehouseIndex
+      //storagehouseIndex
+   
 		@Id @GeneratedValue
 		@Column( name = "id", nullable = true)
 		private Long id;

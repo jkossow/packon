@@ -39,17 +39,24 @@ public class IndeksMagazynowyConverter implements Converter {
    @Override
    public String getAsString(FacesContext arg0, UIComponent arg1, Object value) {
       
-      log.info( log.getName() + " getAsString value.getClass =" + value.getClass().getSimpleName() );
+      //log.info( log.getName() + " getAsString value.getClass =" + value.getClass().getSimpleName() );
+      //log.info( log.getName() + " getAsString value  = " + value );
       
       IndeksMagazynowy im = null;
       try {
          im = (IndeksMagazynowy)value;
       } catch ( ClassCastException e ) {
+         
+         //log.info( log.getName() + " getAsString wyjatek im=" + im );
          //im = new IndeksMagazynowy();
          //im = null;
       }
       
-      return im != null ? im.getId().toString() : "";
+      //log.info( log.getName() + " getAsString po wyjatku im=" + im );
+      //if( im != null)
+      //   log.info( log.getName() + " getAsString po wyjatku im.getId=" + im.getId() );
+      
+      return im == null ? null : im.getId().toString();
    }
 
 }

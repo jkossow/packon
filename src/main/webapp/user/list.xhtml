@@ -18,7 +18,7 @@
 			<h:form>
 			<h:commandLink action="#{userAddController.prepAdd()}" value="Nowy użytkownik" />
 			<p:separator></p:separator>
-			<p:dataTable value="#{userListCotroller.findAll}" var="u">
+			<p:dataTable value="#{userListController.findAll}" var="u">
 				<p:column headerText="Login">
 					<h:outputText value="#{u.login}"/>
 				</p:column>

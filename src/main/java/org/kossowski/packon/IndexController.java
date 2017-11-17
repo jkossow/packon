@@ -11,7 +11,12 @@ public class IndexController {
 
 	@RequestMapping( "/" )
 	public String index() {
-		return "/faces/index.xhtml";
+		return "redirect:/faces/index.xhtml";
 	}
+	
+	@RequestMapping( "/hi" )
+   public String hi() {
+      return "hi";
+   }
 	
 }

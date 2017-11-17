@@ -23,6 +23,8 @@ import javax.persistence.OneToMany;
 @Entity
 public class Kontrahent {
 
+   // Customer
+   
 	@Id @GeneratedValue
 	private Long id;
 	

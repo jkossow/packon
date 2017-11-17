@@ -9,7 +9,9 @@ import javax.faces.bean.ViewScoped;
 
 import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 import org.kossowski.packon.domain.IndeksMagazynowy;
+import org.kossowski.packon.domain.Jm;
 import org.kossowski.packon.repositories.IndeksMagazynowyRepository;
+import org.kossowski.packon.repositories.JmRepository;
 import org.kossowski.packon.utils.JSFUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,19 +29,22 @@ public class IndeksMagazynowyAddController {
 	@Autowired
 	protected IndeksMagazynowyRepository indeksRepo;
 	
+	@Autowired
+	protected JmRepository jmRepo;
+	
 	private IndeksMagazynowy indeksMag; 
 	private IndeksMagazynowy selectedMaterial;
 	
 	@PostConstruct
 	public void init() {
-	   log.info( log.getName() + " IndeksMagazynowyAddController init()");
+	   log.info( log.getName() + "  init()");
 	   indeksMag = new IndeksMagazynowy();
 	   selectedMaterial = null;
 	}
 	
 	
 	public void wyrobCheckBoxChanged() {
-	   log.info( log.getName() + "checkBox chcnged wyrobGotowy = " + indeksMag.getWyrobGotowy() );
+	   log.info( log.getName() + "checkBox changed wyrobGotowy = " + indeksMag.getWyrobGotowy() );
 	}
 	
 	public void materialSelectOneMenuChanged() {
@@ -48,6 +53,7 @@ public class IndeksMagazynowyAddController {
 	
 	public void addSelectedMaterialToMaterials() {
 	   log.info( log.getName() + " addSelectedMaterialToMaterials = " + selectedMaterial );
+	   log.debug("debug message (jk)");
 	   if( selectedMaterial != null )
 	      indeksMag.getMaterials().add( selectedMaterial );
 	}
@@ -68,13 +74,19 @@ public class IndeksMagazynowyAddController {
 	   return indeksRepo.findByMaterialTrue();
 	}
 	
+	
+	public List<Jm> getJednMiary() {
+	   return jmRepo.findAll();
+	}
+	
+	
 	public String save() {
 		try {
 			indeksRepo.save(indeksMag);
 		} catch ( DataIntegrityViolationException e) {
 			 System.out.println( "Wyjątek: " + e.getMessage() );
 		}
-		return "/faces/indeksMagazynowy/list.xhtml";
+		return "/indeksMagazynowy/list.xhtml";
 	}
 	
 	public IndeksMagazynowyRepository getIndeksRepo() {

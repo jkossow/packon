@@ -93,6 +93,10 @@
                     
                     <p:commandButton value="Edit" type="button" onclick="PF('editAdresWysylkowyDlg').show()" >
                     </p:commandButton>
+                    
+                    <p:commandButton value="Siedziba" actionListener="#{kontrahentEditController.addAdresWysylkowySiedziba()}"  
+                        update="adresyWysylkoweDataTable" ajax="true" >
+                    </p:commandButton>
 
                     <p:commandButton value="New Sadowa" actionListener="#{kontrahentEditController.addAdresWysylkowySadowa()}"  
                         update="adresyWysylkoweDataTable" ajax="true" >
