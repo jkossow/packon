@@ -5,8 +5,8 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
-import org.kossowski.packon.domain.Jm;
-import org.kossowski.packon.repositories.JmRepository;
+import org.kossowski.packon.domain.WzorzecOperacji;
+import org.kossowski.packon.repositories.WzorzecOperacjiRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +15,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 @ManagedBean
-public class JmConverter implements Converter {
+public class WzorzecOperacjiConverter implements Converter {
 
    Logger log = LoggerFactory.getLogger( this.getClass() );
    
    @Autowired
-   protected JmRepository jmRepo;
+   protected WzorzecOperacjiRepository wzorzecOperacjiRepo;
    
    @Override
    public Object getAsObject(FacesContext arg0, UIComponent arg1, String value) {
@@ -28,23 +28,19 @@ public class JmConverter implements Converter {
       if (value.isEmpty() )
          return null;
       
-      Long id = null;
+      Long id;
       
       try {
-         log.info( log.getName() + "getAsObject()  value= " + value + 
-               " value class = " + value.getClass().getName());
-         id = Long.valueOf(value);
-      } catch ( NumberFormatException e) {
-         log.info( log.getName() + "getAsObject() - blok chroniony" );
+        id = Long.valueOf( value );
+      } catch ( NumberFormatException e ) {
          return null;
       }
       
-      
-      Jm jm = null;
+      WzorzecOperacji wz = null;
       if( id != 0L )
-         jm = jmRepo.findOne( id );
+         wz = wzorzecOperacjiRepo.findOne( id );
       
-      return jm;
+      return wz;
    }
 
    @Override
@@ -53,20 +49,21 @@ public class JmConverter implements Converter {
       //log.info( log.getName() + " getAsString value.getClass =" + value.getClass().getSimpleName() );
       //log.info( log.getName() + " getAsString value  = " + value );
       
-      Jm jm = null;
+      WzorzecOperacji wz = null;
       try {
-         jm = (Jm)value;
+         wz = (WzorzecOperacji)value;
       } catch ( ClassCastException e ) {
          
-         //log.info( log.getName() + " getAsString wyjatek jm=" + jm );
-        
-      } 
+         //log.info( log.getName() + " getAsString wyjatek im=" + im );
+         //im = new IndeksMagazynowy();
+         //im = null;
+      }
       
-      //log.info( log.getName() + " getAsString po wyjatku jm=" + jm );
+      //log.info( log.getName() + " getAsString po wyjatku im=" + im );
       //if( im != null)
       //   log.info( log.getName() + " getAsString po wyjatku im.getId=" + im.getId() );
       
-      return jm == null ? null : jm.getId().toString();
+      return wz == null ? null : wz.getId().toString();
    }
 
 }

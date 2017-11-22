@@ -28,7 +28,14 @@ public class IndeksMagazynowyConverter implements Converter {
       if (value.isEmpty() )
          return null;
       
-      Long id = Long.valueOf( value );
+      Long id = null;
+      try {
+         id = Long.valueOf(value);
+      } catch ( NumberFormatException e ) {
+         return null;
+      }
+      
+      
       IndeksMagazynowy im = null;
       if( id != 0L )
          im = indeksRepo.findOne( id );

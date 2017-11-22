@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -48,7 +49,9 @@ public class IndeksMagazynowy {
 		private Set<IndeksMagazynowy> materials = new HashSet<>();
 		
 		@ManyToMany
-		private List<Operacja> technologia = new ArrayList<>();  
+		@OrderColumn
+		private List<WzorzecOperacji> technologia = new ArrayList<>();  
+		
 		
 		
 		private Boolean wyrobGotowy;
@@ -223,6 +226,23 @@ public class IndeksMagazynowy {
        */
       public void setMaterials(Set<IndeksMagazynowy> materials) {
          this.materials = materials;
+      }
+
+      
+
+      /**
+       * @return the technologia
+       */
+      public List<WzorzecOperacji> getTechnologia() {
+         return technologia;
+      }
+
+
+      /**
+       * @param technologia the technologia to set
+       */
+      public void setTechnologia(List<WzorzecOperacji> technologia) {
+         this.technologia = technologia;
       }
 
 

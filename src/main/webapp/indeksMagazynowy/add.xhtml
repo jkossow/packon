@@ -128,7 +128,7 @@
                            <h:outputText value="#{i.nazwa}" />
                         </p:column>
                      </p:selectOneMenu>
-                     <p:spacer width="10px" />
+
                      <p:commandButton id="addMaterialButton"
                         value="Dodaj"
                         disabled="#{indeksMagazynowyAddController.selectedMaterial == null}">
@@ -141,8 +141,74 @@
                </p:tab>
                <p:tab title="Technologia" id="technologyTab"
                   disabled="#{not indeksMagazynowyAddController.indeksMag.wyrobGotowy}">
+                  <p:panelGrid layout="grid" columns="2"
+                     columnClasses="ui-grid-col-3,ui-grid-col-3"
+                     styleClass="ui-panelgrid-blank">
+                     
+                     <p:orderList id="wzorzecOperacjiOrderList"
+                           
+                        value="#{indeksMagazynowyAddController.indeksMag.technologia}"
+                        valueChangeListener="#{indeksMagazynowyAddController.orderListValueChange()}"
+                        var="wz1" itemValue="#{wz1}"
+                        itemLabel="#{wz1.symbol}"
+                        converter="#{wzorzecOperacjiConverter}">
+
+                        <p:ajax event="reorder"
+                           listener="#{indeksMagazynowyAddController.orderListReorder()}" />
+                        <p:ajax event="select"
+                           listener="#{indeksMagazynowyAddController.orderListOnSelect}"
+                           update="delWzorzecOperacjiButton" />
+                        <p:ajax event="unselect"
+                           listener="#{indeksMagazynowyAddController.orderListOnUnselect}" 
+                           update="delWzorzecOperacjiButton"
+                           />
+                        
+
+                     </p:orderList>
+
+                     <p:panelGrid columns="1">
+                        <p:selectOneMenu
+                           value="#{indeksMagazynowyAddController.selectedWzorzecOperacji}"
+                           converter="#{wzorzecOperacjiConverter}">
+
+                           <p:ajax event="change"
+                              listener="#{indeksMagazynowyAddController.wzorzecOperacjiSelectOneMenuChanged}"
+                              update="addWzorzecOperacjiButton" />
+
+                           <f:selectItem itemLabel="Wybierz wzorzec" />
+                           <f:selectItems
+                              value="#{indeksMagazynowyAddController.wzorceOperacji}"
+                              var="wz" itemValue="#{wz}"
+                              itemLabel="#{wz.symbol}">
+                           </f:selectItems>
+                        </p:selectOneMenu>
+
+
+                        <p:commandButton value="Dodaj operację"
+                           disabled="#{indeksMagazynowyAddController.selectedWzorzecOperacji == null}"
+                           id="addWzorzecOperacjiButton"
+                           >
+                           <p:ajax event="click"
+                              listener="#{indeksMagazynowyAddController.addSelectedWzorzecToWzorce()}"
+                              update="delWzorzecOperacjiButton wzorzecOperacjiOrderList"
+                            />
+                        </p:commandButton>
+
+                        <p:commandButton value="Usuń operację"
+                           id="delWzorzecOperacjiButton"
+                           disabled="#{indeksMagazynowyAddController.orderListSelected == null}"
+                           >
+                            <p:ajax event="click"
+                              listener="#{indeksMagazynowyAddController.delSelectedWzorzecFromWzorce()}"
+                              update="wzorzecOperacjiOrderList"
+                            />
+                        </p:commandButton>
+
+                     </p:panelGrid>
+                  </p:panelGrid>
                </p:tab>
                <p:tab title="Subiekt">
+
                </p:tab>
             </p:tabView>
          </h:form>

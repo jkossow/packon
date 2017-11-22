@@ -28,7 +28,14 @@ public class KontrahentConverter implements Converter {
       if (value.isEmpty() )
          return null;
       
-      Long id = Long.valueOf( value );
+      Long id;
+      
+      try {
+         id = Long.valueOf(value);
+      } catch (NumberFormatException e) {
+         return null;
+      }
+      
       Kontrahent k = null;
       if( id != 0L )
          k = kontrahRepo.findOne( id );
