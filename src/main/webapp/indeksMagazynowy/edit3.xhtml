@@ -17,6 +17,9 @@
       <ui:define name="content">
          <h:form>
 
+            <h:inputHidden
+               value="#{indeksMagazynowyEditController.indeksMag.id}" />
+
             <p:tabView id="indeksTab">
 
                <p:tab title="Dane">
@@ -154,13 +157,21 @@
                         converter="#{wzorzecOperacjiConverter}">
 
                         <p:ajax event="reorder"
-                           listener="#{indeksMagazynowyEditController.orderListReorder( e )}" />
+                           listener="#{indeksMagazynowyEditController.orderListReorder()}" />
                         <p:ajax event="select"
-                           listener="#{indeksMagazynowyEditController.orderListOnSelect}" />
+                           listener="#{indeksMagazynowyEditController.orderListOnSelect}"
+                           update="delWzorzecOperacjiButton" />
                         <p:ajax event="unselect"
-                           listener="#{indeksMagazynowyEditController.orderListOnUnselect}" />
+                           listener="#{indeksMagazynowyEditController.orderListOnUnselect}" 
+                           update="delWzorzecOperacjiButton"
+                           />
                         
-
+                        <p:column><h:outputText value="#{wz1.nazwa}" /> </p:column>
+                        <p:column>
+                           <p:commandLink value="Del" partialSubmit="true"
+                              action="#{indeksMagazynowyEditController.delSelectedWzorzecFromWzorce(wz1)}">
+                           </p:commandLink>
+                        </p:column>
                      </p:orderList>
 
                      <p:panelGrid columns="1">
@@ -178,6 +189,7 @@
                               var="wz" itemValue="#{wz}"
                               itemLabel="#{wz.symbol}">
                            </f:selectItems>
+                      
                         </p:selectOneMenu>
 
 
@@ -187,17 +199,17 @@
                            >
                            <p:ajax event="click"
                               listener="#{indeksMagazynowyEditController.addSelectedWzorzecToWzorce()}"
-                              update="delAllWzorzecOperacjiButton wzorzecOperacjiOrderList"
+                              update="delWzorzecOperacjiButton wzorzecOperacjiOrderList"
                             />
                         </p:commandButton>
 
-                        <p:commandButton value="Usuń wszystkie"
-                           disabled = "#{indeksMagazynowyEditController.indeksMag.technologia.size() == 0}"
-                           id="delAllWzorzecOperacjiButton">
+                        <p:commandButton value="Usuń operację"
+                           id="delWzorzecOperacjiButton"
+                           disabled="#{indeksMagazynowyEditController.orderListSelected == null}"
+                           >
                             <p:ajax event="click"
-                              
-                              listener="#{indeksMagazynowyEditController.delAllFromWzorce()}"
-                              update="wzorzecOperacjiOrderList delAllWzorzecOperacjiButton"
+                              listener="#{indeksMagazynowyEditController.delSelectedWzorzecFromWzorce(wz1)}"
+                              update="wzorzecOperacjiOrderList"
                             />
                         </p:commandButton>
 

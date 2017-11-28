@@ -26,21 +26,21 @@
 
                      <h:outputText value="Indeks:" />
                      <p:inputText
-                        value="#{indeksMagazynowyEditController.indeksMag.indeks}" />
+                        value="#{indeksMagazynowyAddController.indeksMag.indeks}" />
 
                      <h:outputText value="Nazwa:" />
                      <p:inputText
-                        value="#{indeksMagazynowyEditController.indeksMag.nazwa}" />
+                        value="#{indeksMagazynowyAddController.indeksMag.nazwa}" />
 
                      <h:outputText value="Jedn. miary:" />
                      <p:selectOneMenu
-                        value="#{indeksMagazynowyEditController.indeksMag.jednMiary}"
+                        value="#{indeksMagazynowyAddController.indeksMag.jednMiary}"
                         converter="#{jmConverter}">
 
                         <f:selectItem itemLabel="Wybierz jm"
                            itemValue="" />
                         <f:selectItems
-                           value="#{indeksMagazynowyEditController.jednMiary}"
+                           value="#{indeksMagazynowyAddController.jednMiary}"
                            var="jm" itemLabel="#{jm.symbol}"
                            itemValue="#{jm}" />
 
@@ -48,41 +48,41 @@
 
                      <h:outputText value="Materiał?:" />
                      <p:selectBooleanCheckbox
-                        value="#{indeksMagazynowyEditController.indeksMag.material}" />
+                        value="#{indeksMagazynowyAddController.indeksMag.material}" />
 
                      <h:outputText value="Wyrób?:" />
                      <p:selectBooleanCheckbox
-                        value="#{indeksMagazynowyEditController.indeksMag.wyrobGotowy}">
+                        value="#{indeksMagazynowyAddController.indeksMag.wyrobGotowy}">
                         <p:ajax event="change"
-                           listener="#{indeksMagazynowyEditController.wyrobCheckBoxChanged()}"
+                           listener="#{indeksMagazynowyAddController.wyrobCheckBoxChanged()}"
                            update="@form:indeksTab" />
                      </p:selectBooleanCheckbox>
 
                      <h:outputText value="Wymiar palety:" />
                      <p:inputText
-                        value="#{indeksMagazynowyEditController.indeksMag.wymiarPalety}" />
+                        value="#{indeksMagazynowyAddController.indeksMag.wymiarPalety}" />
 
                      <h:outputText value="Ilość sztuk na palecie:" />
                      <p:inputText
-                        value="#{indeksMagazynowyEditController.indeksMag.iloscStukNaPalecie}" />
+                        value="#{indeksMagazynowyAddController.indeksMag.iloscStukNaPalecie}" />
 
                      <h:outputText value="Nr kliszy:" />
                      <p:inputText
-                        value="#{indeksMagazynowyEditController.indeksMag.klisza}" />
+                        value="#{indeksMagazynowyAddController.indeksMag.klisza}" />
 
                      <h:outputText value="Nr wykrojnika:" />
                      <p:inputText
-                        value="#{indeksMagazynowyEditController.indeksMag.wykrojnik}" />
+                        value="#{indeksMagazynowyAddController.indeksMag.wykrojnik}" />
 
                      <p:commandButton value="Zapisz" ajax="false"
-                        action="#{indeksMagazynowyEditController.save()}" />
+                        action="#{indeksMagazynowyAddController.save()}" />
                   </p:panelGrid>
                </p:tab>
                <p:tab title="Materiały" id="materialsTab"
-                  disabled="#{not indeksMagazynowyEditController.indeksMag.wyrobGotowy}">
+                  disabled="#{not indeksMagazynowyAddController.indeksMag.wyrobGotowy}">
                   <p:panel>
                      <p:dataTable id="materialsDataTable"
-                        value="#{indeksMagazynowyEditController.indeksMag.materials}"
+                        value="#{indeksMagazynowyAddController.indeksMag.materials}"
                         var="im" style="height:150px">
 
                         <p:column headerText="Id">
@@ -96,7 +96,7 @@
                         </p:column>
                         <p:column>
                            <p:commandLink
-                              actionListener="#{indeksMagazynowyEditController.dellMaterialFromMaterials()}"
+                              actionListener="#{indeksMagazynowyAddController.dellMaterialFromMaterials()}"
                               value="Usuń" update="materialsDataTable">
 
                               <f:param name="id" value="#{im.id}" />
@@ -105,17 +105,17 @@
                      </p:dataTable>
                      <p:selectOneMenu filter="true"
                         filterMatchMode="contains"
-                        value="#{indeksMagazynowyEditController.selectedMaterial}"
+                        value="#{indeksMagazynowyAddController.selectedMaterial}"
                         var="i" converter="#{indeksMagazynowyConverter}">
 
                         <p:ajax event="change"
-                           listener="#{indeksMagazynowyEditController.materialSelectOneMenuChanged()}"
+                           listener="#{indeksMagazynowyAddController.materialSelectOneMenuChanged()}"
                            update="addMaterialButton" />
 
                         <f:selectItem itemLabel="Wybierz materiał"
                            itemValue="" />
                         <f:selectItems
-                           value="#{indeksMagazynowyEditController.materials}"
+                           value="#{indeksMagazynowyAddController.materials}"
                            var="im" itemValue="#{im}"
                            itemLabel="#{im.id}; #{im.indeks}; #{im.nazwa}" />
                         <p:column>
@@ -131,50 +131,53 @@
 
                      <p:commandButton id="addMaterialButton"
                         value="Dodaj"
-                        disabled="#{indeksMagazynowyEditController.selectedMaterial == null}">
+                        disabled="#{indeksMagazynowyAddController.selectedMaterial == null}">
                         <p:ajax event="click"
-                           listener="#{indeksMagazynowyEditController.addSelectedMaterialToMaterials()}"
+                           listener="#{indeksMagazynowyAddController.addSelectedMaterialToMaterials()}"
                            update="materialsDataTable" />
                      </p:commandButton>
 
                   </p:panel>
                </p:tab>
                <p:tab title="Technologia" id="technologyTab"
-                  disabled="#{not indeksMagazynowyEditController.indeksMag.wyrobGotowy}">
+                  disabled="#{not indeksMagazynowyAddController.indeksMag.wyrobGotowy}">
                   <p:panelGrid layout="grid" columns="2"
                      columnClasses="ui-grid-col-3,ui-grid-col-3"
                      styleClass="ui-panelgrid-blank">
                      
                      <p:orderList id="wzorzecOperacjiOrderList"
                            
-                        value="#{indeksMagazynowyEditController.indeksMag.technologia}"
-                        valueChangeListener="#{indeksMagazynowyEditController.orderListValueChange()}"
+                        value="#{indeksMagazynowyAddController.indeksMag.technologia}"
+                        valueChangeListener="#{indeksMagazynowyAddController.orderListValueChange()}"
                         var="wz1" itemValue="#{wz1}"
                         itemLabel="#{wz1.symbol}"
                         converter="#{wzorzecOperacjiConverter}">
 
                         <p:ajax event="reorder"
-                           listener="#{indeksMagazynowyEditController.orderListReorder( e )}" />
+                           listener="#{indeksMagazynowyAddController.orderListReorder()}" />
                         <p:ajax event="select"
-                           listener="#{indeksMagazynowyEditController.orderListOnSelect}" />
+                           listener="#{indeksMagazynowyAddController.orderListOnSelect}"
+                           update="delWzorzecOperacjiButton" />
                         <p:ajax event="unselect"
-                           listener="#{indeksMagazynowyEditController.orderListOnUnselect}" />
+                           listener="#{indeksMagazynowyAddController.orderListOnUnselect}" 
+                           update="delWzorzecOperacjiButton"
+                           />
                         
 
                      </p:orderList>
 
                      <p:panelGrid columns="1">
                         <p:selectOneMenu
-                           value="#{indeksMagazynowyEditController.selectedWzorzecOperacji}"
+                           value="#{indeksMagazynowyAddController.selectedWzorzecOperacji}"
                            converter="#{wzorzecOperacjiConverter}">
 
                            <p:ajax event="change"
-                              listener="#{indeksMagazynowyEditController.wzorzecOperacjiSelectOneMenuChanged}"
+                              listener="#{indeksMagazynowyAddController.wzorzecOperacjiSelectOneMenuChanged}"
                               update="addWzorzecOperacjiButton" />
 
                            <f:selectItem itemLabel="Wybierz wzorzec" />
                            <f:selectItems
-                              value="#{indeksMagazynowyEditController.wzorceOperacji}"
+                              value="#{indeksMagazynowyAddController.wzorceOperacji}"
                               var="wz" itemValue="#{wz}"
                               itemLabel="#{wz.symbol}">
                            </f:selectItems>
@@ -182,22 +185,22 @@
 
 
                         <p:commandButton value="Dodaj operację"
-                           disabled="#{indeksMagazynowyEditController.selectedWzorzecOperacji == null}"
+                           disabled="#{indeksMagazynowyAddController.selectedWzorzecOperacji == null}"
                            id="addWzorzecOperacjiButton"
                            >
                            <p:ajax event="click"
-                              listener="#{indeksMagazynowyEditController.addSelectedWzorzecToWzorce()}"
-                              update="delAllWzorzecOperacjiButton wzorzecOperacjiOrderList"
+                              listener="#{indeksMagazynowyAddController.addSelectedWzorzecToWzorce()}"
+                              update="delWzorzecOperacjiButton wzorzecOperacjiOrderList"
                             />
                         </p:commandButton>
 
-                        <p:commandButton value="Usuń wszystkie"
-                           disabled = "#{indeksMagazynowyEditController.indeksMag.technologia.size() == 0}"
-                           id="delAllWzorzecOperacjiButton">
+                        <p:commandButton value="Usuń operację"
+                           id="delWzorzecOperacjiButton"
+                           disabled="#{indeksMagazynowyAddController.orderListSelected == null}"
+                           >
                             <p:ajax event="click"
-                              
-                              listener="#{indeksMagazynowyEditController.delAllFromWzorce()}"
-                              update="wzorzecOperacjiOrderList delAllWzorzecOperacjiButton"
+                              listener="#{indeksMagazynowyAddController.delSelectedWzorzecFromWzorce()}"
+                              update="wzorzecOperacjiOrderList"
                             />
                         </p:commandButton>
 

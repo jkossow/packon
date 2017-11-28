@@ -24,6 +24,7 @@ public class SessionValues implements Serializable {
    
    
    private Long kontrahIdToEdit = null;
+   private Long indeksMagazynowyToEdit = null;
 
    
    @PostConstruct
@@ -51,6 +52,22 @@ public class SessionValues implements Serializable {
     */
    public static long getSerialversionuid() {
       return serialVersionUID;
+   }
+
+
+   /**
+    * @return the indeksMagazynowyToEdit
+    */
+   public Long getIndeksMagazynowyToEdit() {
+      return indeksMagazynowyToEdit;
+   }
+
+
+   /**
+    * @param indeksMagazynowyToEdit the indeksMagazynowyToEdit to set
+    */
+   public void setIndeksMagazynowyToEdit(Long indeksMagazynowyToEdit) {
+      this.indeksMagazynowyToEdit = indeksMagazynowyToEdit;
    }
    
    

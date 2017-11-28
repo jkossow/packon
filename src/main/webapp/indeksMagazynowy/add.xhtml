@@ -154,14 +154,11 @@
                         converter="#{wzorzecOperacjiConverter}">
 
                         <p:ajax event="reorder"
-                           listener="#{indeksMagazynowyAddController.orderListReorder()}" />
+                           listener="#{indeksMagazynowyAddController.orderListReorder( e )}" />
                         <p:ajax event="select"
-                           listener="#{indeksMagazynowyAddController.orderListOnSelect}"
-                           update="delWzorzecOperacjiButton" />
+                           listener="#{indeksMagazynowyAddController.orderListOnSelect}" />
                         <p:ajax event="unselect"
-                           listener="#{indeksMagazynowyAddController.orderListOnUnselect}" 
-                           update="delWzorzecOperacjiButton"
-                           />
+                           listener="#{indeksMagazynowyAddController.orderListOnUnselect}" />
                         
 
                      </p:orderList>
@@ -190,17 +187,17 @@
                            >
                            <p:ajax event="click"
                               listener="#{indeksMagazynowyAddController.addSelectedWzorzecToWzorce()}"
-                              update="delWzorzecOperacjiButton wzorzecOperacjiOrderList"
+                              update="delAllWzorzecOperacjiButton wzorzecOperacjiOrderList"
                             />
                         </p:commandButton>
 
-                        <p:commandButton value="Usuń operację"
-                           id="delWzorzecOperacjiButton"
-                           disabled="#{indeksMagazynowyAddController.orderListSelected == null}"
-                           >
+                        <p:commandButton value="Usuń wszystkie"
+                           disabled = "#{indeksMagazynowyAddController.indeksMag.technologia.size() == 0}"
+                           id="delAllWzorzecOperacjiButton">
                             <p:ajax event="click"
-                              listener="#{indeksMagazynowyAddController.delSelectedWzorzecFromWzorce()}"
-                              update="wzorzecOperacjiOrderList"
+                              
+                              listener="#{indeksMagazynowyAddController.delAllFromWzorce()}"
+                              update="wzorzecOperacjiOrderList delAllWzorzecOperacjiButton"
                             />
                         </p:commandButton>
 

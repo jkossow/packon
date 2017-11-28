@@ -1,5 +1,6 @@
 package org.kossowski.packon.domain;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -21,7 +22,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table( name = "indeksy_magazynowe")
-public class IndeksMagazynowy {
+public class IndeksMagazynowy implements Serializable {
 
       //stockIndex
       //warehouseIndex

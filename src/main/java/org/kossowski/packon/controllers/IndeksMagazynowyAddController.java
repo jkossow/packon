@@ -1,14 +1,11 @@
 package org.kossowski.packon.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 
-import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 import org.kossowski.packon.domain.IndeksMagazynowy;
 import org.kossowski.packon.domain.Jm;
 import org.kossowski.packon.domain.WzorzecOperacji;
@@ -16,7 +13,7 @@ import org.kossowski.packon.repositories.IndeksMagazynowyRepository;
 import org.kossowski.packon.repositories.JmRepository;
 import org.kossowski.packon.repositories.WzorzecOperacjiRepository;
 import org.kossowski.packon.utils.JSFUtils;
-import org.primefaces.component.orderlist.OrderList;
+import org.primefaces.event.ReorderEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 import org.slf4j.Logger;
@@ -46,7 +43,7 @@ public class IndeksMagazynowyAddController {
 	private IndeksMagazynowy selectedMaterial;
 	private WzorzecOperacji selectedWzorzecOperacji; 
 	//private OrderList primeOrderList;
-	private WzorzecOperacji orderListSelected;
+	//private WzorzecOperacji orderListSelected;
 	
 	
    @PostConstruct
@@ -55,7 +52,7 @@ public class IndeksMagazynowyAddController {
 	   indeksMag = new IndeksMagazynowy();
 	   selectedMaterial = null;
 	   selectedWzorzecOperacji = null;
-	   orderListSelected = null;
+	   //orderListSelected = null;
 	}
 	
 	
@@ -85,17 +82,13 @@ public class IndeksMagazynowyAddController {
 	      };
 	}
 	
-	public void orderListReorder() {
+	public void orderListReorder( ReorderEvent e ) {
 	   
-	   //Object o = primeOrderList.getValue();
-	   //
-	   //List<WzorzecOperacji> l = null;
-	   //if(  o instanceof List ) {
-	   //  l = (List<WzorzecOperacji>)o;
-	   //  indeksMag.setTechnologia( l );
-	   //}
-	   //log.info( log.getName() + "orderListReorder() l = " + l);
-	   //log.info( log.getName() + "orderListReorder() getLocalValue() = " + primeOrderList.getLocalValue());
+	   //log.info( log.getName() + " Reorder event from: {}  to :{} " , new Object[] {
+	   //   e.getFromIndex(), e.getToIndex()
+	   //});
+	   log.info( log.getName() + " Test {} {} ", new Object[] {2,3} );
+	   log.info( log.getName() + " Reorder event " );
 	   
 	}
 	
@@ -105,24 +98,16 @@ public class IndeksMagazynowyAddController {
 	
 	public void orderListOnSelect( SelectEvent e) {
 	   log.info( log.getName() + "orderListOnSelect() + " + e.getObject().toString() );
-	   orderListSelected = (WzorzecOperacji)e.getObject();
+	   //orderListSelected = (WzorzecOperacji)e.getObject();
 	}
 	
 	public void orderListOnUnselect( UnselectEvent e) {
       log.info( log.getName() + "orderListOnUnselect() + " + e.getObject().toString() );
-      orderListSelected = null;
+      //orderListSelected = null;
    }
 	
 	public void addSelectedWzorzecToWzorce() {
-      //log.info( log.getName() + " addSelectedWzorzecToWzorce selectedWzorzecOperacji = " + selectedWzorzecOperacji );
-      ////log.info( log.getName() + " addSelectedWzorzecToWzorce primeOrderList.getValue() = " + primeOrderList.getValue() );
-      ////log.info( log.getName() + " addSelectedWzorzecToWzorce primeOrderList.getLocalValue() = " + primeOrderList.getLocalValue() );
-      //log.debug("debug message (jk)");
-      //if( selectedWzorzecOperacji != null ) {
-      //   indeksMag.getTechnologia().add( selectedWzorzecOperacji );
-      //   selectedWzorzecOperacji = null;
-      // }   
-	   
+      
       if( selectedWzorzecOperacji != null ) {
             indeksMag.getTechnologia().add( selectedWzorzecOperacji );
             selectedWzorzecOperacji = null;
@@ -130,13 +115,10 @@ public class IndeksMagazynowyAddController {
 	   
    }
 	
-	
-	public void delSelectedWzorzecFromWzorce() {
-	   if( selectedWzorzecOperacji != null ) {
-	      indeksMag.getTechnologia().remove( selectedWzorzecOperacji );
-	      selectedWzorzecOperacji = null;
-	   }
+	public void delAllFromWzorce() {
+	   indeksMag.getTechnologia().clear();
 	}
+	
 	
 	public void wzorzecOperacjiSelectOneMenuChanged() {
       log.info( log.getName() + " wzorzecOperacji = " + selectedWzorzecOperacji );
@@ -199,25 +181,6 @@ public class IndeksMagazynowyAddController {
    }
 
 
-  
-
-
-   /**
-    * @return the orderListSelected
-    */
-   public WzorzecOperacji getOrderListSelected() {
-      return orderListSelected;
-   }
-
-
-   /**
-    * @param orderListSelected the orderListSelected to set
-    */
-   public void setOrderListSelected(WzorzecOperacji orderListSelected) {
-      this.orderListSelected = orderListSelected;
-   }
-
-
    /**
     * @return the selectedWzorzecOperacji
     */
@@ -233,10 +196,6 @@ public class IndeksMagazynowyAddController {
       log.info( log.getName() + " setSelectedWzorzecOperacji() new value = " + selectedWzorzecOperacji );
       this.selectedWzorzecOperacji = selectedWzorzecOperacji;
    }
-	
-	
-	  
-	
 	
 	
 }
