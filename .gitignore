@@ -1,3 +1,4 @@
 target/**
-zam**
+zam.db**
+zam-test.db**
 ant**
