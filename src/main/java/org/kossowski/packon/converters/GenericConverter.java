@@ -8,10 +8,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
 import org.kossowski.packon.domain.IndeksMagazynowy;
-import org.kossowski.packon.repositories.IndeksMagazynowyRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
 
 
 @ManagedBean

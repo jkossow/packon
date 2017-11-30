@@ -25,6 +25,7 @@ public class SessionValues implements Serializable {
    
    private Long kontrahIdToEdit = null;
    private Long indeksMagazynowyToEdit = null;
+   private Long zlecenieToEdit = null;
 
    
    @PostConstruct
@@ -68,6 +69,22 @@ public class SessionValues implements Serializable {
     */
    public void setIndeksMagazynowyToEdit(Long indeksMagazynowyToEdit) {
       this.indeksMagazynowyToEdit = indeksMagazynowyToEdit;
+   }
+
+
+   /**
+    * @return the zlecenieToEdit
+    */
+   public Long getZlecenieToEdit() {
+      return zlecenieToEdit;
+   }
+
+
+   /**
+    * @param zlecenieToEdit the zlecenieToEdit to set
+    */
+   public void setZlecenieToEdit(Long zlecenieToEdit) {
+      this.zlecenieToEdit = zlecenieToEdit;
    }
    
    

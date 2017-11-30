@@ -18,281 +18,261 @@ import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-
-
 @Entity
-@Table( name = "indeksy_magazynowe")
+@Table(name = "indeksy_magazynowe")
 public class IndeksMagazynowy implements Serializable {
 
-      //stockIndex
-      //warehouseIndex
-      //storagehouseIndex
-   
-		@Id @GeneratedValue
-		@Column( name = "id", nullable = true)
-		private Long id;
+   // stockIndex
+   // warehouseIndex
+   // storagehouseIndex
 
-		@Column( name = "uuid")
-		UUID uuid = UUID.randomUUID(); 
-		
-		
-		@NotNull
-		@Column( unique = true)
-		private String indeks;
-		
-		private String nazwa;
-		
-		
-		@ManyToOne
-		private Jm jednMiary;
-		
-		@ManyToMany
-		private Set<IndeksMagazynowy> materials = new HashSet<>();
-		
-		@ManyToMany
-		@OrderColumn
-		private List<WzorzecOperacji> technologia = new ArrayList<>();  
-		
-		
-		
-		private Boolean wyrobGotowy;
-		private Boolean material;
+   /**
+   * 
+   */
+   private static final long serialVersionUID = 1L;
 
-		private String wymiarPalety;
-		private String klisza;
-		private String wykrojnik;
-		private BigInteger iloscStukNaPalecie;
-		
-		public Long getId() {
-			return id;
-		}
-		
-		
-		public void setId(Long id) {
-			this.id = id;
-		}
-		
-		
-		public String getIndeks() {
-			return indeks;
-		}
-		
-		
-		public void setIndeks(String indeks) {
-			this.indeks = indeks;
-		}
-		
-		
-		public String getNazwa() {
-			return nazwa;
-		}
-		
-		
-		public void setNazwa(String nazwa) {
-			this.nazwa = nazwa;
-		}
-		
-		
-		public Boolean getWyrobGotowy() {
-			return wyrobGotowy;
-		}
-		
-		
-		public void setWyrobGotowy(Boolean wyrobGotowy) {
-			this.wyrobGotowy = wyrobGotowy;
-		}
-		
-		
-		public Boolean getMaterial() {
-			return material;
-		}
-		
-		
-		public void setMaterial(Boolean material) {
-			this.material = material;
-		}
+   @Id
+   @GeneratedValue
+   @Column(name = "id", nullable = true)
+   private Long id;
 
+   @Column(name = "uuid")
+   UUID uuid = UUID.randomUUID();
 
-		/**
-		 * @return the uuid
-		 */
-		public UUID getUuid() {
-			return uuid;
-		}
+   @NotNull
+   @Column(unique = true)
+   private String indeks;
 
+   private String nazwa;
 
-		/**
-		 * @param uuid the uuid to set
-		 */
-		public void setUuid(UUID uuid) {
-			this.uuid = uuid;
-		}
+   @ManyToOne
+   private Jm jednMiary;
 
+   // Materiały do produkcji w przypadku gdy indeksMagazynowy jest wyrobem
+   //
+   @ManyToMany
+   private Set<IndeksMagazynowy> materials = new HashSet<>();
 
-		/**
-		 * @return the wymiarPalety
-		 */
-		public String getWymiarPalety() {
-			return wymiarPalety;
-		}
+   // oparecje konieczne do wyprodukowania wyrobu
+   @ManyToMany
+   @OrderColumn
+   private List<WzorzecOperacji> technologia = new ArrayList<>();
 
+   private Boolean wyrobGotowy;
+   private Boolean material;
 
-		/**
-		 * @param wymiarPalety the wymiarPalety to set
-		 */
-		public void setWymiarPalety(String wymiarPalety) {
-			this.wymiarPalety = wymiarPalety;
-		}
+   // preferowany rozmiar palety - propozycja
+   private String wymiarPalety;
+   private String klisza;
+   private String wykrojnik;
+   // preferowana ilość sztuk na palecie
+   private BigInteger iloscStukNaPalecie;
 
+   public Long getId() {
+      return id;
+   }
 
-		/**
-		 * @return the klisza
-		 */
-		public String getKlisza() {
-			return klisza;
-		}
+   public void setId(Long id) {
+      this.id = id;
+   }
 
+   public String getIndeks() {
+      return indeks;
+   }
 
-		/**
-		 * @param klisza the klisza to set
-		 */
-		public void setKlisza(String klisza) {
-			this.klisza = klisza;
-		}
+   public void setIndeks(String indeks) {
+      this.indeks = indeks;
+   }
 
+   public String getNazwa() {
+      return nazwa;
+   }
 
-		/**
-		 * @return the wykrojnik
-		 */
-		public String getWykrojnik() {
-			return wykrojnik;
-		}
+   public void setNazwa(String nazwa) {
+      this.nazwa = nazwa;
+   }
 
+   public Boolean getWyrobGotowy() {
+      return wyrobGotowy;
+   }
 
-		/**
-		 * @param wykrojnik the wykrojnik to set
-		 */
-		public void setWykrojnik(String wykrojnik) {
-			this.wykrojnik = wykrojnik;
-		}
+   public void setWyrobGotowy(Boolean wyrobGotowy) {
+      this.wyrobGotowy = wyrobGotowy;
+   }
 
+   public Boolean getMaterial() {
+      return material;
+   }
 
-		/**
-		 * @return the iloscStukNaPalecie
-		 */
-		public BigInteger getIloscStukNaPalecie() {
-			return iloscStukNaPalecie;
-		}
+   public void setMaterial(Boolean material) {
+      this.material = material;
+   }
 
+   /**
+    * @return the uuid
+    */
+   public UUID getUuid() {
+      return uuid;
+   }
 
-		/**
-		 * @param iloscStukNaPalecie the iloscStukNaPalecie to set
-		 */
-		public void setIloscStukNaPalecie(BigInteger iloscStukNaPalecie) {
-			this.iloscStukNaPalecie = iloscStukNaPalecie;
-		}
+   /**
+    * @param uuid
+    *           the uuid to set
+    */
+   public void setUuid(UUID uuid) {
+      this.uuid = uuid;
+   }
 
-		
-		
-		
+   /**
+    * @return the wymiarPalety
+    */
+   public String getWymiarPalety() {
+      return wymiarPalety;
+   }
 
-		/**
-		 * @return the jednMiary
-		 */
-		public Jm getJednMiary() {
-			return jednMiary;
-		}
+   /**
+    * @param wymiarPalety
+    *           the wymiarPalety to set
+    */
+   public void setWymiarPalety(String wymiarPalety) {
+      this.wymiarPalety = wymiarPalety;
+   }
 
+   /**
+    * @return the klisza
+    */
+   public String getKlisza() {
+      return klisza;
+   }
 
-		/**
-		 * @param jednMiary the jednMiary to set
-		 */
-		public void setJednMiary(Jm jednMiary) {
-			this.jednMiary = jednMiary;
-		}
+   /**
+    * @param klisza
+    *           the klisza to set
+    */
+   public void setKlisza(String klisza) {
+      this.klisza = klisza;
+   }
 
-		
-		
+   /**
+    * @return the wykrojnik
+    */
+   public String getWykrojnik() {
+      return wykrojnik;
+   }
 
-		/**
-       * @return the materials
-       */
-      public Set<IndeksMagazynowy> getMaterials() {
-         return materials;
-      }
+   /**
+    * @param wykrojnik
+    *           the wykrojnik to set
+    */
+   public void setWykrojnik(String wykrojnik) {
+      this.wykrojnik = wykrojnik;
+   }
 
+   /**
+    * @return the iloscStukNaPalecie
+    */
+   public BigInteger getIloscStukNaPalecie() {
+      return iloscStukNaPalecie;
+   }
 
-      /**
-       * @param materials the materials to set
-       */
-      public void setMaterials(Set<IndeksMagazynowy> materials) {
-         this.materials = materials;
-      }
+   /**
+    * @param iloscStukNaPalecie
+    *           the iloscStukNaPalecie to set
+    */
+   public void setIloscStukNaPalecie(BigInteger iloscStukNaPalecie) {
+      this.iloscStukNaPalecie = iloscStukNaPalecie;
+   }
 
-      
+   /**
+    * @return the jednMiary
+    */
+   public Jm getJednMiary() {
+      return jednMiary;
+   }
 
-      /**
-       * @return the technologia
-       */
-      public List<WzorzecOperacji> getTechnologia() {
-         return technologia;
-      }
+   /**
+    * @param jednMiary
+    *           the jednMiary to set
+    */
+   public void setJednMiary(Jm jednMiary) {
+      this.jednMiary = jednMiary;
+   }
 
+   /**
+    * @return the materials
+    */
+   public Set<IndeksMagazynowy> getMaterials() {
+      return materials;
+   }
 
-      /**
-       * @param technologia the technologia to set
-       */
-      public void setTechnologia(List<WzorzecOperacji> technologia) {
-         this.technologia = technologia;
-      }
+   /**
+    * @param materials
+    *           the materials to set
+    */
+   public void setMaterials(Set<IndeksMagazynowy> materials) {
+      this.materials = materials;
+   }
 
+   /**
+    * @return the technologia
+    */
+   public List<WzorzecOperacji> getTechnologia() {
+      return technologia;
+   }
 
-      /* (non-Javadoc)
-		 * @see java.lang.Object#hashCode()
-		 */
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + ((uuid == null) ? 0 : uuid.hashCode());
-			return result;
-		}
+   /**
+    * @param technologia
+    *           the technologia to set
+    */
+   public void setTechnologia(List<WzorzecOperacji> technologia) {
+      this.technologia = technologia;
+   }
 
+   /*
+    * (non-Javadoc)
+    * 
+    * @see java.lang.Object#hashCode()
+    */
+   @Override
+   public int hashCode() {
+      final int prime = 31;
+      int result = 1;
+      result = prime * result + ((uuid == null) ? 0 : uuid.hashCode());
+      return result;
+   }
 
-		/* (non-Javadoc)
-		 * @see java.lang.Object#equals(java.lang.Object)
-		 */
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (!(obj instanceof IndeksMagazynowy))
-				return false;
-			IndeksMagazynowy other = (IndeksMagazynowy) obj;
-			if (uuid == null) {
-				if (other.uuid != null)
-					return false;
-			} else if (!uuid.equals(other.uuid))
-				return false;
-			return true;
-		}
+   /*
+    * (non-Javadoc)
+    * 
+    * @see java.lang.Object#equals(java.lang.Object)
+    */
+   @Override
+   public boolean equals(Object obj) {
+      if (this == obj)
+         return true;
+      if (obj == null)
+         return false;
+      if (!(obj instanceof IndeksMagazynowy))
+         return false;
+      IndeksMagazynowy other = (IndeksMagazynowy) obj;
+      if (uuid == null) {
+         if (other.uuid != null)
+            return false;
+      } else if (!uuid.equals(other.uuid))
+         return false;
+      return true;
+   }
 
+   /*
+    * (non-Javadoc)
+    * 
+    * @see java.lang.Object#toString()
+    */
+   @Override
+   public String toString() {
+      return "IndeksMagazynowy [id=" + id + ", uuid=" + uuid + ", indeks=" + indeks + ", nazwa=" + nazwa
+            + ", wyrobGotowy=" + wyrobGotowy + ", material=" + material + ", wymiarPalety=" + wymiarPalety + ", klisza="
+            + klisza + ", wykrojnik=" + wykrojnik + ", iloscStukNaPalecie=" + iloscStukNaPalecie + "]";
+   }
 
-		/* (non-Javadoc)
-		 * @see java.lang.Object#toString()
-		 */
-		@Override
-		public String toString() {
-			return "IndeksMagazynowy [id=" + id + ", uuid=" + uuid + ", indeks=" + indeks + ", nazwa=" + nazwa
-					+ ", wyrobGotowy=" + wyrobGotowy + ", material=" + material + ", wymiarPalety=" + wymiarPalety
-					+ ", klisza=" + klisza + ", wykrojnik=" + wykrojnik + ", iloscStukNaPalecie=" + iloscStukNaPalecie
-					+ "]";
-		}
-	
-		
-		
-		
-		
 }

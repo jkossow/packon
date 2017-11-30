@@ -1,5 +1,6 @@
 package org.kossowski.packon.domain;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -11,90 +12,87 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.MapKeyJoinColumn;
-import javax.persistence.OneToMany;
-
-
 
 @Entity
-public class Kontrahent {
+public class Kontrahent implements Serializable {
 
    // Customer
-   
-	@Id @GeneratedValue
-	private Long id;
-	
-	@Column( name = "uuid")
-	private final UUID uuid = UUID.randomUUID();
-	
-	private String symbol;
-	private String nazwa;
-	private String nip;
-	private String regon;
-	private String email;
-	
-	private Boolean dostawca = false;
-	private Boolean odbiorca = false;
-	
-	@Embedded
-	private Adres adres = new Adres();
-	
-	@ManyToMany
-	private Set<IndeksMagazynowy> wyrobyGotowe = new HashSet<>();
-	
-	
-	
-	@ElementCollection
-	@CollectionTable(
-	        name = "kontrahent_adresy_wysylkowe",
-	        joinColumns = @JoinColumn( name = "kontrahent_id")
-	)
-	@MapKeyJoinColumn( name = "kontrahent_id", referencedColumnName = "id" )
-	private Map<String , Adres> adresyWysylkowe = new HashMap<>();
 
-	public Long getId() {
-		return id;
-	}
+   /**
+    * 
+    */
+   private static final long serialVersionUID = 1L;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+   @Id
+   @GeneratedValue
+   private Long id;
 
-	public UUID getUuid() {
-		return uuid;
-	}
+   @Column(name = "uuid")
+   private final UUID uuid = UUID.randomUUID();
 
-	public String getSymbol() {
-		return symbol;
-	}
+   private String symbol;
+   private String nazwa;
+   private String nip;
+   private String regon;
+   private String email;
 
-	public void setSymbol(String symbol) {
-		this.symbol = symbol;
-	}
+   private Boolean dostawca = false;
+   private Boolean odbiorca = false;
 
-	public Adres getAdres() {
-		return adres;
-	}
+   @Embedded
+   private Adres adres = new Adres();
 
-	public void setAdres(Adres adres) {
-		this.adres = adres;
-	}
+   @ManyToMany //( fetch=FetchType.EAGER)
+   private Set<IndeksMagazynowy> wyrobyGotowe = new HashSet<>();
 
-	public Set<IndeksMagazynowy> getWyrobyGotowe() {
-		return wyrobyGotowe;
-	}
+   @ElementCollection
+   @CollectionTable(name = "kontrahent_adresy_wysylkowe", joinColumns = @JoinColumn(name = "kontrahent_id"))
+   @MapKeyJoinColumn(name = "kontrahent_id", referencedColumnName = "id")
+   private Map<String, Adres> adresyWysylkowe = new HashMap<>();
 
-	public void setWyrobyGotowe(Set<IndeksMagazynowy> wyrobyGotowe) {
-		this.wyrobyGotowe = wyrobyGotowe;
-	}
+   public Long getId() {
+      return id;
+   }
 
-	
+   public void setId(Long id) {
+      this.id = id;
+   }
 
-	/**
+   public UUID getUuid() {
+      return uuid;
+   }
+
+   public String getSymbol() {
+      return symbol;
+   }
+
+   public void setSymbol(String symbol) {
+      this.symbol = symbol;
+   }
+
+   public Adres getAdres() {
+      return adres;
+   }
+
+   public void setAdres(Adres adres) {
+      this.adres = adres;
+   }
+
+   public Set<IndeksMagazynowy> getWyrobyGotowe() {
+      return wyrobyGotowe;
+   }
+
+   public void setWyrobyGotowe(Set<IndeksMagazynowy> wyrobyGotowe) {
+      this.wyrobyGotowe = wyrobyGotowe;
+   }
+
+   /**
     * @return the adresyWysylkoweNew
     */
    public Map<String, Adres> getAdresyWysylkowe() {
@@ -102,16 +100,13 @@ public class Kontrahent {
    }
 
    /**
-    * @param adresyWysylkoweNew the adresyWysylkoweNew to set
+    * @param adresyWysylkoweNew
+    *           the adresyWysylkoweNew to set
     */
-   public void setAdresyWysylkowe( Map<String, Adres> adresyWysylkowe) {
+   public void setAdresyWysylkowe(Map<String, Adres> adresyWysylkowe) {
       this.adresyWysylkowe = adresyWysylkowe;
    }
 
-   
-   
-   
-   
    /**
     * @return the nip
     */
@@ -120,7 +115,8 @@ public class Kontrahent {
    }
 
    /**
-    * @param nip the nip to set
+    * @param nip
+    *           the nip to set
     */
    public void setNip(String nip) {
       this.nip = nip;
@@ -134,7 +130,8 @@ public class Kontrahent {
    }
 
    /**
-    * @param regon the regon to set
+    * @param regon
+    *           the regon to set
     */
    public void setRegon(String regon) {
       this.regon = regon;
@@ -148,7 +145,8 @@ public class Kontrahent {
    }
 
    /**
-    * @param email the email to set
+    * @param email
+    *           the email to set
     */
    public void setEmail(String email) {
       this.email = email;
@@ -162,15 +160,13 @@ public class Kontrahent {
    }
 
    /**
-    * @param nazwa the nazwa to set
+    * @param nazwa
+    *           the nazwa to set
     */
    public void setNazwa(String nazwa) {
       this.nazwa = nazwa;
    }
 
-   
-   
-   
    /**
     * @return the dostawca
     */
@@ -179,7 +175,8 @@ public class Kontrahent {
    }
 
    /**
-    * @param dostawca the dostawca to set
+    * @param dostawca
+    *           the dostawca to set
     */
    public void setDostawca(Boolean dostawca) {
       this.dostawca = dostawca;
@@ -193,42 +190,49 @@ public class Kontrahent {
    }
 
    /**
-    * @param odbiorca the odbiorca to set
+    * @param odbiorca
+    *           the odbiorca to set
     */
    public void setOdbiorca(Boolean odbiorca) {
       this.odbiorca = odbiorca;
    }
 
-   /* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		
-		return uuid.hashCode();
-	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (!(obj instanceof Kontrahent))
-			return false;
-		Kontrahent other = (Kontrahent) obj;
-		if (uuid == null) {
-			if (other.uuid != null)
-				return false;
-		} else if (!uuid.equals(other.uuid))
-			return false;
-		return true;
-	}
+   
 
    /* (non-Javadoc)
+    * @see java.lang.Object#hashCode()
+    */
+   @Override
+   public int hashCode() {
+      final int prime = 31;
+      int result = 1;
+      result = prime * result + ((uuid == null) ? 0 : uuid.hashCode());
+      return result;
+   }
+
+   /* (non-Javadoc)
+    * @see java.lang.Object#equals(java.lang.Object)
+    */
+   @Override
+   public boolean equals(Object obj) {
+      if (this == obj)
+         return true;
+      if (obj == null)
+         return false;
+      if (!(obj instanceof Kontrahent))
+         return false;
+      Kontrahent other = (Kontrahent) obj;
+      if (uuid == null) {
+         if (other.uuid != null)
+            return false;
+      } else if (!uuid.equals(other.uuid))
+         return false;
+      return true;
+   }
+
+   /*
+    * (non-Javadoc)
+    * 
     * @see java.lang.Object#toString()
     */
    @Override
@@ -238,16 +242,4 @@ public class Kontrahent {
             + adres + ", wyrobyGotowe=" + wyrobyGotowe + ", adresyWysylkowe=" + adresyWysylkowe + "]";
    }
 
-   
-
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
 }

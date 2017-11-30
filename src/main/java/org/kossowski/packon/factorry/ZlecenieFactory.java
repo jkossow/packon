@@ -1,6 +1,7 @@
 package org.kossowski.packon.factorry;
 
 import java.util.Date;
+import java.util.HashSet;
 
 import org.kossowski.packon.domain.Status;
 import org.kossowski.packon.domain.Zlecenie;
@@ -13,6 +14,8 @@ public class ZlecenieFactory {
       
       z.setData( new Date() );
       z.setStatus( Status.WPROWADZONE );
+      
+      z.setZamowieniaMaterialu( new HashSet<>() );
       
       return z;
    }

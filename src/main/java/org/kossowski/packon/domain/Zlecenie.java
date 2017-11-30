@@ -1,9 +1,13 @@
 package org.kossowski.packon.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.UUID;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -13,14 +17,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 
 @Entity
 @Table( name = "zlecenia" )
-public class Zlecenie {
+public class Zlecenie implements Serializable {
    
+   
+   
+   /**
+    * 
+    */
+   private static final long serialVersionUID = 1L;
+
    // ProductionOrder
 	
 	@Id @GeneratedValue
@@ -42,7 +54,8 @@ public class Zlecenie {
 	
 	private String numerZamowieniaKienta;
 	
-	private String adresWysylkowy;
+	private String adresWysylkowyKey;
+	private Adres adresWysylkowy;
 	
 	@ManyToOne
 	private Kontrahent kontrahent;
@@ -52,6 +65,12 @@ public class Zlecenie {
 	
 	private BigDecimal ilosc; 
 	
+	@ManyToOne
+	private Jm jm;
+	
+	@OneToMany( cascade=CascadeType.ALL )
+	@JoinColumn( name = "ZLECENIE_ID")
+	private Set<ZamowienieMaterialu> zamowieniaMaterialu = new HashSet<>();	
 	
 	@Enumerated( EnumType.STRING )
 	private Prioryted prioryted = Prioryted.NORMALNY;
@@ -123,15 +142,15 @@ public class Zlecenie {
    /**
     * @return the adresWysylkowy
     */
-   public String getAdresWysylkowy() {
-      return adresWysylkowy;
+   public String getAdresWysylkowyKey() {
+      return adresWysylkowyKey;
    }
 
    /**
     * @param adresWysylkowy the adresWysylkowy to set
     */
-   public void setAdresWysylkowy(String adresWysylkowy) {
-      this.adresWysylkowy = adresWysylkowy;
+   public void setAdresWysylkowyKey(String adresWysylkowyKey) {
+      this.adresWysylkowyKey = adresWysylkowyKey;
    }
 
    
@@ -224,6 +243,56 @@ public class Zlecenie {
    public void setProdukt(IndeksMagazynowy produkt) {
       this.produkt = produkt;
    }
+   
+   
+   
+   
+
+   /**
+    * @return the adresWysylkowy
+    */
+   public Adres getAdresWysylkowy() {
+      return adresWysylkowy;
+   }
+
+   /**
+    * @param adresWysylkowy the adresWysylkowy to set
+    */
+   public void setAdresWysylkowy(Adres adresWysylkowy) {
+      this.adresWysylkowy = adresWysylkowy;
+   }
+   
+
+   
+   
+   /**
+    * @return the zamowieniaMaterialu
+    */
+   public Set<ZamowienieMaterialu> getZamowieniaMaterialu() {
+      return zamowieniaMaterialu;
+   }
+
+   /**
+    * @param zamowieniaMaterialu the zamowieniaMaterialu to set
+    */
+   public void setZamowieniaMaterialu(Set<ZamowienieMaterialu> zamowieniaMaterialu) {
+      this.zamowieniaMaterialu = zamowieniaMaterialu;
+   }
+
+   /**
+    * @return the jm
+    */
+   public Jm getJm() {
+      return jm;
+   }
+
+   /**
+    * @param jm the jm to set
+    */
+   public void setJm(Jm jm) {
+      this.jm = jm;
+   }
+   
 
    @Override
 	public int hashCode() {
@@ -257,9 +326,11 @@ public class Zlecenie {
    public String toString() {
       return "Zlecenie [id=" + id + ", uuid=" + uuid + ", user=" + user + ", data=" + data + ", terminDostawy="
             + terminDostawy + ", uwagi=" + uwagi + ", numerZamowieniaKienta=" + numerZamowieniaKienta
-            + ", adresWysylkowy=" + adresWysylkowy + ", kontrahent=" + kontrahent + ", produkt=" + produkt
-            + ", prioryted=" + prioryted + ", status=" + status + "]";
+            + ", adresWysylkowyKey=" + adresWysylkowyKey + ", kontrahent=" + kontrahent + ", produkt=" + produkt
+            + ", ilosc=" + ilosc + ", prioryted=" + prioryted + ", status=" + status + "]";
    }
+
+   
 
 	
 	

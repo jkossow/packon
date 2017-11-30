@@ -16,11 +16,8 @@
 
       <ui:define name="content">
          <h:form>
-
-            <p:tabView id="indeksTab">
-
+            <p:tabView id="indeksTab" >
                <p:tab title="Dane">
-
                   <p:panelGrid columns="2">
                      <f:facet name="header">Nowy indeks magazynowy</f:facet>
 
@@ -73,9 +70,6 @@
                      <h:outputText value="Nr wykrojnika:" />
                      <p:inputText
                         value="#{indeksMagazynowyAddController.indeksMag.wykrojnik}" />
-
-                     <p:commandButton value="Zapisz" ajax="false"
-                        action="#{indeksMagazynowyAddController.save()}" />
                   </p:panelGrid>
                </p:tab>
                <p:tab title="Materiały" id="materialsTab"
@@ -144,9 +138,8 @@
                   <p:panelGrid layout="grid" columns="2"
                      columnClasses="ui-grid-col-3,ui-grid-col-3"
                      styleClass="ui-panelgrid-blank">
-                     
+
                      <p:orderList id="wzorzecOperacjiOrderList"
-                           
                         value="#{indeksMagazynowyAddController.indeksMag.technologia}"
                         valueChangeListener="#{indeksMagazynowyAddController.orderListValueChange()}"
                         var="wz1" itemValue="#{wz1}"
@@ -159,7 +152,7 @@
                            listener="#{indeksMagazynowyAddController.orderListOnSelect}" />
                         <p:ajax event="unselect"
                            listener="#{indeksMagazynowyAddController.orderListOnUnselect}" />
-                        
+
 
                      </p:orderList>
 
@@ -183,31 +176,28 @@
 
                         <p:commandButton value="Dodaj operację"
                            disabled="#{indeksMagazynowyAddController.selectedWzorzecOperacji == null}"
-                           id="addWzorzecOperacjiButton"
-                           >
+                           id="addWzorzecOperacjiButton">
                            <p:ajax event="click"
                               listener="#{indeksMagazynowyAddController.addSelectedWzorzecToWzorce()}"
-                              update="delAllWzorzecOperacjiButton wzorzecOperacjiOrderList"
-                            />
+                              update="delAllWzorzecOperacjiButton wzorzecOperacjiOrderList" />
                         </p:commandButton>
 
                         <p:commandButton value="Usuń wszystkie"
-                           disabled = "#{indeksMagazynowyAddController.indeksMag.technologia.size() == 0}"
+                           disabled="#{indeksMagazynowyAddController.indeksMag.technologia.size() == 0}"
                            id="delAllWzorzecOperacjiButton">
-                            <p:ajax event="click"
-                              
+                           <p:ajax event="click"
                               listener="#{indeksMagazynowyAddController.delAllFromWzorce()}"
-                              update="wzorzecOperacjiOrderList delAllWzorzecOperacjiButton"
-                            />
+                              update="wzorzecOperacjiOrderList delAllWzorzecOperacjiButton" />
                         </p:commandButton>
 
                      </p:panelGrid>
                   </p:panelGrid>
                </p:tab>
                <p:tab title="Subiekt">
-
                </p:tab>
             </p:tabView>
+            <p:commandButton value="Zapisz" ajax="false"
+                  action="#{indeksMagazynowyAddController.save()}" />
          </h:form>
       </ui:define>
    </ui:composition>

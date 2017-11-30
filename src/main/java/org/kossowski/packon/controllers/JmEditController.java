@@ -50,6 +50,7 @@ public class JmEditController implements Serializable {
    
    public String ok() {
       
+      log.info( log.getName() + "ok() jm=" + jm);
       jmRepo.save( jm );
       return "/jm/list.xhtml";
    }

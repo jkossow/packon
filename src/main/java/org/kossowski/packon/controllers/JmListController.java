@@ -6,9 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import org.kossowski.packon.domain.Jm;
-import org.kossowski.packon.domain.User;
 import org.kossowski.packon.repositories.JmRepository;
-import org.kossowski.packon.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

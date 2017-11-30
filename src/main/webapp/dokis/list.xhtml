@@ -41,14 +41,18 @@
                <h:outputText value="#{z.ilosc}" />
             </p:column>
             
-            <p:column headerText="Adres dostawy" sortBy="#{z.adresWysylkowy}">
-               <h:outputText value="#{z.adresWysylkowy}" />
+             <p:column headerText="Jm" sortBy="#{z.jm}">
+               <h:outputText value="#{z.jm.symbol}" />
+            </p:column>
+            
+            <p:column headerText="Adres dostawy" sortBy="#{z.adresWysylkowyKey}">
+               <h:outputText value="#{z.adresWysylkowyKey}" />
             </p:column>
 				<p:column headerText="Status">
 					<h:outputText value="#{z.status}" />
 				</p:column>
 				<p:column headerText="Oper">
-					<p:commandLink value="Popraw" action="/" ajax="false">
+					<p:commandLink value="Popraw" action="#{dokisZlecenieListController.prepEdit()}" >
 						<f:param name="id" value="#{z.id}" />
 					</p:commandLink>
 				</p:column>
