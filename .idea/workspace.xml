@@ -7,143 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9815508-45e1-447a-8504-06f762d77810" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_2_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_2_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__nz_net_ultraq_thymeleaf_thymeleaf_layout_dialect_1_4_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ognl_ognl_3_0_8.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_annotations_api_8_5_23.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_2_6_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_2_4_12.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jdt_ecj_3_12_3.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_1_10_19.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_3.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_4_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_5_8_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_1_5_8_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_1_5_8_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_1_5_8_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_4_3_12_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_3_12_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_3_12_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_3_12_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_2_1_5_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring4_2_1_5_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_1_0_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/dostawy1.sql" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/controllers/DokisZlecenieEdit2Controller.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/controllers/MagZlecenieListController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/controllers/ProdZlecenieListController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/DostawaMaterialu.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/factorry/IndeksMagazynowyFactory.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/application-mssql.properties" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/dokis/edit2.xhtml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/magazyn/list.xhtml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/produkcja/list.xhtml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/templates/adminMenu.xhtml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/templates/adminTemplate.xhtml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/templates/dokisMenu.xhtml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/templates/magMenu.xhtml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/templates/menu.xhtml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/templates/prodMenu.xhtml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/kossowski/packon/JmDaoTest.java" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_8.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_10.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_8.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_10.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_2.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_h2database_h2_1_4_194.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_h2database_h2_1_4_196.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_14.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_23.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_14.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_23.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_jasper_8_5_14.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_jasper_8_5_23.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_14.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_23.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_jdbc_8_5_14.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_jdbc_8_5_23.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_juli_8_5_14.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_juli_8_5_23.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_10.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_11.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jdt_core_compiler_ecj_4_6_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_1_5_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_1_5_8_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_actuator_1_5_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_actuator_1_5_8_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_1_5_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_1_5_8_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_1_5_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_1_5_8_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_actuator_1_5_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_actuator_1_5_8_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_1_5_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_1_5_8_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_1_5_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_1_5_8_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_1_5_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_1_5_8_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_1_5_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_1_5_8_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_5_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_5_8_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_5_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_5_8_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_1_13_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_1_13_8_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_1_11_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_1_11_8_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_taglibs_4_2_2_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_taglibs_4_2_3_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_3_8_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_3_12_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_4_3_8_RELEASE.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_3_8_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_4_3_12_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_3_8_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_3_12_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_3_8_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_3_12_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_3_8_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_3_12_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_3_8_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_4_3_12_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_4_3_8_RELEASE.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_3_8_RELEASE.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_3_8_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_3_12_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_3_8_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_3_12_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/packon.iml" afterPath="$PROJECT_DIR$/packon.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/IndexController.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/IndexController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/PackonApplication.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/PackonApplication.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/controllers/DokisZlecenieEditController.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/controllers/DokisZlecenieEditController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/controllers/DokisZlecenieListController.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/controllers/DokisZlecenieListController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/controllers/JmAddController.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/controllers/JmAddController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/controllers/JmDelController.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/controllers/JmDelController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/controllers/JmEditController.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/controllers/JmEditController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/Adres.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/Adres.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/IndeksMagazynowy.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/IndeksMagazynowy.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/Jm.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/Jm.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/Kontrahent.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/Kontrahent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/Status.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/Status.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/User.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/User.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/ZamowienieMaterialu.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/ZamowienieMaterialu.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/Zlecenie.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/Zlecenie.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/factorry/ZlecenieFactory.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/factorry/ZlecenieFactory.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/utils/JSFUtils.java" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/utils/JSFUtils.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-test.properties" afterPath="$PROJECT_DIR$/src/main/resources/application-test.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/data.sql" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dokis/add.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/dokis/add.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dokis/edit.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/dokis/edit.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dokis/index.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/dokis/index.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dokis/list.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/dokis/list.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/indeksMagazynowy/add.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/indeksMagazynowy/add.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/indeksMagazynowy/add2.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/indeksMagazynowy/add2.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/indeksMagazynowy/edit.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/indeksMagazynowy/edit.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/indeksMagazynowy/edit2.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/indeksMagazynowy/edit2.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/indeksMagazynowy/edit3.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/indeksMagazynowy/edit3.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/index.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jm/add.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/jm/add.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jm/edit.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/jm/edit.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jm/list.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/jm/list.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/magazyn/index.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/magazyn/index.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/produkcja/index.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/produkcja/index.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/templates/dokisTemplate.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/templates/dokisTemplate.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/templates/magTemplate.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/templates/magTemplate.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/templates/mainTemplate.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/templates/mainTemplate.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/templates/prodTemplate.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/templates/prodTemplate.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/zamMat/list.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/zamMat/list.xhtml" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/kossowski/packon/PackonApplicationTests.java" afterPath="$PROJECT_DIR$/src/test/java/org/kossowski/packon/PackonApplicationTests.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/application-test.properties" afterPath="$PROJECT_DIR$/src/test/resources/application-test.properties" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/application.properties" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -207,7 +71,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/IndeksMagazynowy.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="268">
-              <caret line="48" column="39" lean-forward="true" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
+              <caret line="48" column="39" lean-forward="false" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -284,9 +148,6 @@
       </expand>
       <select />
     </treeState>
-  </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1345" />
@@ -385,33 +246,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="packon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="packon" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packon" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="packon" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="packon" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packon" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="packon" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="packon" type="b2602c69:ProjectViewProjectNode" />
-              <item name="packon" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="packon" type="462c0819:PsiDirectoryNode" />
-              <item name="factorry" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="packon" type="b2602c69:ProjectViewProjectNode" />
@@ -570,12 +404,12 @@
       <workItem from="1513775781765" duration="1223000" />
       <workItem from="1513950553170" duration="987000" />
       <workItem from="1513951611371" duration="2528000" />
-      <workItem from="1513983491015" duration="328000" />
+      <workItem from="1513983491015" duration="1183000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35552000" />
+    <option name="totallyTimeSpent" value="36407000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -588,7 +422,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="-42" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938075" sideWeight="0.5028612" order="7" side_tool="true" content_ui="tabs" />
@@ -610,9 +443,9 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938075" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938075" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4176548" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4176548" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32940018" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32806325" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22818312" sideWeight="0.4838256" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16719915" sideWeight="0.5161744" order="2" side_tool="true" content_ui="tabs" />
@@ -1015,7 +848,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/org/kossowski/packon/domain/IndeksMagazynowy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
-          <caret line="48" column="39" lean-forward="true" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
+          <caret line="48" column="39" lean-forward="false" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
           <folding />
         </state>
       </provider>
