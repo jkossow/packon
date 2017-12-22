@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
 @Entity
@@ -19,23 +21,36 @@ public class Jm implements Serializable {
    /**
     * 
     */
-   private static final long serialVersionUID = 1L;
+   
+   private  static final long serialVersionUID = 1L;
 
    @Id
    @GeneratedValue
    private Long id;
 
    @Column(name = "uuid")
-   UUID uuid = UUID.randomUUID();
+   private UUID uuid = UUID.randomUUID();
 
-   //@Version
-   private Long JpaVersion;
+   @Version
+   private Long JpaVersion = 0L;
    
-   
+   @Column( name="symbol" , unique=true)
    private String symbol;
    private String nazwa;
 
+
+   public Jm() {};
    
+   public Jm( String symbol, String nazwa ) {
+      this.symbol = symbol;
+      this.nazwa = nazwa;
+   }
+   
+   public Jm( long id, String symbol, String nazwa ) {
+      this.id = id;
+      this.symbol = symbol;
+      this.nazwa = nazwa;
+   }
    
    public Long getId() {
       return id;

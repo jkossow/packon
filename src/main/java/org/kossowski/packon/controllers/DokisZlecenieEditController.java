@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -27,6 +28,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
+
 
 
 
@@ -59,7 +62,7 @@ public class DokisZlecenieEditController implements Serializable {
    protected SessionValues sv;
    
    protected Zlecenie zlecenie;
-   
+   protected Set<IndeksMagazynowy> productList = null;
   
 
    @PostConstruct
@@ -69,6 +72,8 @@ public class DokisZlecenieEditController implements Serializable {
 
       Long id = sv.getZlecenieToEdit();
       zlecenie = zlecRepo.findOne( id );
+      
+      
       
       log.info( log.getName() + " doksZlecenieEditController.init() zlecenie=" + zlecenie );
    }
@@ -107,6 +112,16 @@ public class DokisZlecenieEditController implements Serializable {
       }
    }
    
+   public Set<IndeksMagazynowy> getProducts() {
+      
+//      if( productList == null) {
+//         productList = zle
+//      }
+      //Hibernate.initialize( zlecenie.getKontrahent().getWyrobyGotowe() );
+      
+      return zlecenie.getKontrahent() != null ?  zlecenie.getKontrahent().getWyrobyGotowe() : null;
+   }
+   
    public Collection<String> getAdresyWysylkowe() {
    
       return zlecenie != null  && zlecenie.getKontrahent() != null ? 
@@ -121,24 +136,7 @@ public class DokisZlecenieEditController implements Serializable {
    
    
    
-   public void dopisz() {
-      
-      // dopisane bo rzucalo wyjatkiem ze nie moze zainicjowac tej kolekcji - no session
-      Hibernate.initialize(zlecenie.getKontrahent().getWyrobyGotowe());
-      
-      log.info( log.getName() + " dopisz() zamowieniaMaterialu.size()=" + zlecenie.getZamowieniaMaterialu().size());
-      zlecenie = zlecRepo.findOne( zlecenie.getId() );
-      for( IndeksMagazynowy i : zlecenie.getProdukt().getMaterials() ) {
-         ZamowienieMaterialu z = new ZamowienieMaterialu();
-         z.setMaterial( i );
-         z.setDataZamowienia( new Date() );
-         //zamRepo.save( z );
-         
-         zlecenie.getZamowieniaMaterialu().add( z );
-      };
-      log.info( log.getName() + " dopisz() zamowieniaMaterialu.size()=" + zlecenie.getZamowieniaMaterialu().size());
-      
-   }
+  
    
    public String  save() {
       

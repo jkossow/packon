@@ -1,4 +1,13 @@
 target/**
-zam.db**
-zam-test.db**
 ant**
+zam**
+out/**
+node_modules/**
+
+
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr

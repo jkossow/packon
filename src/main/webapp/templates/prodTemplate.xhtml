@@ -19,10 +19,15 @@
 
         <div id="wrapper">
         <div id="header">
-        	<ui:insert name="header"> 
-        		Header PROD
-        	</ui:insert>
-            <p>This is the Header</p>
+        <ui:insert name="header">
+               <div>
+                  <span>
+                  <img src="/img/logo-PackON.png" />
+                  </span>
+                  
+               </div>
+
+            </ui:insert>
         </div>
         <div id="contentliquid"><div id="content">
            <ui:insert name="content">
@@ -33,12 +38,15 @@
        </div></div>
         <div id="leftcolumn">
             <ui:insert name="left">
-            	Left panel
+               <ui:include src="/templates/prodMenu.xhtml" />
             </ui:insert>
+
            
         </div>
         <div id="footer">
-            <p>This is the Footer</p>
+            <div>
+            <p>prodTemplate</p>
+            </div>
         </div>
     </div>
      </f:view>

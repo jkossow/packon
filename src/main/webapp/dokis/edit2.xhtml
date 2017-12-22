@@ -1,0 +1,414 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<body>
+
+<ui:composition template="/templates/dokisTemplate.xhtml">
+
+    <ui:define name="js">
+        <h:outputScript library="js" name="plForSchedule.js"/>
+        <h:outputStylesheet library="css" name="p.css"/>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <p:tabView activeIndex="1">
+                <p:tab title="Ogólne">
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row>
+                                <p:column colspan="2">
+                                    <h:outputText
+                                            value="Nowe zlecenie (edit2)"/>
+                                </p:column>
+                            </p:row>
+                        </f:facet>
+                        <p:row>
+                            <p:column>
+                                <h:outputText value="Data wprowadzenia:"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputText
+                                        value="#{dokisZlecenieEdit2Controller.zlecenie.data}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputText value="Termin dostawy:"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputText
+                                        value="#{dokisZlecenieEdit2Controller.zlecenie.terminDostawy}"/>
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputText
+                                        value="Numer zamowienia klienta:"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputText
+                                        value="#{dokisZlecenieEdit2Controller.zlecenie.numerZamowieniaKienta}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column styleClass="ui-widget-header">
+                                <h:outputText value="Klient:"/>
+                            </p:column>
+                            <p:column styleClass="ui-widget-header">
+                                <h:outputText
+                                        value="#{dokisZlecenieEdit2Controller.zlecenie.kontrahent.symbol}"/>
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+
+                            <p:column colspan="2">
+                                <p:panelGrid id="kontrahentPanel" columns="2"
+                                             styleClass="ui-panelgrid-blank">
+
+                                    <h:outputText value="Nazwa:"/>
+
+                                    <h:outputText
+                                            value="#{dokisZlecenieEdit2Controller.zlecenie.kontrahent.nazwa}"/>
+
+                                    <h:outputText value="email:"/>
+
+                                    <h:outputText
+                                            value="#{dokisZlecenieEdit2Controller.zlecenie.kontrahent.email}"/>
+
+                                    <h:outputText value="NIP:"/>
+
+                                    <h:outputText
+                                            value="#{dokisZlecenieEdit2Controller.zlecenie.kontrahent.nip}"/>
+
+                                    <h:outputText value="Regon:"/>
+
+                                    <h:outputText
+                                            value="#{dokisZlecenieEdit2Controller.zlecenie.kontrahent.regon}"/>
+
+                                </p:panelGrid>
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <!--
+                            <p:column styleClass="ui-widget-header">
+                               <h:outputText value="Produkt:" />
+                            </p:column>
+                            <p:column styleClass="ui-widget-header">
+                               <h:outputText
+                                  value="#{dokisZlecenieEdit2Controller.zlecenie.produkt.nazwa}" />
+                            </p:column>
+                            -->
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="2">
+
+                                <p:panelGrid id="productPanel">
+
+                                    <f:facet name="header">
+                                        <p:row>
+                                            <p:column>
+                                                <h:outputText value="Klisza:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <h:outputText value="Wykrojnik:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <h:outputText
+                                                        value="Rodzaj palety:"/>
+                                            </p:column>
+                                            <p:column>
+                                                <h:outputText
+                                                        value="Ilość sztuk na palecie:"/>
+                                            </p:column>
+                                        </p:row>
+                                    </f:facet>
+                                    <p:row>
+
+                                        <p:column>
+
+                                            <h:outputText
+                                                    value="#{dokisZlecenieEdit2Controller.zlecenie.produkt.klisza}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText
+                                                    value="#{dokisZlecenieEdit2Controller.zlecenie.produkt.wykrojnik}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText
+                                                    value="#{dokisZlecenieEdit2Controller.zlecenie.produkt.iloscSztukNaPalecie}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <h:outputText
+                                                    value="#{dokisZlecenieEdit2Controller.zlecenie.produkt.wymiarPalety}"/>
+                                        </p:column>
+                                    </p:row>
+                                </p:panelGrid>
+
+                            </p:column>
+                        </p:row>
+
+                        <p:row>
+
+                            <p:column styleClass="ui-widget-header">
+                                <h:outputText value="Adres wysyłkowy:"/>
+                            </p:column>
+                            <p:column styleClass="ui-widget-header">
+                                <h:outputText
+                                        id="adresWysylkowySelectOneMenu"
+                                        value="#{dokisZlecenieEdit2Controller.zlecenie.adresWysylkowyKey}"/>
+
+
+                            </p:column>
+
+                        </p:row>
+
+                        <p:row>
+
+                            <p:column colspan="2">
+                                <p:panelGrid columns="2" id="awPanel"
+                                             styleClass="ui-panelgrid-blank">
+
+                                    <h:outputText
+                                            value="Kod pocztowy i poczta:"/>
+                                    <h:outputText
+                                            value="#{dokisZlecenieEdit2Controller.zlecenie.adresWysylkowy.kodPocztowy} #{dokisZlecenieEdit2Controller.zlecenie.adresWysylkowy.poczta}"/>
+
+                                    <h:outputText
+                                            value="Ulica, nr domu, nr lokalu:"/>
+                                    <h:outputText
+                                            value="#{dokisZlecenieEdit2Controller.zlecenie.adresWysylkowy.ulica} #{dokisZlecenieEdit2Controller.zlecenie.adresWysylkowy.nrDomu} /#{dokisZlecenieEdit2Controller.zlecenie.adresWysylkowy.nrLokalu}"/>
+
+                                    <h:outputText value="Miejscowość:"/>
+                                    <h:outputText
+                                            value="#{dokisZlecenieEdit2Controller.zlecenie.adresWysylkowy.miejscowosc}"/>
+
+                                </p:panelGrid>
+                            </p:column>
+
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputText value="Ilość:"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputNumber
+                                        value="#{dokisZlecenieEdit2Controller.zlecenie.ilosc}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputText value="Jm:"/>
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu id="jmSelect"
+                                                 value="#{dokisZlecenieEdit2Controller.zlecenie.jm}"
+                                                 converter="#{jmConverter}">
+                                    <f:selectItem itemLabel="Wybierz"
+                                                  itemValue=""/>
+                                    <f:selectItems
+                                            value="#{dokisZlecenieEdit2Controller.jmList}"
+                                            var="jm" itemLabel="#{jm.symbol}"
+                                            itemValue="#{jm}"/>
+                                </p:selectOneMenu>
+
+                            </p:column>
+
+                        </p:row>
+                    </p:panelGrid>
+                </p:tab>
+                <p:tab title="Materiały">
+                    <p:dataTable
+                            value="#{dokisZlecenieEdit2Controller.zlecenie.zamowieniaMaterialu}"
+                            editable="true" editMode="cell" widgetVar="cellZam"
+
+                            var="z" id="matDt">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{z.id}"/>
+                        </p:column>
+                        <p:column headerText="Data zamówienia">
+                            <h:outputText value="#{z.dataZamowienia}">
+                                <f:convertDateTime type="date"
+                                                   pattern="yyyy-MM-dd"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="Termin dostawy">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{z.terminDostawy}">
+                                        <f:convertDateTime type="date"
+                                                           pattern="yyyy-MM-dd"/>
+                                    </h:outputText>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:calendar value="#{z.terminDostawy}"
+                                                pattern="yyyy-MM-dd"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column headerText="Indeks mat.">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{z.material.indeks}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:selectOneMenu value="#{z.material}"
+                                                     converter="#{indeksMagazynowyConverter}">
+                                        <f:selectItems
+                                                value="#{dokisZlecenieEdit2Controller.listaMaterialow}"
+                                                var="m" itemValue="#{m}"
+                                                itemLabel="#{m.indeks}"/>
+                                    </p:selectOneMenu>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column headerText="Nazwa mat,.">
+                            <h:outputText value="#{z.material.nazwa}"/>
+                        </p:column>
+                        <p:column headerText="Dostawca">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{z.dostawca.symbol}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:selectOneMenu value="#{z.dostawca}"
+                                                     converter="#{kontrahentConverter}">
+                                        <f:selectItem itemLabel="Wybierz"
+                                                      itemValue=""/>
+                                        <f:selectItems
+                                                value="#{dokisZlecenieEdit2Controller.listaDostawcow}"
+                                                var="k" itemValue="#{k}"
+                                                itemLabel="#{k.symbol}"/>
+                                    </p:selectOneMenu>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column headerText="Ilość zam.">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{z.iloscZamowiona}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{z.iloscZamowiona}"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column headerText="Ilość dostarczona">
+                            <h:outputText value="#{z.iloscDostarczona}"/>
+                        </p:column>
+                        <p:column headerText="Wartość zam.">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{z.wartosc}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{z.wartosc}"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column>
+                            <p:commandLink value="Dostawy"
+                                           onclick="PF('dostawyDialog').show()"
+                                           actionListener="#{dokisZlecenieEdit2Controller.pokazDostawy(z)}"
+                                           update="matDt @([id$=dostawyDataTable])"/>
+                            <p:spacer width="3px"></p:spacer>
+                            <p:commandLink value="Usuń"
+                                           actionListener="#{dokisZlecenieEdit2Controller.delOrder(z)}"
+                                           update="matDt"/>
+                        </p:column>
+
+
+                    </p:dataTable>
+                    <p:commandLink value="Nowy materiał"
+                                   action="#{dokisZlecenieEdit2Controller.nowyMaterial}"
+                                   update="matDt"/>
+                    <p:spacer width="5px"></p:spacer>
+                    <p:commandLink value="Dopisz materiały"
+                                   action="#{dokisZlecenieEdit2Controller.dopisz}"
+                                   update="matDt"/>
+                </p:tab>
+                <p:tab title="Podukcja">
+                </p:tab>
+                <p:tab title="Wysyłki">
+                </p:tab>
+            </p:tabView>
+            <p:commandButton value="Zapisz"
+                             action="#{dokisZlecenieEdit2Controller.save}"/>
+
+
+            <p:dialog id="dostawyDialog" widgetVar="dostawyDialog"
+                      modal="true" closeOnEscape="true" width="600px">
+                <p:dataTable id="dostawyDataTable"
+                             value="#{dokisZlecenieEdit2Controller.dostawy}"
+                             var="d" editable="true" editMode="cell">
+                    <p:column headerText="Zlecenie Id">
+                        <h:outputText value="#{d.zamowienieMaterialu.zlecenie.id}"/>
+                    </p:column>
+                    <p:column headerText="zamMat Id">
+                        <h:outputText value="#{d.zamowienieMaterialu.id}"/>
+                    </p:column>
+                    <p:column headerText="Id">
+                        <h:outputText value="#{d.id}"/>
+                    </p:column>
+                    <p:column headerText="Data">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <h:outputText value="#{d.dataDostawy}">
+                                    <f:convertDateTime type="date"
+                                                       pattern="yyyy-MM-dd"/>
+                                </h:outputText>
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:calendar value="#{d.dataDostawy}"
+                                            pattern="yyyy-MM-dd"/>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Ilość">
+                        <h:outputText value="#{d.ilosc}"/>
+                    </p:column>
+                    <p:column headerText="Liczba palet">
+                        <h:outputText value="#{d.liczbaPalet}"/>
+                    </p:column>
+                </p:dataTable>
+                <h:panelGrid columns="2">
+
+
+                    <p:commandButton value="Nowa dostawa"
+                                     action="#{dokisZlecenieEdit2Controller.nowaDostawa}"
+                                     update="dostawyDataTable"/>
+                    <p:commandButton value="Zamknij"
+                                     onclick="PF('dostawyDialog').hide()"/>
+
+                </h:panelGrid>
+            </p:dialog>
+
+
+            <p:dialog id="dostawaDialog" widgetVar="dostawaDialog"
+                      modal="true" closeOnEscape="true">
+                <h:panelGrid columns="2">
+                    <h:outputText value="Data dostawy:"/>
+                    <p:commandLink value="Nowa dostawa (2)"/>
+                    <p:commandButton value="Zamknij"
+                                     onclick="PF('dostawyDialog').hide()"/>
+
+
+                </h:panelGrid>
+            </p:dialog>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+</body>
+</html>

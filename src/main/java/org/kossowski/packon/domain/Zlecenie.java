@@ -4,14 +4,16 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.UUID;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,6 +21,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 
@@ -46,8 +50,10 @@ public class Zlecenie implements Serializable {
 	@JoinColumn(foreignKey = @ForeignKey(name = "FK_USER"))
 	private User user;
 	
+	@Temporal( TemporalType.DATE )
 	private Date data; // data wprowadzenia
 	
+	@Temporal( TemporalType.DATE )
 	private Date terminDostawy;
 	
 	private String uwagi;
@@ -55,7 +61,9 @@ public class Zlecenie implements Serializable {
 	private String numerZamowieniaKienta;
 	
 	private String adresWysylkowyKey;
-	private Adres adresWysylkowy;
+	
+	@Embedded
+	private Adres adresWysylkowy = new Adres();
 	
 	@ManyToOne
 	private Kontrahent kontrahent;
@@ -68,15 +76,18 @@ public class Zlecenie implements Serializable {
 	@ManyToOne
 	private Jm jm;
 	
-	@OneToMany( cascade=CascadeType.ALL )
-	@JoinColumn( name = "ZLECENIE_ID")
+	@OneToMany(  cascade=CascadeType.ALL, orphanRemoval = true, mappedBy="zlecenie", fetch = FetchType.LAZY)
+	//@OneToMany
+	//@JoinColumn( name = "ZLECENIE_ID")
+	//@org.hibernate.annotations.Fetch(
+	//      org.hibernate.annotations.FetchMode.SELECT )
 	private Set<ZamowienieMaterialu> zamowieniaMaterialu = new HashSet<>();	
 	
 	@Enumerated( EnumType.STRING )
 	private Prioryted prioryted = Prioryted.NORMALNY;
 	
 	@Enumerated( EnumType.STRING )
-	private Status status = Status.WPROWADZONE;
+	private Status status = Status.NOWE;
 
 	public Long getId() {
 		return id;
@@ -326,13 +337,10 @@ public class Zlecenie implements Serializable {
    public String toString() {
       return "Zlecenie [id=" + id + ", uuid=" + uuid + ", user=" + user + ", data=" + data + ", terminDostawy="
             + terminDostawy + ", uwagi=" + uwagi + ", numerZamowieniaKienta=" + numerZamowieniaKienta
-            + ", adresWysylkowyKey=" + adresWysylkowyKey + ", kontrahent=" + kontrahent + ", produkt=" + produkt
-            + ", ilosc=" + ilosc + ", prioryted=" + prioryted + ", status=" + status + "]";
+            + ", adresWysylkowyKey=" + adresWysylkowyKey + ", adresWysylkowy=" + adresWysylkowy + ", kontrahent="
+            + kontrahent + ", produkt=" + produkt + ", ilosc=" + ilosc + ", jm=" + jm + ", zamowieniaMaterialu="
+            + zamowieniaMaterialu + ", prioryted=" + prioryted + ", status=" + status + "]";
    }
 
    
-
-	
-	
-
 }

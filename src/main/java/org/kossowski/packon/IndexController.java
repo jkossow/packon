@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class IndexController {
 
-	@RequestMapping( "/" )
+	@RequestMapping("/")
 	public String index() {
 		return "redirect:/faces/index.xhtml";
 	}
 	
-	@RequestMapping( "/hi" )
+	@RequestMapping("/hi")
    public String hi() {
       return "hi";
    }

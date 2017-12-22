@@ -8,7 +8,7 @@ import javax.faces.context.FacesContext;
 public class JSFUtils {
     
     public static void addMessage( String message ) {
-        FacesMessage facesMessage = new FacesMessage( message );
+        FacesMessage facesMessage = new FacesMessage(  message );
         FacesContext.getCurrentInstance().addMessage(null,  facesMessage);
     }
     

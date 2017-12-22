@@ -13,7 +13,7 @@ public class ZlecenieFactory {
       Zlecenie z = new Zlecenie();
       
       z.setData( new Date() );
-      z.setStatus( Status.WPROWADZONE );
+      z.setStatus( Status.NOWE );
       
       z.setZamowieniaMaterialu( new HashSet<>() );
       

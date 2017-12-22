@@ -2,15 +2,26 @@ package org.kossowski.packon.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table( name = "zamowienia_materialow")
@@ -27,14 +38,18 @@ public class ZamowienieMaterialu implements Serializable {
    private Long id;
    
    @Column( name = "uuid")
-   UUID uuid = UUID.randomUUID(); 
+   private UUID uuid = UUID.randomUUID(); 
    
+   @ManyToOne
+   @JoinColumn( name = "zlecenie_id" )
+   private Zlecenie zlecenie;
+   
+   @Temporal( TemporalType.DATE )
    private Date dataZamowienia;
    
+   @Temporal( TemporalType.DATE )
    private Date terminDostawy;
-   
-   private Date dataDostawy;
-   
+    
    @ManyToOne
    private IndeksMagazynowy material;
    
@@ -46,6 +61,11 @@ public class ZamowienieMaterialu implements Serializable {
    
    private BigDecimal wartosc;
 
+   @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true, mappedBy="zamowienieMaterialu", 
+         fetch = FetchType.LAZY )
+   //@JoinColumn( name = "zam_mat_id")
+   private Set<DostawaMaterialu> dostawy = new HashSet<>();
+   
    /**
     * @return the id
     */
@@ -88,19 +108,6 @@ public class ZamowienieMaterialu implements Serializable {
       this.terminDostawy = terminDostawy;
    }
 
-   /**
-    * @return the dataDostawy
-    */
-   public Date getDataDostawy() {
-      return dataDostawy;
-   }
-
-   /**
-    * @param dataDostawy the dataDostawy to set
-    */
-   public void setDataDostawy(Date dataDostawy) {
-      this.dataDostawy = dataDostawy;
-   }
 
    /**
     * @return the material
@@ -186,6 +193,41 @@ public class ZamowienieMaterialu implements Serializable {
       this.uuid = uuid;
    }
 
+   
+   
+   
+   
+   
+   /**
+    * @return the zlecenie
+    */
+   public Zlecenie getZlecenie() {
+      return zlecenie;
+   }
+
+   /**
+    * @param zlecenie the zlecenie to set
+    */
+   public void setZlecenie(Zlecenie zlecenie) {
+      this.zlecenie = zlecenie;
+   }
+
+   
+   
+   /**
+    * @return the dostawy
+    */
+   public Set<DostawaMaterialu> getDostawy() {
+      return dostawy;
+   }
+
+   /**
+    * @param dostawy the dostawy to set
+    */
+   public void setDostawy( Set<DostawaMaterialu> dostawy) {
+      this.dostawy = dostawy;
+   }
+
    /* (non-Javadoc)
     * @see java.lang.Object#hashCode()
     */
@@ -197,6 +239,9 @@ public class ZamowienieMaterialu implements Serializable {
       return result;
    }
 
+   
+   
+   
    /* (non-Javadoc)
     * @see java.lang.Object#equals(java.lang.Object)
     */
@@ -223,15 +268,11 @@ public class ZamowienieMaterialu implements Serializable {
    @Override
    public String toString() {
       return "ZamowienieMaterialu [id=" + id + ", uuid=" + uuid + ", dataZamowienia=" + dataZamowienia
-            + ", terminDostawy=" + terminDostawy + ", dataDostawy=" + dataDostawy + ", material=" + material
-            + ", dostawca=" + dostawca + ", iloscZamowiona=" + iloscZamowiona + ", iloscDostarczona=" + iloscDostarczona
-            + ", wartosc=" + wartosc + "]";
+            + ", terminDostawy=" + terminDostawy + ", material=" + material + ", dostawca=" + dostawca
+            + ", iloscZamowiona=" + iloscZamowiona + ", iloscDostarczona=" + iloscDostarczona + ", wartosc=" + wartosc
+            + "]";
    }
-   
-   
-   
-   
-   
-   
+
+      
    
 }

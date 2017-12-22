@@ -1,5 +1,7 @@
 package org.kossowski.packon.domain;
 
+import org.hibernate.validator.constraints.Email;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -40,6 +42,8 @@ public class Kontrahent implements Serializable {
    private String nazwa;
    private String nip;
    private String regon;
+
+   @Email
    private String email;
 
    private Boolean dostawca = false;
@@ -48,10 +52,10 @@ public class Kontrahent implements Serializable {
    @Embedded
    private Adres adres = new Adres();
 
-   @ManyToMany //( fetch=FetchType.EAGER)
+   @ManyToMany( fetch=FetchType.LAZY)
    private Set<IndeksMagazynowy> wyrobyGotowe = new HashSet<>();
 
-   @ElementCollection
+   @ElementCollection( fetch = FetchType.LAZY )
    @CollectionTable(name = "kontrahent_adresy_wysylkowe", joinColumns = @JoinColumn(name = "kontrahent_id"))
    @MapKeyJoinColumn(name = "kontrahent_id", referencedColumnName = "id")
    private Map<String, Adres> adresyWysylkowe = new HashMap<>();

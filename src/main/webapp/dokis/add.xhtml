@@ -9,16 +9,13 @@
 
 <body>
 
-   <ui:composition template="/templates/mainTemplate.xhtml">
+   <ui:composition template="/templates/dokisTemplate.xhtml">
 
       <ui:define name="js">
          <h:outputScript library="js" name="plForSchedule.js" />
          <h:outputStylesheet library="css" name="p.css" />
       </ui:define>
 
-      <ui:define name="left">
-         <ui:include src="/menu.xhtml" />
-      </ui:define>
 
       <ui:define name="content">
          <h:form>
@@ -26,7 +23,7 @@
                <f:facet name="header">
                   <p:row>
                      <p:column colspan="2">
-                     Nowe zlecenie
+                     <h:outputText value="Nowe zlecenie" />
                   </p:column>
                   </p:row>
                </f:facet>
@@ -36,16 +33,16 @@
                   </p:column>
                   <p:column>
                      <p:calendar
-                        value="#{dokisZlecenieAddController.zlecenie.data}" />
+                        value="#{dokisZlecenieAddController.zlecenie.data}" pattern="yyyy-MM-dd"/>
                   </p:column>
                </p:row>
                <p:row>
                   <p:column>
-                     <h:outputText value="Termin dostawy:" />
+                     <h:outputText value="Termin dostawy:"  />
                   </p:column>
                   <p:column>
                      <p:calendar
-                        value="#{dokisZlecenieAddController.zlecenie.terminDostawy}" />
+                        value="#{dokisZlecenieAddController.zlecenie.terminDostawy}" pattern="yyyy-MM-dd"/>
                   </p:column>
                </p:row>
                <p:row>
@@ -146,27 +143,21 @@
                   <p:column colspan="2">
 
                      <p:panelGrid id="productPanel">
-                        <!--                         <f:facet name="header"> -->
-                        <!--                            <p:row> -->
-                        <!--                               <p:column colspan="4"> -->
-                        <!--                              Informacja o produkcie -->
-                        <!--                            </p:column> -->
-                        <!--                            </p:row> -->
-                        <!--                         </f:facet> -->
                         <f:facet name="header">
                            <p:row>
                               <p:column>
-                              Klisza:
-                           </p:column>
+                                 <h:outputText value="Klisza:" />
+                              </p:column>
                               <p:column>
-                              Wykrojnik:
-                           </p:column>
+                                 <h:outputText value="Wykrojnik:" />
+                              </p:column>
                               <p:column>
-                              Rodzaj palety:
-                           </p:column>
+                                 <h:outputText value="Rodzaj palety:" />
+                              </p:column>
                               <p:column>
-                              Ilość sztuk na palecie:
-                           </p:column>
+                                 <h:outputText
+                                    value="Ilość sztuk na palecie:" />
+                              </p:column>
                            </p:row>
                         </f:facet>
                         <p:row>
@@ -181,7 +172,7 @@
                            </p:column>
                            <p:column>
                               <h:outputText
-                                 value="#{dokisZlecenieAddController.zlecenie.produkt.iloscStukNaPalecie}" />
+                                 value="#{dokisZlecenieAddController.zlecenie.produkt.iloscSztukNaPalecie}" />
                            </p:column>
                            <p:column>
                               <h:outputText
@@ -195,7 +186,7 @@
 
                <p:row>
                   <p:column styleClass="ui-widget-header">
-                     Adres wysyłkowy:
+                     <h:outputText value="Adres wysyłkowy:" />
                   </p:column>
                   <p:column styleClass="ui-widget-header">
                      <p:selectOneMenu id="adresWysylkowySelectOneMenu"
@@ -213,10 +204,21 @@
 
                <p:row>
                   <p:column colspan="2">
-                     <p:outputPanel id="awPanel">
+                     <p:panelGrid columns="2" id="awPanel"  styleClass="ui-panelgrid-blank">
+
+                        <h:outputText value="Kod pocztowy i poczta:" />
                         <h:outputText
-                           value="#{dokisZlecenieAddController.zlecenie.adresWysylkowy.ulica}" />
-                     </p:outputPanel>
+                           value="#{dokisZlecenieAddController.zlecenie.adresWysylkowy.kodPocztowy} #{dokisZlecenieAddController.zlecenie.adresWysylkowy.poczta}" />
+
+                        <h:outputText value="Ulica, nr domu, nr lokalu:" />
+                        <h:outputText
+                           value="#{dokisZlecenieAddController.zlecenie.adresWysylkowy.ulica} #{dokisZlecenieAddController.zlecenie.adresWysylkowy.nrDomu} /#{dokisZlecenieAddController.zlecenie.adresWysylkowy.nrLokalu}" />
+
+                        <h:outputText value="Miejscowość:" />
+                        <h:outputText
+                           value="#{dokisZlecenieAddController.zlecenie.adresWysylkowy.miejscowosc}" />
+                           
+                     </p:panelGrid>
                   </p:column>
                </p:row>
                <p:row>
@@ -230,20 +232,21 @@
                </p:row>
                <p:row>
                   <p:column>
-                  <h:outputText value="Jm:" />
+                     <h:outputText value="Jm:" />
                   </p:column>
                   <p:column>
-                  <p:selectOneMenu id="jmSelect"
-                     value="#{dokisZlecenieAddController.zlecenie.jm}"
-                     converter="#{jmConverter}">
-                     <f:selectItem itemLabel="Wybierz" itemValue="" />
-                     <f:selectItems
-                        value="#{dokisZlecenieAddController.jmList}"
-                        var="jm" itemLabel="#{jm.symbol}" itemValue="#{jm}" />
-                  </p:selectOneMenu>
-                  
+                     <p:selectOneMenu id="jmSelect"
+                        value="#{dokisZlecenieAddController.zlecenie.jm}"
+                        converter="#{jmConverter}">
+                        <f:selectItem itemLabel="Wybierz" itemValue="" />
+                        <f:selectItems
+                           value="#{dokisZlecenieAddController.jmList}"
+                           var="jm" itemLabel="#{jm.symbol}"
+                           itemValue="#{jm}" />
+                     </p:selectOneMenu>
+
                   </p:column>
-                  
+
                </p:row>
             </p:panelGrid>
             <p:commandButton value="Zapisz"

@@ -16,22 +16,22 @@
 
       <ui:define name="content">
          <h:form>
-            <p:growl />
+            <p:growl id="growl"/>
             <h:commandLink action="#{jmAddController.prepAdd()}"
                value="Nowa jednostka miary" />
             <p:separator></p:separator>
             <p:dataTable value="#{jmListController.findAll}" var="jm">
                <p:column headerText="Id">
-                  <h:outputText value="#{jm.symbol}" />
-               </p:column>
-               <p:column headerText="Symbol">
                   <h:outputText value="#{jm.id}" />
                </p:column>
-               <p:column headerText="Version">
-                  <h:outputText value="#{jm.jpaVersion}" />
+               <p:column headerText="Symbol">
+                  <h:outputText value="#{jm.symbol}" />
                </p:column>
                <p:column headerText="Nazwa">
                   <h:outputText value="#{jm.nazwa}" />
+               </p:column>
+               <p:column headerText="Version">
+                  <h:outputText value="#{jm.jpaVersion}" />
                </p:column>
                <p:column>
                   <h:commandLink action="#{jmEditController.prepEdit()}"
@@ -39,7 +39,7 @@
                      <f:param name="id" value="#{jm.id}" />
                   </h:commandLink>
                &nbsp;
-               <h:commandLink action="#{jmDelController.delete( jm )}"
+               <h:commandLink action="#{jmDelController.delete( jm )}"  update="growl"
                      value="Usuń">
                      <f:param name="id" value="#{jm}" />
                   </h:commandLink>

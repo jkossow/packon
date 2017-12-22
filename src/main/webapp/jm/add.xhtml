@@ -16,6 +16,7 @@
 
 		<ui:define name="content">
          <h:form>
+            <p:growl id="growl"/>
             <p:panelGrid columns="2">
                <f:facet name="header">
                   Nowa jednostka miary
@@ -24,9 +25,10 @@
                <p:inputText value="#{jmAddController.jm.symbol}"/>
                <h:outputText value="Nazwa:" />
                <p:inputText value="#{jmAddController.jm.nazwa}"/>
-               <p:commandButton value="OK" action="#{jmAddController.ok()}"/>
-               <p:commandButton value="Cancel" action="#{jmAddController.cancel()}"/>
+               <p:commandButton value="OK" action="#{jmAddController.ok()}" update="growl messages"/>
+               <p:commandButton value="Cancel" action="#{jmAddController.cancel()}" update="growl messages"/>
             </p:panelGrid>
+            <p:messages id="messages"/>
          </h:form>
 			
 		</ui:define>

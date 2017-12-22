@@ -8,6 +8,7 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
@@ -27,8 +28,8 @@ public class User {
 	private String nazwisko;
 	private String imie;
 	
-	@ElementCollection
-    @CollectionTable( name = "roles",  joinColumns = {@JoinColumn(name="login")})
+	@ElementCollection( fetch=FetchType.LAZY)
+   @CollectionTable( name = "roles",  joinColumns = {@JoinColumn(name="login")})
 	private Set<Role> roles = new HashSet<>(); 
 	
 	public String getLogin() {

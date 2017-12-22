@@ -16,7 +16,9 @@
 
 		<ui:define name="content">
          <h:form>
+            <p:growl id="growl"/>
             <h:inputHidden value="#{jmEditController.jm.id}" />
+            <h:inputHidden value="#{jmEditController.jm.jpaVersion}" />
             <p:panelGrid columns="2">
                <f:facet name="header">
                   Edycja jednostki miary
@@ -25,9 +27,11 @@
                <p:inputText value="#{jmEditController.jm.symbol}"/>
                <h:outputText value="Nazwa:" />
                <p:inputText value="#{jmEditController.jm.nazwa}"/>
-               <p:commandButton value="OK" action="#{jmEditController.ok()}"/>
+               <p:commandButton value="OK" action="#{jmEditController.ok()}" update="growl messages"/>
                <p:commandButton value="Cancel" action="#{jmEditController.cancel()}"/>
+              
             </p:panelGrid>
+            <p:messages id="messages"/>
          </h:form>
 			
 		</ui:define>

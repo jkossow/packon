@@ -25,12 +25,12 @@ public class Adres implements Serializable {
    };
 
    public Adres(Adres a) {
-      setUlica(new String(a.getUlica()));
-      setNrDomu(new String(a.getNrDomu()));
-      setNrLokalu(new String(a.getNrLokalu()));
-      setMiejscowosc(new String(a.getMiejscowosc()));
-      setPoczta(new String(a.getPoczta()));
-      setKodPocztowy(new String(a.getKodPocztowy()));
+      setUlica( new String(a.getUlica() ));
+      setNrDomu( new String(a.getNrDomu() ));
+      setNrLokalu( new String(a.getNrLokalu() ));
+      setMiejscowosc( new String(a.getMiejscowosc() ));
+      setPoczta( new String(a.getPoczta() ));
+      setKodPocztowy( new String(a.getKodPocztowy() ));
    }
 
    public String getUlica() {

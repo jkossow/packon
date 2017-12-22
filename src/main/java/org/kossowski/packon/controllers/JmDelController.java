@@ -30,7 +30,7 @@ public class JmDelController {
          jmRepo.delete(jm);
       } catch ( DataIntegrityViolationException e) {
          log.info( log.getName() + "Wyjatek JdbcSQLException + " + e.getMessage() );
-         JSFUtils.addMessage( "Nie można skasować (zależności)");
+         JSFUtils.addMessage( "Nie można skasować - zależności (jednostka miary jest wykorzystywana w innych zapisach");
       }
       
       
