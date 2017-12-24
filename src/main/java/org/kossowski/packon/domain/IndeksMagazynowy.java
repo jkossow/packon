@@ -8,7 +8,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "indeksy_magazynowe")
-public class IndeksMagazynowy implements Serializable {
+public abstract class IndeksMagazynowy implements Serializable {
 
     // stockIndex
     // warehouseIndex
