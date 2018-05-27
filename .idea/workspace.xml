@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2fdf49db-bdca-431c-ac8a-e6a6ff683c19" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/PackonApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kossowski/packon/PackonApplication.java" afterDir="false" />
-    </list>
+    <list default="true" id="2fdf49db-bdca-431c-ac8a-e6a6ff683c19" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -82,7 +80,7 @@
       <file leaf-file-name="PackonApplication.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/kossowski/packon/PackonApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="225">
               <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
             </state>
           </provider>
@@ -629,7 +627,7 @@
       <workItem from="1522783294239" duration="239000" />
       <workItem from="1523257049998" duration="278000" />
       <workItem from="1523257451248" duration="41000" />
-      <workItem from="1527460721346" duration="47000" />
+      <workItem from="1527460721346" duration="153000" />
     </task>
     <task id="LOCAL-00001" summary="ziany w indeksach magazynowych">
       <created>1514124565654</created>
@@ -681,11 +679,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131664000" />
+    <option name="totallyTimeSpent" value="131770000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Key Promoter X" order="3" weight="0.3297568" />
       <window_info anchor="right" id="Palette" order="3" />
@@ -706,11 +703,11 @@
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32901135" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.3284553" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49427754" weight="0.29011345" />
-      <window_info anchor="bottom" id="Spring" order="7" visible="true" weight="0.3284553" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.3284553" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4941691" weight="0.3241491" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4587738" visible="true" weight="0.2835218" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4587738" visible="true" weight="0.2835218" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Web" order="2" sideWeight="0.5202593" side_tool="true" weight="0.2536349" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -1200,7 +1197,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/kossowski/packon/PackonApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="225">
           <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
         </state>
       </provider>
