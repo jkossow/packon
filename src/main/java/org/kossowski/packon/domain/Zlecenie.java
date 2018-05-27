@@ -1,346 +1,204 @@
 package org.kossowski.packon.domain;
 
-import java.io.Serializable;
+import org.hibernate.annotations.Any;
+import org.hibernate.annotations.AnyMetaDef;
+import org.kossowski.packon.domain.nowe.Produkowalny;
+import org.kossowski.packon.domain.przedmMagazynowe.Wyrob;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 
 
 @Entity
-@Table( name = "zlecenia" )
-public class Zlecenie implements Serializable {
-   
-   
-   
-   /**
-    * 
-    */
-   private static final long serialVersionUID = 1L;
-
-   // ProductionOrder
-	
-	@Id @GeneratedValue
-	private Long id = 0L;
-	
-	@Column( name = "uuid")
-	UUID uuid = UUID.randomUUID(); 
-	
-	
-	@ManyToOne
-	@JoinColumn(foreignKey = @ForeignKey(name = "FK_USER"))
-	private User user;
-	
-	@Temporal( TemporalType.DATE )
-	private Date data; // data wprowadzenia
-	
-	@Temporal( TemporalType.DATE )
-	private Date terminDostawy;
-	
-	private String uwagi;
-	
-	private String numerZamowieniaKienta;
-	
-	private String adresWysylkowyKey;
-	
-	@Embedded
-	private Adres adresWysylkowy = new Adres();
-	
-	@ManyToOne
-	private Kontrahent kontrahent;
-	
-	@ManyToOne
-	private IndeksMagazynowy produkt;
-	
-	private BigDecimal ilosc; 
-	
-	@ManyToOne
-	private Jm jm;
-	
-	@OneToMany(  cascade=CascadeType.ALL, orphanRemoval = true, mappedBy="zlecenie", fetch = FetchType.LAZY)
-	//@OneToMany
-	//@JoinColumn( name = "ZLECENIE_ID")
-	//@org.hibernate.annotations.Fetch(
-	//      org.hibernate.annotations.FetchMode.SELECT )
-	private Set<ZamowienieMaterialu> zamowieniaMaterialu = new HashSet<>();	
-	
-	@Enumerated( EnumType.STRING )
-	private Prioryted prioryted = Prioryted.NORMALNY;
-	
-	@Enumerated( EnumType.STRING )
-	private Status status = Status.NOWE;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
-
-	
+@Table(name = "zlecenia")
+public class Zlecenie extends BaseEntity<Long> {
 
 
-	/**
-    * @return the terminDostawy
-    */
-   public Date getTerminDostawy() {
-      return terminDostawy;
-   }
+    // ProductionOrder
 
-   /**
-    * @param terminDostawy the terminDostawy to set
-    */
-   public void setTerminDostawy(Date terminDostawy) {
-      this.terminDostawy = terminDostawy;
-   }
+    @ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "FK_zlecenie__user"))
+    private User user;
 
-   /**
-    * @return the uwagi
-    */
-   public String getUwagi() {
-      return uwagi;
-   }
+    @Temporal(TemporalType.DATE)
+    private Date data; // data wprowadzenia
 
-   /**
-    * @param uwagi the uwagi to set
-    */
-   public void setUwagi(String uwagi) {
-      this.uwagi = uwagi;
-   }
+    @Temporal(TemporalType.DATE)
+    private Date terminDostawy;
 
-   /**
-    * @return the numerZamowieniaKienta
-    */
-   public String getNumerZamowieniaKienta() {
-      return numerZamowieniaKienta;
-   }
+    private String uwagi;
 
-   /**
-    * @param numerZamowieniaKienta the numerZamowieniaKienta to set
-    */
-   public void setNumerZamowieniaKienta(String numerZamowieniaKienta) {
-      this.numerZamowieniaKienta = numerZamowieniaKienta;
-   }
+    private String numerZamowieniaKienta;
 
-   /**
-    * @return the adresWysylkowy
-    */
-   public String getAdresWysylkowyKey() {
-      return adresWysylkowyKey;
-   }
+    private String adresWysylkowyKey;
 
-   /**
-    * @param adresWysylkowy the adresWysylkowy to set
-    */
-   public void setAdresWysylkowyKey(String adresWysylkowyKey) {
-      this.adresWysylkowyKey = adresWysylkowyKey;
-   }
+    @Embedded
+    private Adres adresWysylkowy = new Adres();
 
-   
-   
-   /**
-    * @return the ilosc
-    */
-   public BigDecimal getIlosc() {
-      return ilosc;
-   }
+    @ManyToOne
+    @JoinColumn( foreignKey = @ForeignKey( name = "FK_zlecenie__kontrahent"))
+    private Kontrahent kontrahent;
 
-   /**
-    * @param ilosc the ilosc to set
-    */
-   public void setIlosc(BigDecimal ilosc) {
-      this.ilosc = ilosc;
-   }
+    //@Any( metaColumn = @Column( name= "Entity" ))
+    //@AnyMetaDef( idType="integer", metaType = "integer" , metaValues = {
+    //
+    //})
+    @ManyToOne
+    @JoinColumn( name = "parent_id", foreignKey = @ForeignKey( name = "FK_zlecenie__indeks_magazynowy") )
+    private Wyrob wyrob;
 
-   public Prioryted getPrioryted() {
-		return prioryted;
-	}
+    private BigDecimal ilosc;
 
-	public void setPrioryted(Prioryted prioryted) {
-		this.prioryted = prioryted;
-	}
+    @ManyToOne
+    @JoinColumn( foreignKey = @ForeignKey( name = "FK_zlecenie__jm") )
+    private Jm jm;
 
-	public Status getStatus() {
-		return status;
-	}
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "zlecenie", fetch = FetchType.LAZY )
+    //@JoinColumn( foreignKey = @ForeignKey( name = "FK_zlecenie__zamowienie_materialu" ) )
+    //@OneToMany
+    //@JoinColumn( name = "ZLECENIE_ID")
+    //@org.hibernate.annotations.Fetch(
+    //      org.hibernate.annotations.FetchMode.SELECT )
+    private Set<ZamowienieMaterialu> zamowieniaMaterialu = new HashSet<>();
 
-	public void setStatus(Status status) {
-		this.status = status;
-	}
+    @Enumerated(EnumType.STRING)
+    private Prioryted prioryted = Prioryted.NORMALNY;
 
-	
-	
-	
-	/**
-    * @return the uuid
-    */
-   public UUID getUuid() {
-      return uuid;
-   }
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.NOWE;
 
-   /**
-    * @param uuid the uuid to set
-    */
-   public void setUuid(UUID uuid) {
-      this.uuid = uuid;
-   }
+    public Date getData() {
+        return data;
+    }
 
-   /**
-    * @return the user
-    */
-   public User getUser() {
-      return user;
-   }
+    public void setData(Date data) {
+        this.data = data;
+    }
 
-   /**
-    * @param user the user to set
-    */
-   public void setUser(User user) {
-      this.user = user;
-   }
+    public Date getTerminDostawy() {
+        return terminDostawy;
+    }
 
-   /**
-    * @return the kontrahent
-    */
-   public Kontrahent getKontrahent() {
-      return kontrahent;
-   }
+    public void setTerminDostawy(Date terminDostawy) {
+        this.terminDostawy = terminDostawy;
+    }
 
-   /**
-    * @param kontrahent the kontrahent to set
-    */
-   public void setKontrahent(Kontrahent kontrahent) {
-      this.kontrahent = kontrahent;
-   }
+    public String getUwagi() {
+        return uwagi;
+    }
 
-   /**
-    * @return the produkt
-    */
-   public IndeksMagazynowy getProdukt() {
-      return produkt;
-   }
+    public void setUwagi(String uwagi) {
+        this.uwagi = uwagi;
+    }
 
-   /**
-    * @param produkt the produkt to set
-    */
-   public void setProdukt(IndeksMagazynowy produkt) {
-      this.produkt = produkt;
-   }
-   
-   
-   
-   
+    public String getNumerZamowieniaKienta() {
+        return numerZamowieniaKienta;
+    }
 
-   /**
-    * @return the adresWysylkowy
-    */
-   public Adres getAdresWysylkowy() {
-      return adresWysylkowy;
-   }
+    public void setNumerZamowieniaKienta(String numerZamowieniaKienta) {
+        this.numerZamowieniaKienta = numerZamowieniaKienta;
+    }
 
-   /**
-    * @param adresWysylkowy the adresWysylkowy to set
-    */
-   public void setAdresWysylkowy(Adres adresWysylkowy) {
-      this.adresWysylkowy = adresWysylkowy;
-   }
-   
+    public String getAdresWysylkowyKey() {
+        return adresWysylkowyKey;
+    }
 
-   
-   
-   /**
-    * @return the zamowieniaMaterialu
-    */
-   public Set<ZamowienieMaterialu> getZamowieniaMaterialu() {
-      return zamowieniaMaterialu;
-   }
+    public void setAdresWysylkowyKey(String adresWysylkowyKey) {
+        this.adresWysylkowyKey = adresWysylkowyKey;
+    }
 
-   /**
-    * @param zamowieniaMaterialu the zamowieniaMaterialu to set
-    */
-   public void setZamowieniaMaterialu(Set<ZamowienieMaterialu> zamowieniaMaterialu) {
-      this.zamowieniaMaterialu = zamowieniaMaterialu;
-   }
+    public BigDecimal getIlosc() {
+        return ilosc;
+    }
 
-   /**
-    * @return the jm
-    */
-   public Jm getJm() {
-      return jm;
-   }
+    public void setIlosc(BigDecimal ilosc) {
+        this.ilosc = ilosc;
+    }
 
-   /**
-    * @param jm the jm to set
-    */
-   public void setJm(Jm jm) {
-      this.jm = jm;
-   }
-   
+    public Prioryted getPrioryted() {
+        return prioryted;
+    }
 
-   @Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
+    public void setPrioryted(Prioryted prioryted) {
+        this.prioryted = prioryted;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Zlecenie other = (Zlecenie) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
+    public Status getStatus() {
+        return status;
+    }
 
-   /* (non-Javadoc)
-    * @see java.lang.Object#toString()
-    */
-   @Override
-   public String toString() {
-      return "Zlecenie [id=" + id + ", uuid=" + uuid + ", user=" + user + ", data=" + data + ", terminDostawy="
-            + terminDostawy + ", uwagi=" + uwagi + ", numerZamowieniaKienta=" + numerZamowieniaKienta
-            + ", adresWysylkowyKey=" + adresWysylkowyKey + ", adresWysylkowy=" + adresWysylkowy + ", kontrahent="
-            + kontrahent + ", produkt=" + produkt + ", ilosc=" + ilosc + ", jm=" + jm + ", zamowieniaMaterialu="
-            + zamowieniaMaterialu + ", prioryted=" + prioryted + ", status=" + status + "]";
-   }
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
-   
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Kontrahent getKontrahent() {
+        return kontrahent;
+    }
+
+    public void setKontrahent(Kontrahent kontrahent) {
+        this.kontrahent = kontrahent;
+    }
+
+    public Wyrob getWyrob() {
+        return wyrob;
+    }
+
+    public void setWyrob(Wyrob wyrob) {
+        this.wyrob = wyrob;
+    }
+
+    public Adres getAdresWysylkowy() {
+        return adresWysylkowy;
+    }
+
+    public void setAdresWysylkowy(Adres adresWysylkowy) {
+        this.adresWysylkowy = adresWysylkowy;
+    }
+
+    public Set<ZamowienieMaterialu> getZamowieniaMaterialu() {
+        return zamowieniaMaterialu;
+    }
+
+    public void setZamowieniaMaterialu(Set<ZamowienieMaterialu> zamowieniaMaterialu) {
+        this.zamowieniaMaterialu = zamowieniaMaterialu;
+    }
+
+    public Jm getJm() {
+        return jm;
+    }
+
+    public void setJm(Jm jm) {
+        this.jm = jm;
+    }
+
+    @Override
+    public String toString() {
+        return "Zlecenie{" +
+                "user=" + user +
+                ", data=" + data +
+                ", terminDostawy=" + terminDostawy +
+                ", uwagi='" + uwagi + '\'' +
+                ", numerZamowieniaKienta='" + numerZamowieniaKienta + '\'' +
+                ", adresWysylkowyKey='" + adresWysylkowyKey + '\'' +
+                ", adresWysylkowy=" + adresWysylkowy +
+                ", kontrahent=" + kontrahent +
+                ", iwyrob=" + wyrob +
+                ", ilosc=" + ilosc +
+                ", jm=" + jm +
+                ", zamowieniaMaterialu=" + zamowieniaMaterialu +
+                ", prioryted=" + prioryted +
+                ", status=" + status +
+                "} " + super.toString();
+    }
 }

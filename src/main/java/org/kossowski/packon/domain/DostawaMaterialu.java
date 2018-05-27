@@ -1,31 +1,17 @@
 package org.kossowski.packon.domain;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.UUID;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table( name = "dostawy_materialow")
-public class DostawaMaterialu {
+public class DostawaMaterialu extends BaseEntity< Long > {
    
-   @Id @GeneratedValue
-   private Long id;
-   
-   @Column( name="uuid" )
-   private UUID uuid = UUID.randomUUID();
+
    
    @ManyToOne
-   @JoinColumn( name="zam_mat_id")
+   @JoinColumn( name="zam_mat_id", foreignKey = @ForeignKey( name = "FK_dostawa_materialu__zamowienie_materialu") )
    private ZamowienieMaterialu zamowienieMaterialu;
    
    @Temporal( TemporalType.DATE)
@@ -42,35 +28,6 @@ public class DostawaMaterialu {
       this.dataDostawy = dataDostawy;
       this.ilosc = ilosc;
       this.liczbaPalet = liczbaPalet;
-   }
-   
-
-   /**
-    * @return the id
-    */
-   public Long getId() {
-      return id;
-   }
-
-   /**
-    * @param id the id to set
-    */
-   public void setId(Long id) {
-      this.id = id;
-   }
-
-   /**
-    * @return the uuid
-    */
-   public UUID getUuid() {
-      return uuid;
-   }
-
-   /**
-    * @param uuid the uuid to set
-    */
-   public void setUuid(UUID uuid) {
-      this.uuid = uuid;
    }
 
    /**
@@ -133,49 +90,13 @@ public class DostawaMaterialu {
       this.zamowienieMaterialu = zamowienieMaterialu;
    }
 
-   /* (non-Javadoc)
-    * @see java.lang.Object#hashCode()
-    */
-   @Override
-   public int hashCode() {
-      final int prime = 31;
-      int result = 1;
-      result = prime * result + ((uuid == null) ? 0 : uuid.hashCode());
-      return result;
-   }
-
-   /* (non-Javadoc)
-    * @see java.lang.Object#equals(java.lang.Object)
-    */
-   @Override
-   public boolean equals(Object obj) {
-      if (this == obj)
-         return true;
-      if (obj == null)
-         return false;
-      if (!(obj instanceof DostawaMaterialu))
-         return false;
-      DostawaMaterialu other = (DostawaMaterialu) obj;
-      if (uuid == null) {
-         if (other.uuid != null)
-            return false;
-      } else if (!uuid.equals(other.uuid))
-         return false;
-      return true;
-   }
-
-   /* (non-Javadoc)
-    * @see java.lang.Object#toString()
-    */
-   @Override
-   public String toString() {
-      return "DostawaMaterialu [id=" + id + ", uuid=" + uuid + ", dataDostawy=" + dataDostawy + ", ilosc=" + ilosc
-            + ", liczbaPalet=" + liczbaPalet + "]";
-   }
-   
-   
-   
-   
-   
-   
+    @Override
+    public String toString() {
+        return "DostawaMaterialu{" +
+                "zamowienieMaterialu=" + zamowienieMaterialu +
+                ", dataDostawy=" + dataDostawy +
+                ", ilosc=" + ilosc +
+                ", liczbaPalet=" + liczbaPalet +
+                "} " + super.toString();
+    }
 }

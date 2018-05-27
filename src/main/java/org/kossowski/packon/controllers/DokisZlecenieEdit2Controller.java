@@ -1,6 +1,7 @@
 package org.kossowski.packon.controllers;
 
 import org.kossowski.packon.domain.*;
+import org.kossowski.packon.domain.przedmMagazynowe.Material;
 import org.kossowski.packon.repositories.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,8 +69,8 @@ public class DokisZlecenieEdit2Controller implements Serializable {
 
         // inicjalizacja kolekcji
 
-        zlecenie.getProdukt();
-        zlecenie.getProdukt().getMaterials().size();
+        zlecenie.getWyrob();
+        zlecenie.getWyrob().getMaterials().size();
 
         for (ZamowienieMaterialu zm : zlecenie.getZamowieniaMaterialu()) {
             log.info(log.getName() + "init() dostawy.size()={}", zm.getDostawy().size());
@@ -101,10 +102,10 @@ public class DokisZlecenieEdit2Controller implements Serializable {
 
         log.info(log.getName() + " dopisz()");
         log.debug(log.getName() + " dopisz() zamowieniaMaterialu.size()={}", zlecenie.getZamowieniaMaterialu().size());
-        for (IndeksMagazynowy i : zlecenie.getProdukt().getMaterials()) {
+        for (Material m : zlecenie.getWyrob().getMaterials()) {
             ZamowienieMaterialu z = new ZamowienieMaterialu();
             z.setZlecenie(zlecenie);
-            z.setMaterial(i);
+            z.setMaterial(m);
             z.setDataZamowienia(new Date());
 
             zlecenie.getZamowieniaMaterialu().add(z);
