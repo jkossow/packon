@@ -71,19 +71,21 @@ public class IndeksMagazynowyEditController {
 	public void addSelectedMaterialToMaterials() {
 	   log.info( log.getName() + " addSelectedMaterialToMaterials = " + selectedMaterial );
 	   log.debug("debug message (jk)");
-	   if( selectedMaterial != null )
-	      indeksMag.getMaterials().add( selectedMaterial );
+	   //
+	   //if( selectedMaterial != null )
+	   //   indeksMag.getMaterials().add( selectedMaterial );
 	}
 	
 	public void dellMaterialFromMaterials() {
 	   log.info( log.getName() + " delMaterialFromMaterials");
 	   Long id = Long.valueOf( JSFUtils.getRequestParam("id") );
-	   
-	   for( IndeksMagazynowy im : indeksMag.getMaterials() ) 
-	      if( im.getId() == id) {
-	            indeksMag.getMaterials().remove( im );
-	            break;
-	      };
+
+	   //
+	   //for( IndeksMagazynowy im : indeksMag.getMaterials() )
+	   //   if( im.getId() == id) {
+	   //         indeksMag.getMaterials().remove( im );
+	   //         break;
+	   //   };
 	}
 	
 	public void orderListReorder( ReorderEvent e ) {
@@ -111,16 +113,19 @@ public class IndeksMagazynowyEditController {
    }
 	
 	public void addSelectedWzorzecToWzorce() {
-      
-      if( selectedWzorzecOperacji != null ) {
-            indeksMag.getTechnologia().add( selectedWzorzecOperacji );
-            selectedWzorzecOperacji = null;
-      }
+
+      //
+      //if( selectedWzorzecOperacji != null ) {
+      //      indeksMag.getTechnologia().add( selectedWzorzecOperacji );
+      //      selectedWzorzecOperacji = null;
+      //}
 	   
    }
 	
 	public void delAllFromWzorce() {
-	   indeksMag.getTechnologia().clear();
+
+       //
+       //indeksMag.getTechnologia().clear();
 	}
 	
 	

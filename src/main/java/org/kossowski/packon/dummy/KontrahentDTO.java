@@ -1,18 +1,18 @@
-package org.kossowski.packon.domain;
+package org.kossowski.packon.dummy;
+
+import org.kossowski.packon.domain.Adres;
+import org.kossowski.packon.domain.IndeksMagazynowy;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 
-import org.kossowski.packon.domain.przedmMagazynowe.Wyrob;
+public class KontrahentDTO {
 
-import javax.persistence.*;
-import java.util.*;
-
-@Entity
-@Table( name = "kontrahenci" )
-public class Kontrahent extends BaseEntity<Long> {
-
-    // Customer
-
-
+    private long id;
+    private int version;
 
     private String symbol;
     private String nazwa;
@@ -25,18 +25,31 @@ public class Kontrahent extends BaseEntity<Long> {
     private Boolean dostawca = false;
     private Boolean odbiorca = false;
 
-    @Embedded
+
     private Adres adres = new Adres();
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable( inverseForeignKey = @ForeignKey( name = "FK_kontrahent__indeks_magazynowy") )
+
     private Set<IndeksMagazynowy> wyrobyGotowe = new HashSet<>();
 
-    @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "kontrahent_adresy_wysylkowe", joinColumns = @JoinColumn(name = "kontrahent_id"))
-    @MapKeyJoinColumn(name = "kontrahent_id", referencedColumnName = "id")
+
     private Map<String, Adres> adresyWysylkowe = new HashMap<>();
 
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
 
     public String getSymbol() {
         return symbol;
@@ -46,28 +59,12 @@ public class Kontrahent extends BaseEntity<Long> {
         this.symbol = symbol;
     }
 
-    public Adres getAdres() {
-        return adres;
+    public String getNazwa() {
+        return nazwa;
     }
 
-    public void setAdres(Adres adres) {
-        this.adres = adres;
-    }
-
-    public Set<IndeksMagazynowy> getWyrobyGotowe() {
-        return wyrobyGotowe;
-    }
-
-    public void setWyrobyGotowe(Set<IndeksMagazynowy> wyrobyGotowe) {
-        this.wyrobyGotowe = wyrobyGotowe;
-    }
-
-    public Map<String, Adres> getAdresyWysylkowe() {
-        return adresyWysylkowe;
-    }
-
-    public void setAdresyWysylkowe(Map<String, Adres> adresyWysylkowe) {
-        this.adresyWysylkowe = adresyWysylkowe;
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
     }
 
     public String getNip() {
@@ -94,14 +91,6 @@ public class Kontrahent extends BaseEntity<Long> {
         this.email = email;
     }
 
-    public String getNazwa() {
-        return nazwa;
-    }
-
-    public void setNazwa(String nazwa) {
-        this.nazwa = nazwa;
-    }
-
     public Boolean getDostawca() {
         return dostawca;
     }
@@ -118,11 +107,37 @@ public class Kontrahent extends BaseEntity<Long> {
         this.odbiorca = odbiorca;
     }
 
+    public Adres getAdres() {
+        return adres;
+    }
+
+    public void setAdres(Adres adres) {
+        this.adres = adres;
+    }
+
+    public Set<IndeksMagazynowy> getWyrobyGotowe() {
+        return wyrobyGotowe;
+    }
+
+    public void setWyrobyGotowe(Set<IndeksMagazynowy> wyrobyGotowe) {
+        this.wyrobyGotowe = wyrobyGotowe;
+    }
+
+    public Map<String, Adres> getAdresyWysylkowe() {
+        return adresyWysylkowe;
+    }
+
+    public void setAdresyWysylkowe(Map<String, Adres> adresyWysylkowe) {
+        this.adresyWysylkowe = adresyWysylkowe;
+    }
+
 
     @Override
     public String toString() {
-        return "Kontrahent{" +
-                "symbol='" + symbol + '\'' +
+        return "KontrahentDTO{" +
+                "id=" + id +
+                ", version=" + version +
+                ", symbol='" + symbol + '\'' +
                 ", nazwa='" + nazwa + '\'' +
                 ", nip='" + nip + '\'' +
                 ", regon='" + regon + '\'' +
@@ -132,6 +147,6 @@ public class Kontrahent extends BaseEntity<Long> {
                 ", adres=" + adres +
                 ", wyrobyGotowe=" + wyrobyGotowe +
                 ", adresyWysylkowe=" + adresyWysylkowe +
-                "} " + super.toString();
+                '}';
     }
 }

@@ -87,14 +87,15 @@ public class DokisZlecenieEditController implements Serializable {
    public void kontrahentSelectOneMenuChanged() {
 
       log.info(log.getName() + " kontrahentSelectMenuChanged k=" + zlecenie.getKontrahent());
-      zlecenie.setProdukt(null);
+      zlecenie.setWyrob(null);
 
    }
 
    public void productSelectOneMenuChanged() {
 
-      log.info(log.getName() + " productSelectMenuChanged k=" + zlecenie.getProdukt());
-      zlecenie.setJm(  zlecenie.getProdukt().getJednMiary() );
+      log.info(log.getName() + " productSelectMenuChanged k=" + zlecenie.getWyrob());
+      //
+      //zlecenie.setJm(  zlecenie.getProdukt().getJednMiary() );
 
    }
 
