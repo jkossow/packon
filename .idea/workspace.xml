@@ -81,7 +81,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/org/kossowski/packon/PackonApplication.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -235,6 +235,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -277,7 +278,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="Scope">
         <subPane subId="Production">
@@ -633,6 +633,7 @@
       <workItem from="1523257049998" duration="278000" />
       <workItem from="1523257451248" duration="41000" />
       <workItem from="1527460721346" duration="153000" />
+      <workItem from="1527495522692" duration="14000" />
     </task>
     <task id="LOCAL-00001" summary="ziany w indeksach magazynowych">
       <created>1514124565654</created>
@@ -684,11 +685,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131772000" />
+    <option name="totallyTimeSpent" value="131786000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="735" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Key Promoter X" order="3" weight="0.3297568" />
       <window_info anchor="right" id="Palette" order="3" />
@@ -718,43 +718,15 @@
       <window_info id="Web" order="2" sideWeight="0.5202593" side_tool="true" weight="0.2536349" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" sideWeight="0.5412262" side_tool="true" weight="0.22174536" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.36914378" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4941691" weight="0.3241491" />
-      <window_info anchor="bottom" id="Docker" order="7" weight="0.32901135" />
-      <window_info anchor="right" id="Key Promoter X" order="3" weight="0.3297568" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4587738" visible="true" weight="0.2835218" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.16397415" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Inspection Results" order="8" sideWeight="0.49708456" weight="0.32880434" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" id="Ant Build" order="1" show_stripe_button="false" weight="0.24964234" />
-      <window_info id="UI Designer" order="2" />
-      <window_info id="Favorites" order="2" sideWeight="0.5412262" side_tool="true" weight="0.22174536" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32938075" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50572246" side_tool="true" weight="0.2911726" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info id="Designer" order="2" />
-      <window_info anchor="bottom" id="Java Enterprise" order="7" />
-      <window_info id="Web" order="2" sideWeight="0.5202593" side_tool="true" weight="0.2536349" />
-      <window_info anchor="right" id="Bean Validation" order="3" />
-      <window_info anchor="bottom" id="Spring" order="7" weight="0.3284553" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.3284553" />
-      <window_info anchor="right" id="CDI" order="3" />
-      <window_info anchor="right" id="JSF" order="3" weight="0.32956383" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49427754" weight="0.29011345" />
-      <window_info id="Capture Tool" order="2" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" weight="0.32901135" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Messages" order="8" weight="0.32357043" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32938075" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="3" />
@@ -1232,7 +1204,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/org/kossowski/packon/PackonApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
