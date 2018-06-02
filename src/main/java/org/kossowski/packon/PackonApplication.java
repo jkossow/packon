@@ -15,6 +15,9 @@ public class PackonApplication {
 		SpringApplication.run( PackonApplication.class  , args );
 	}
 
+// test branch develo
+// drugi commit
+
 	
 //	 @Bean
 //	 public ServletRegistrationBean facesServletRegistration() {

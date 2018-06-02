@@ -8,6 +8,10 @@ node_modules/**
 
 ### IntelliJ IDEA ###
 .idea/**
+<<<<<<< HEAD
+=======
+.idea/workspace.xml
+>>>>>>> develop
 *.iws
 *.iml
 *.ipr
